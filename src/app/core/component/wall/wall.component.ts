@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Article} from '@app/core/model/article';
 
 @Component({
   selector: 'app-wall',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WallComponent implements OnInit {
 
-  constructor() { }
+  articles: Article[] = [];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
