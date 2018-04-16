@@ -17,5 +17,6 @@ export class PublishingFormComponent implements OnInit {
 
   publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLTextAreaElement) {
     this.articlePublisher.publish(new Article(newMessageTitle.value, newMessageBody.value));
+    return false;
   }
 }
