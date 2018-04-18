@@ -8,10 +8,10 @@
     <label for="messageBodyInput">Text</label>
     <div class="form-inline">
       <textarea #newMessageBody class="form-control col-md-11" id="messageBodyInput" placeholder="What do you fill?"
-      style="width: 80%"></textarea>
-      <mat-icon>home</mat-icon>
-      <button (click)="publishMessage(newMessageTitle, newMessageBody)" class="btn btn-primary"
-              style="background-color: skyblue; border: 0 solid skyblue; width: 10%">Send</button>
+                style="width: 80%"></textarea>
+      <button class="btn btn-lg material-icons publish-button"
+              (click)="publishMessage(newMessageTitle, newMessageBody)">send
+      </button>
     </div>
   </div>
 </form>
