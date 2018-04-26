@@ -16,6 +16,7 @@ export class ArticleRepository {
       this.articleEventHandlerService.getEventSubject().next(article);
     }, error => {
       console.warn(error);
+      this.articleEventHandlerService.getEventSubject().next(article);
     });
   }
 
