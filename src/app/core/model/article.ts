@@ -1,7 +1,7 @@
 export class Article {
 
-  private title: string;
-  private body: string;
+  public title: string;
+  public body: string;
 
   constructor(title: string, body: string) {
     this.title = title;
