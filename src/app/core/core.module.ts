@@ -8,19 +8,36 @@ import {ArticleRepository} from '@app/core/service/article-repository.service';
 import {HttpRequestService} from "@app/core/service/http-request.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ArticleEventHandlerService} from "@app/core/service/article-event-handler.service";
-import { ArticleComponent } from './component/article/article.component';
+import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule} from "@angular/material";
+import {FirebaseService} from "@app/core/service/firebase.service";
+import {AngularFireModule} from "angularfire2";
+import {AngularFirestoreModule} from "angularfire2/firestore";
+import {AngularFireAuthModule} from "angularfire2/auth";
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
+  authDomain: "stina-2b904.firebaseapp.com",
+  databaseURL: "https://stina-2b904.firebaseio.com",
+  projectId: "stina-2b904",
+  storageBucket: "stina-2b904.appspot.com",
+  messagingSenderId: "454249451134"
+};
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(firebaseConfig, 'Stina'),
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireAuthModule,
   ],
   providers: [
     ArticleRepository,
     HttpRequestService,
-    ArticleEventHandlerService],
+    ArticleEventHandlerService,
+    FirebaseService],
   declarations: [
     NavigationComponent,
     PublishingFormComponent,
