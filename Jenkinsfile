@@ -8,9 +8,14 @@ node {
     }
 
     stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
+        docker.stop("stina-client:prod")
+    }
 
+    stage('Build image') {
+        docker.rm("stina-client:prod")
+    }
+
+    stage('Build image') {
         app = docker.build("stina-client:prod")
     }
 
