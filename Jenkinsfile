@@ -8,7 +8,7 @@ node {
     }
 
     stage('Build image') {
-        docker.stop("stina-client:prod")
+        docker.stop("stina-client-container")
     }
 
     stage('Build image') {
@@ -29,6 +29,6 @@ node {
     }
 
     stage('Deploy') {
-        sh 'docker run -d -p 80:80 stina-client:prod'
+        sh 'docker run -d -p 80:80 stina-client:prod --name stina-client-container'
     }
 }
