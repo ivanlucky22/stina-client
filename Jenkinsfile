@@ -7,13 +7,11 @@ node {
         checkout scm
     }
 
-    stage('Build image') {
-        docker.stop("stina-client-container")
+    stage('Stop container') {
+        def apiContainer = docker.container("stina-client-container")
+        apiContainer.stop()
     }
 
-    stage('Build image') {
-        docker.rm("stina-client:prod")
-    }
 
     stage('Build image') {
         app = docker.build("stina-client:prod")
