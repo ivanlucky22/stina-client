@@ -1,5 +1,6 @@
 export class Article {
 
+  public id: string;
   public title: string;
   public body: string;
 

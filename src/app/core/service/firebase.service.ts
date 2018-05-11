@@ -16,7 +16,9 @@ export class FirebaseService {
   }
 
   save(article: Article) {
-    this.articlesCollection.add(JSON.parse(JSON.stringify(article)))
+    const id = this.db.createId();
+    article.id = id;
+    this.articlesCollection.doc(id).set(JSON.parse(JSON.stringify(article)))
       .then((result) => {
         console.log('Saved successfully ', result);
       }).catch((err) => {

@@ -20,7 +20,9 @@ export class WallComponent implements OnInit {
     this.articleEventHandlerService.getEventSubject().subscribe(article => this.articles.push(article));
 
     this.articleRepository.findAll().subscribe(response => {
-        response.forEach(article => this.articles.push(article));
+        response.forEach(article => {
+          this.articles.push(article);
+        });
       },
       error => {
         console.warn(error);
