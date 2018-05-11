@@ -7,12 +7,13 @@ import {Observable} from "rxjs/Observable";
 export class FirebaseService {
 
   private articles: Observable<Article[]>;
+  private instantArticles: Article[];
   private ARTICLES_COLLECTION = 'arcticles';
   private articlesCollection;
 
   constructor(private db: AngularFirestore) {
     this.articlesCollection = db.collection<Article>(this.ARTICLES_COLLECTION);
-    this.articles = this.articlesCollection.valueChanges();
+    this.articles = db.collection<Article>(this.ARTICLES_COLLECTION, ref => ref.orderBy('timestamp', 'desc').limit(20)).valueChanges();
   }
 
   save(article: Article) {
@@ -28,5 +29,9 @@ export class FirebaseService {
 
   getArticles() {
     return this.articles;
+  }
+
+  getNewest(): Article[] {
+    return this.instantArticles;
   }
 }
