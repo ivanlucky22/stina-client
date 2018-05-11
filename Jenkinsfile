@@ -24,7 +24,7 @@ node {
     }
 
     stage('Deploy') {
-        docker.image('stina-client:prod').withRun('-d -p 80:80') {
+        docker.image('stina-client:prod').withRun(' -p 80:80') {
                     /* do things */
         }
     }
