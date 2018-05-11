@@ -24,6 +24,6 @@ node {
     }
 
     stage('Deploy') {
-        sh 'docker -d -p 80:80 stina-client:prod'
+        sh 'docker run -d -p 80:80 stina-client:prod'
     }
 }
