@@ -11,10 +11,6 @@ node {
       sh 'docker rm -f stina-client-container || true'
     }
 
-    stage ('Stop container') {
-      sh 'docker rm stina-client:prod'
-    }
-
     stage('Build image') {
         app = docker.build("stina-client:prod")
     }
