@@ -25,6 +25,6 @@ node {
     }
 
     stage('Deploy') {
-        sh 'docker run -d -p 80:80 stina-client:prod -name stina-client-container'
+        sh 'docker run --name stina-client-container -d -p 80:80 stina-client:prod'
     }
 }
