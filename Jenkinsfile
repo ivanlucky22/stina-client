@@ -26,4 +26,8 @@ node {
     stage('Deploy') {
         sh 'docker run --name stina-client-container -d -p 80:80 stina-client:prod'
     }
+
+    stage('Remove intermediate images') {
+        sh 'docker rmi $(docker images -f "dangling=true" -q)'
+    }
 }
