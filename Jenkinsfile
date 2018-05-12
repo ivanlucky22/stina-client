@@ -8,10 +8,12 @@ node {
     }
 
     stage('Stop container') {
-        def apiContainer = docker.container("stina-client-container")
-        apiContainer.stop()
+      sh 'docker stop stina-client-container'
     }
 
+    stage ('Stop container') {
+      sh 'docker rm stina-client:prod'
+    }
 
     stage('Build image') {
         app = docker.build("stina-client:prod")
