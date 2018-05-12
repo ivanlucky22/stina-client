@@ -14,6 +14,7 @@ import {FirebaseService} from "@app/core/service/firebase.service";
 import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 import {AngularFireAuthModule} from "angularfire2/auth";
+import { FiltersFormComponent } from './component/filters-form/filters-form.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -43,7 +44,8 @@ export const firebaseConfig = {
     PublishingFormComponent,
     WallComponent,
     MainPageComponent,
-    ArticleComponent],
+    ArticleComponent,
+    FiltersFormComponent],
   exports: [MainPageComponent]
 
 })
