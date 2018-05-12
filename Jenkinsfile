@@ -8,7 +8,7 @@ node {
     }
 
     stage('Stop container') {
-      sh 'docker stop stina-client-container'
+      sh 'docker rm -f stina-client-container || true'
     }
 
     stage ('Stop container') {
