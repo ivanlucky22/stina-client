@@ -1,16 +1,10 @@
 import * as moment from 'moment';
+import {ArticleVO} from "@app/core/model/articleVO";
 
-export class Article {
-
-  public id: string;
-  public title: string;
-  public body: string;
-  public timestamp: number;
-  public likes: number;
-  public hates: number;
-  public owner: string;
+export class Article extends ArticleVO {
 
   constructor(title: string, body: string, owner: string) {
+    super();
     this.title = title;
     this.body = body;
     this.owner = owner;

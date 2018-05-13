@@ -34,4 +34,8 @@ export class FirebaseService {
   getNewest(): Article[] {
     return this.instantArticles;
   }
+
+  getArticleRef(id: string) {
+    return this.articlesCollection.doc(id);
+  }
 }
