@@ -7,8 +7,7 @@ import {Observable} from "rxjs/Observable";
 export class FirebaseService {
 
   private articles: Observable<Article[]>;
-  private instantArticles: Article[];
-  private ARTICLES_COLLECTION = 'arcticles';
+  private ARTICLES_COLLECTION = 'arcticles'; // TODO fix collection name
   private articlesCollection;
 
   constructor(private db: AngularFirestore) {
@@ -29,10 +28,6 @@ export class FirebaseService {
 
   getArticles() {
     return this.articles;
-  }
-
-  getNewest(): Article[] {
-    return this.instantArticles;
   }
 
   getArticleRef(id: string) {

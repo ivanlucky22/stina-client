@@ -1,14 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Article} from '@app/core/model/article';
-import {ArticleEventHandlerService} from '@app/core/service/article-event-handler.service';
 import {FirebaseService} from "@app/core/service/firebase.service";
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ArticleRepository {
 
-  constructor(private firebaseService: FirebaseService,
-              private articleEventHandlerService: ArticleEventHandlerService) {
+  constructor(private firebaseService: FirebaseService) {
   }
 
   save(article: Article) {
@@ -17,10 +15,6 @@ export class ArticleRepository {
 
   findAll(): Observable<any[]> {
     return this.firebaseService.getArticles();
-  }
-
-  findNewest(): Article[] {
-    return this.firebaseService.getNewest();
   }
 
   update(article: Article) {

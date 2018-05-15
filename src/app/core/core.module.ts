@@ -7,7 +7,6 @@ import {MainPageComponent} from './component/main-page/main-page.component';
 import {ArticleRepository} from '@app/core/service/article-repository.service';
 import {HttpRequestService} from "@app/core/service/http-request.service";
 import {HttpClientModule} from "@angular/common/http";
-import {ArticleEventHandlerService} from "@app/core/service/article-event-handler.service";
 import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule} from "@angular/material";
 import {FirebaseService} from "@app/core/service/firebase.service";
@@ -15,6 +14,9 @@ import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 import {AngularFireAuthModule} from "angularfire2/auth";
 import { FiltersFormComponent } from './component/filters-form/filters-form.component';
+import { AngularFireDatabaseModule} from "angularfire2/database";
+import {AuthService} from "@app/core/service/auth/auth.service";
+import {UserService} from "@app/core/service/auth/user.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -33,12 +35,15 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig, 'Stina'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [
     ArticleRepository,
     HttpRequestService,
-    ArticleEventHandlerService,
-    FirebaseService],
+    FirebaseService,
+    AuthService,
+    UserService
+  ],
   declarations: [
     NavigationComponent,
     PublishingFormComponent,
