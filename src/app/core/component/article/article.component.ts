@@ -28,37 +28,36 @@ export class ArticleComponent implements OnInit {
   }
 
   like() {
-    this.increaseEmotion(this.article.likes);
+    this.userLiked ? this.decreaseEmotion(this.article.likes) : this.increaseEmotion(this.article.likes);
   }
 
   dislike() {
-    this.increaseEmotion(this.article.dislikes);
+    this.userDisliked ? this.decreaseEmotion(this.article.dislikes) : this.increaseEmotion(this.article.dislikes);
   }
 
-  laught() {
-    this.increaseEmotion(this.article.laughts);
+  laugh() {
+    this.userLaughed ? this.decreaseEmotion(this.article.laughs) : this.increaseEmotion(this.article.laughs);
   }
 
   private increaseEmotion(emotions) {
-    const subscription = this.userService.getUserObservable().subscribe((user) => {
-      if (!_.includes(emotions, user.uid)) {// TODO store user somewhere
-        emotions.push(user.uid);
-        this.articleRepository.update(this.article);
-      }
-    });
-    subscription.unsubscribe();
+    emotions.push(this.user.uid);
+    this.articleRepository.update(this.article);
   }
 
-
-  get likeClicked(): boolean {
+  get userLiked(): boolean {
     return _.includes(this.article.likes, this.user.uid);
   }
 
-  get dislikeClicked(): boolean {
+  get userDisliked(): boolean {
     return _.includes(this.article.dislikes, this.user.uid);
   }
 
-  get laughtClicked(): boolean {
-    return _.includes(this.article.laughts, this.user.uid);
+  get userLaughed(): boolean {
+    return _.includes(this.article.laughs, this.user.uid);
+  }
+
+  private decreaseEmotion(emotions: Array<string>) {
+    _.remove(emotions, id => id === this.user.uid);
+    this.articleRepository.update(this.article);
   }
 }

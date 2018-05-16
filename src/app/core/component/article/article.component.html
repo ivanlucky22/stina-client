@@ -9,24 +9,24 @@
       <div class="d-flex flex-column p-0 m-0">
         <div class="article-emotion-btn-container">
           <span class="fa fa-thumbs-o-up article-emotion-btn"
-                [ngClass]="{'article-emotion-btn-clicked':likeClicked}"
+                [ngClass]="{'article-emotion-btn-clicked':userLiked}"
                 (click)="like()"
           ></span>
           {{article.likes.length}}
         </div>
         <div class="article-emotion-btn-container">
           <span class="fa fa-thumbs-o-down article-emotion-btn"
-                [ngClass]="{'article-emotion-btn-clicked':dislikeClicked}"
+                [ngClass]="{'article-emotion-btn-clicked':userDisliked}"
                 (click)="dislike()"
           ></span>
           {{article.dislikes.length}}
         </div>
         <div class="article-emotion-btn-container">
           <span class="fa fa fa-smile-o article-emotion-btn"
-                [ngClass]="{'article-emotion-btn-clicked':laughtClicked}"
-                (click)="laught()"
+                [ngClass]="{'article-emotion-btn-clicked':userLaughed}"
+                (click)="laugh()"
           ></span>
-          {{article.laughts.length}}
+          {{article.laughs.length}}
         </div>
       </div>
     </div>

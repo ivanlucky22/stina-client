@@ -6,7 +6,7 @@ export class ArticleVO {
   public timestamp: number;
   public likes: Array<string> = [];
   public dislikes: Array<string> = [];
-  public laughts: Array<string> = [];
+  public laughs: Array<string> = [];
   public owner: string;
 
 }
