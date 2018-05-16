@@ -6,7 +6,12 @@
   font-size: 25px;
   color: skyblue;
   cursor: pointer;
+}
 
+.article-emotion-btn-clicked {
+  font-size: 25px;
+  color: skyblue;
+  cursor: pointer;
 }
 
 .article-emotion-btn-container{

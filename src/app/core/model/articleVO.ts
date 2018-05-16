@@ -4,9 +4,9 @@ export class ArticleVO {
   public title: string;
   public body: string;
   public timestamp: number;
-  public likes = 0;
-  public dislikes = 0;
-  public laughts = 0;
+  public likes: Array<string> = [];
+  public dislikes: Array<string> = [];
+  public laughts: Array<string> = [];
   public owner: string;
 
 }
