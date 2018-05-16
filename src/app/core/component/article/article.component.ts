@@ -4,6 +4,7 @@ import {ArticleRepository} from "@app/core/service/article-repository.service";
 import {UserService} from "@app/core/service/auth/user.service";
 import * as _ from "lodash";
 import * as firebase from "firebase";
+import * as moment from "moment";
 
 @Component({
   selector: 'app-article',
@@ -59,5 +60,9 @@ export class ArticleComponent implements OnInit {
   private decreaseEmotion(emotions: Array<string>) {
     _.remove(emotions, id => id === this.user.uid);
     this.articleRepository.update(this.article);
+  }
+
+  get dateFormat(): string {
+    return moment(this.article.timestamp).isSame(moment(), 'day') ? 'shortTime' : 'short';
   }
 }
