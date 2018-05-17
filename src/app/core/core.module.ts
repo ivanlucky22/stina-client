@@ -17,6 +17,8 @@ import { FiltersFormComponent } from './component/filters-form/filters-form.comp
 import { AngularFireDatabaseModule} from "angularfire2/database";
 import {AuthService} from "@app/core/service/auth/auth.service";
 import {UserService} from "@app/core/service/auth/user.service";
+import { SidebarComponent } from './component/sidebar/sidebar.component';
+import {ModalModule} from "ngx-bootstrap";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -35,7 +37,8 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig, 'Stina'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ModalModule.forRoot()
   ],
   providers: [
     ArticleRepository,
@@ -50,7 +53,8 @@ export const firebaseConfig = {
     WallComponent,
     MainPageComponent,
     ArticleComponent,
-    FiltersFormComponent],
+    FiltersFormComponent,
+    SidebarComponent],
   exports: [MainPageComponent]
 
 })

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Article} from '@app/core/model/article';
 import {ArticleRepository} from '@app/core/service/article-repository.service';
 
@@ -9,6 +9,8 @@ import {ArticleRepository} from '@app/core/service/article-repository.service';
 })
 export class PublishingFormComponent implements OnInit {
 
+  @Output() onPublish: EventEmitter<any> = new EventEmitter();
+
   constructor(private articleRepository: ArticleRepository) {
   }
 
@@ -18,6 +20,7 @@ export class PublishingFormComponent implements OnInit {
   publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLTextAreaElement) {
     if (newMessageTitle.value && newMessageBody.value) {
       this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.value, 'anonymous'));
+      this.onPublish.emit();
     }
     return false;
   }

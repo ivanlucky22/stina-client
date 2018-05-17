@@ -1,0 +1,11 @@
+<div class="container-fluid">
+  <div class="row">
+    <button class="btn" (click)="openModal(publishArticleModal)">Добавить пост</button>
+  </div>
+</div>
+
+<ng-template #publishArticleModal>
+  <div class="modal-body text-center">
+    <app-publishing-form (onPublish)="closeModal()"></app-publishing-form>
+  </div>
+</ng-template>
