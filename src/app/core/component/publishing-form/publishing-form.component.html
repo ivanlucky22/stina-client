@@ -1,17 +1,19 @@
 <form>
-  <div class="form-group">
-    <label for="messageTitleInput">Title</label>
-    <input #newMessageTitle type="text" class="form-control" id="messageTitleInput" placeholder="Enter title">
-    <small class="form-text text-muted">Shortly about your feelings</small>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <i class="fa fa-user-circle-o userIcon"></i>
+    </div>
+    <div class="form-group col-md-10">
+      <input #newMessageTitle type="text" class="form-control" id="messageTitleInput" placeholder="Заголовок">
+    </div>
   </div>
   <div class="form-group">
-    <label for="messageBodyInput">Text</label>
-    <div class="form-inline">
-      <textarea #newMessageBody class="form-control col-md-11" id="messageBodyInput" placeholder="What do you fill?"
-                style="width: 80%"></textarea>
-      <button class="btn btn-sm fa fa-send-o publish-button"
-              (click)="publishMessage(newMessageTitle, newMessageBody)">
-      </button>
-    </div>
+    <textarea #newMessageBody class="form-control" id="messageBodyInput" placeholder="Что вас беспокоет?"></textarea>
+
+  </div>
+  <div class="form-group">
+    <button class="btn btn-lg btn-success w-100"
+            (click)="publishMessage(newMessageTitle, newMessageBody)">Опубликовать
+    </button>
   </div>
 </form>
