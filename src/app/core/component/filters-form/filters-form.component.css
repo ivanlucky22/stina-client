@@ -1,0 +1,42 @@
+.selected-filter-label-container {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-label {
+  font-family: "Graphik Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #666;
+  font-size: .7rem;
+  margin-right: 21px;
+  position: relative;
+  text-decoration: none;
+}
+
+.filter-label-selected {
+  font-weight: bold;
+}
+
+.filter-label:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #989898;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.filter-label:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}

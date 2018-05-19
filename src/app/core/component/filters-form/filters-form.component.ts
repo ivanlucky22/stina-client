@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-filters-form',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FiltersFormComponent implements OnInit {
 
-  constructor() { }
+  filterList: Array<string> = [];
+  selectedFiler: string;
 
-  ngOnInit() {
+  constructor() {
   }
 
+  ngOnInit() {
+    this.filterList.push('Новое');
+    this.filterList.push('Интересное');
+    this.filterList.push('Новости');
+    this.filterList.push('Истории');
+    this.filterList.push('TECHNOLOGY');
+    this.selectedFiler = this.filterList[0];
+  }
+
+  onFilterSelected(filter: any) {
+    this.selectedFiler = filter;
+  }
 }
