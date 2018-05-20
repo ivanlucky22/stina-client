@@ -1,11 +1,17 @@
-<div class="dropdown show">
-  <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    RU
-  </a>
+<div class="dropdown show " style="font-size: xx-small">
+  <div class="btn dropdown-toggle language-box" id="dropdownMenuLink" data-toggle="dropdown"
+       aria-haspopup="true" aria-expanded="false">
+    <span class="language-box-item-title ">{{selectedLanguageKey}}</span>
+    <img class="language-country-flag"
+         src="{{languages[selectedLanguageKey]}}"/>
+  </div>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="#">RU</a>
-    <a class="dropdown-item" href="#">UA</a>
-    <a class="dropdown-item" href="#">EN</a>
+    <ng-container *ngFor="let key of languageKeys">
+      <div class="dropdown-item language-box-item" (click)="changeLanguage(key)">
+        <span class="language-box-item-title">{{key}}</span><img class="language-country-flag"
+                                                                 src="{{languages[key]}}"/>
+      </div>
+    </ng-container>
   </div>
 </div>

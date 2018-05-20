@@ -1,0 +1,29 @@
+.language-box {
+  font-size: .7rem;
+}
+
+.language-box-item {
+  background-color: skyblue;
+  cursor: pointer;
+}
+
+.language-box-item:hover {
+  background-color: rgba(135, 206, 235, .5);
+  cursor: pointer;
+}
+
+.language-box-item-title {
+  font-size: xx-small;
+  text-transform: uppercase;
+}
+
+.language-country-flag {
+  margin-left: 5px;
+  width: 10px;
+  height: 8px;
+}
+
+.dropdown-menu {
+  background-color: transparent;
+  border-width: 0;
+}
