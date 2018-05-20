@@ -1,12 +1,12 @@
 <div class="container-fluid">
-  <!--<div class="row">-->
-  <ng-container *ngFor="let filter of filterList">
+  <div class="row">
+    <ng-container *ngFor="let filter of filterList">
       <span class="btn filter-label"
             (click)="onFilterSelected(filter)"
             [ngClass]="filter===selectedFiler?'filter-label-selected':''"
       >{{filter}}</span>
-  </ng-container>
-  <!--</div>-->
+    </ng-container>
+  </div>
 </div>
 <div class="container-fluid selected-filter-label-container">
   <div class="row">

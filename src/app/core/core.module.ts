@@ -8,7 +8,7 @@ import {ArticleRepository} from '@app/core/service/article-repository.service';
 import {HttpRequestService} from "@app/core/service/http-request.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ArticleComponent} from './component/article/article.component';
-import {MatIconModule} from "@angular/material";
+import {MatIconModule, MatProgressBarModule} from "@angular/material";
 import {FirebaseService} from "@app/core/service/firebase.service";
 import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";
@@ -38,6 +38,7 @@ export const firebaseConfig = {
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    MatProgressBarModule,
     ModalModule.forRoot()
   ],
   providers: [

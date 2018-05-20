@@ -1,7 +1,13 @@
 <div>
+  <div *ngIf="!articles.length">
+    <app-article [user]="user" [article]="preLoadedArticle"></app-article>
+  </div>
+
   <ul style="padding: 0">
-    <div *ngFor="let article of articles" class="">
-      <app-article [article]="article"></app-article>
-    </div>
+    <ng-container *ngIf="user">
+      <div *ngFor="let article of articles">
+        <app-article [user]="user" [article]="article"></app-article>
+      </div>
+    </ng-container>
   </ul>
 </div>

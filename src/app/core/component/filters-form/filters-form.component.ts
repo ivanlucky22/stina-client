@@ -18,7 +18,6 @@ export class FiltersFormComponent implements OnInit {
     this.filterList.push('Интересное');
     this.filterList.push('Новости');
     this.filterList.push('Истории');
-    this.filterList.push('TECHNOLOGY');
     this.selectedFiler = this.filterList[0];
   }
 

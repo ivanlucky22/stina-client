@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+@import "~loaders.css/loaders.min.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-html,body{
-  height:100%;
-  font-family: "Graphik Web","Helvetica Neue",Helvetica,Arial,sans-serif;
+html, body {
+  height: 100%;
+  font-family: "Graphik Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }

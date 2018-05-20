@@ -1,0 +1,8 @@
+.user-icon-light{
+  color: #fff;
+  font-size: 40px;
+  margin: 0 0 0 0;
+}
+.user-icon-light:hover{
+  color: gray;
+}

@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Article} from "@app/core/model/article";
 import {ArticleRepository} from "@app/core/service/article-repository.service";
-import {UserService} from "@app/core/service/auth/user.service";
 import * as _ from "lodash";
 import * as firebase from "firebase";
 import * as moment from "moment";
@@ -13,19 +12,13 @@ import * as moment from "moment";
 })
 export class ArticleComponent implements OnInit {
 
-  @Input()
-  article: Article;
-  user: firebase.User;
+  @Input() article: Article;
+  @Input() user: firebase.User;
 
-  constructor(private articleRepository: ArticleRepository,
-              private userService: UserService) {
+  constructor(private articleRepository: ArticleRepository) {
   }
 
   ngOnInit() {
-    const subscription = this.userService.getUserObservable().subscribe((user) => {
-      this.user = user;
-    });
-    subscription.unsubscribe();
   }
 
   like() {
@@ -46,15 +39,15 @@ export class ArticleComponent implements OnInit {
   }
 
   get userLiked(): boolean {
-    return _.includes(this.article.likes, this.user.uid);
+    return this.usedEmotion(this.article.likes);
   }
 
   get userDisliked(): boolean {
-    return _.includes(this.article.dislikes, this.user.uid);
+    return this.usedEmotion(this.article.dislikes);
   }
 
   get userLaughed(): boolean {
-    return _.includes(this.article.laughs, this.user.uid);
+    return this.usedEmotion(this.article.laughs);
   }
 
   private decreaseEmotion(emotions: Array<string>) {
@@ -64,5 +57,9 @@ export class ArticleComponent implements OnInit {
 
   get dateFormat(): string {
     return moment(this.article.timestamp).isSame(moment(), 'day') ? 'shortTime' : 'short';
+  }
+
+  private usedEmotion(emotion) {
+    return this.user ? _.includes(emotion, this.user.uid) : 0;
   }
 }
