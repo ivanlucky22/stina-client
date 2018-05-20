@@ -12,6 +12,9 @@ export class UserService {
     const self = this;
     this.authService.onAuthStateChanged(function (user: firebase.User) {
       if (user) {
+        if (!user.photoURL) {
+          user.updateProfile({displayName: 'funny funny', photoURL: '/assets/img/anonymous.png'});
+        }
         self.userObservable.next(user);
       } else {
         console.log('user signed out');
