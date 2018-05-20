@@ -20,6 +20,7 @@ import {UserService} from "@app/core/service/auth/user.service";
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {ModalModule} from "ngx-bootstrap";
 import {FeatureModule} from "@app/feature/feature.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -41,7 +42,8 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     MatProgressBarModule,
     FeatureModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TranslateModule
   ],
   providers: [
     ArticleRepository,
