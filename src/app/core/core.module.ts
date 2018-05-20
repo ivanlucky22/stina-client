@@ -19,6 +19,7 @@ import {AuthService} from "@app/core/service/auth/auth.service";
 import {UserService} from "@app/core/service/auth/user.service";
 import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {ModalModule} from "ngx-bootstrap";
+import {FeatureModule} from "@app/feature/feature.module";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -39,6 +40,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     MatProgressBarModule,
+    FeatureModule,
     ModalModule.forRoot()
   ],
   providers: [

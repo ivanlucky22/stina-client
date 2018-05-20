@@ -16,7 +16,7 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.signInAnonymously()
+    this.userService.signInAnonymously();
     const subscription = this.userService.getUserObservable().subscribe((user) => {
       this.user = user;
       subscription.unsubscribe();

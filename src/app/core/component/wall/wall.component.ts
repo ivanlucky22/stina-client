@@ -6,8 +6,7 @@ import * as firebase from "firebase";
 @Component({
   selector: 'app-wall',
   templateUrl: './wall.component.html',
-  styleUrls: ['./wall.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./wall.component.css']
 })
 export class WallComponent implements OnInit {
 
