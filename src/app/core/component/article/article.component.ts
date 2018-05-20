@@ -14,6 +14,7 @@ export class ArticleComponent implements OnInit {
 
   @Input() article: Article;
   @Input() user: firebase.User;
+  commentsVisible = false;
 
   constructor(private articleRepository: ArticleRepository) {
   }
@@ -31,6 +32,10 @@ export class ArticleComponent implements OnInit {
 
   laugh() {
     this.userLaughed ? this.decreaseEmotion(this.article.laughs) : this.increaseEmotion(this.article.laughs);
+  }
+
+  showComments(event: boolean) {
+    this.commentsVisible = !this.commentsVisible;
   }
 
   private increaseEmotion(emotions) {

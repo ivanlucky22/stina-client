@@ -5,7 +5,6 @@ import {PublishingFormComponent} from './component/publishing-form/publishing-fo
 import {WallComponent} from './component/wall/wall.component';
 import {MainPageComponent} from './component/main-page/main-page.component';
 import {ArticleRepository} from '@app/core/service/article-repository.service';
-import {HttpRequestService} from "@app/core/service/http-request.service";
 import {HttpClientModule} from "@angular/common/http";
 import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule, MatProgressBarModule} from "@angular/material";
@@ -21,6 +20,9 @@ import { SidebarComponent } from './component/sidebar/sidebar.component';
 import {ModalModule} from "ngx-bootstrap";
 import {FeatureModule} from "@app/feature/feature.module";
 import {TranslateModule} from "@ngx-translate/core";
+import { ArticleFooterComponent } from './component/article/component/article-footer/article-footer.component';
+import { CommentsContainerComponent } from './component/article/component/comments-container/comments-container.component';
+import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -47,10 +49,10 @@ export const firebaseConfig = {
   ],
   providers: [
     ArticleRepository,
-    HttpRequestService,
     FirebaseService,
     AuthService,
-    UserService
+    UserService,
+    CommentRepositoryService
   ],
   declarations: [
     NavigationComponent,
@@ -59,7 +61,9 @@ export const firebaseConfig = {
     MainPageComponent,
     ArticleComponent,
     FiltersFormComponent,
-    SidebarComponent],
+    SidebarComponent,
+    ArticleFooterComponent,
+    CommentsContainerComponent],
   exports: [MainPageComponent]
 
 })
