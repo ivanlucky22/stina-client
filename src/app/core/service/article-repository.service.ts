@@ -19,7 +19,7 @@ export class ArticleRepository {
 
   update(article: Article) {
     const articleRef = this.firebaseService.getArticleRef(article.id);
-    articleRef.update(article).then(function () {
+    articleRef.update(this.toPureJavaScript(article)).then(function () {
       console.log("Document successfully updated!");
     })
       .catch(function (error) {
@@ -27,4 +27,13 @@ export class ArticleRepository {
         console.error("Error updating document: ", error);
       });
   }
+
+  private toPureJavaScript(article: Article) {
+    //TODO refactor
+    const comments = Object.assign({}, article.comments);
+    const assign = Object.assign({}, article);
+    assign.comments = comments;
+    return assign; // JSON.parse(JSON.stringify(article));
+  }
+
 }

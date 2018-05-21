@@ -18,12 +18,17 @@ export class FirebaseService {
   save(article: Article) {
     const id = this.db.createId();
     article.id = id;
-    this.articlesCollection.doc(id).set(JSON.parse(JSON.stringify(article)))
+    this.articlesCollection.doc(id).set(this.toPureJavaScript(article))
       .then((result) => {
         console.log('Saved successfully ', result);
       }).catch((err) => {
       console.log('Saving failed ', err);
     });
+  }
+
+  private toPureJavaScript(article: Article) {
+    const assign = Object.assign({}, article);
+    return assign; // JSON.parse(JSON.stringify(article));
   }
 
   getArticles() {

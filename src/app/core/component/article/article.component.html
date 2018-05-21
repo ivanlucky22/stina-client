@@ -38,6 +38,8 @@
   </div>
 
   <ng-container *ngIf="commentsVisible">
-    <app-comments-container [articleId]="article?.id" [user]="user"></app-comments-container>
+    <app-comments-container [article]="article"
+                            [user]="user"
+                            [comments]="article?.comments"></app-comments-container>
   </ng-container>
 </div>

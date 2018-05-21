@@ -23,6 +23,7 @@ import {TranslateModule} from "@ngx-translate/core";
 import { ArticleFooterComponent } from './component/article/component/article-footer/article-footer.component';
 import { CommentsContainerComponent } from './component/article/component/comments-container/comments-container.component';
 import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
+import { CommentComponent } from './component/article/comment/comment.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -63,7 +64,8 @@ export const firebaseConfig = {
     FiltersFormComponent,
     SidebarComponent,
     ArticleFooterComponent,
-    CommentsContainerComponent],
+    CommentsContainerComponent,
+    CommentComponent],
   exports: [MainPageComponent]
 
 })

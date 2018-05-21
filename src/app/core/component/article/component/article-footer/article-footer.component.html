@@ -1,9 +1,19 @@
-<div class="row">
-  <div class="form-inline">
-    <span class="btn fa fa-comments" (click)="commentsClick()"></span>
-    <span class="btn fa fa-share-alt"></span>
-    <span class="btn fa fa-twitter"></span>
-    <span class="btn fa fa-facebook-official"></span>
-    <span class="btn fa fa-instagram"></span>
+<div class="row" style="font-size: 1.2rem; color: #989898">
+  <div class="col">
+    <div class="form-inline">
+      <span class="btn fa fa-share-alt"></span>
+      <span class="btn fa fa-twitter"></span>
+      <span class="btn fa fa-facebook-official"></span>
+      <span class="btn fa fa-instagram"></span>
+    </div>
   </div>
+  <div class="col  my-auto">
+    <div class="row pull-right">
+    <span class="btn fa fa-comments p-0 pull-right comments-button" style="font-size: 1rem;"
+          (click)="commentsClick()"></span>
+      <span class="btn btn-link p-0 pull-right comments-button"
+            (click)="commentsClick()">{{'article.comments.caption'|translate}}</span>
+    </div>
+  </div>
+
 </div>

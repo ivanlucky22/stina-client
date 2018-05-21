@@ -1,7 +1,11 @@
 <div>
+  <ng-container *ngFor="let comment of comments">
+    <app-comment [comment]="comment" [user]="user"></app-comment>
+  </ng-container>
   <div class="form-row align-items-center">
     <div class="col-auto">
-      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Write your comment here..." #commentText>
+      <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Write your comment here..."
+             #commentText>
     </div>
     <div class="col-auto">
       <span class="fa fa-paper-plane" (click)="addComment(commentText)"></span>
