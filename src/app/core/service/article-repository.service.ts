@@ -17,6 +17,10 @@ export class ArticleRepository {
     return this.firebaseService.getArticles();
   }
 
+  onArticleChanged(aFunction: any) {
+    return this.firebaseService.onArticleChanged(aFunction);
+  }
+
   update(article: Article) {
     const articleRef = this.firebaseService.getArticleRef(article.id);
     articleRef.update(this.toPureJavaScript(article)).then(function () {
