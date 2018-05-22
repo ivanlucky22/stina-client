@@ -10,7 +10,7 @@ export class ArticleRepository {
   }
 
   save(article: Article) {
-    this.firebaseService.save(article);
+    this.firebaseService.save(this.toPureJavaScript(article));
   }
 
   findAll(): Observable<any[]> {
@@ -29,11 +29,10 @@ export class ArticleRepository {
   }
 
   private toPureJavaScript(article: Article) {
-    //TODO refactor
-    const comments = Object.assign({}, article.comments);
-    const assign = Object.assign({}, article);
-    assign.comments = comments;
-    return assign; // JSON.parse(JSON.stringify(article));
+    const comments = article.comments.map(comment => Object.assign({}, comment));
+    const articleJsObject = Object.assign({}, article);
+    articleJsObject.comments = comments;
+    return articleJsObject;
   }
 
 }
