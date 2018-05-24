@@ -7,3 +7,11 @@
   background-color: aliceblue;
 
 }
+
+.comment-span {
+  width: 100%;
+  border-radius: 143px 143px 143px 143px;
+  -moz-border-radius: 143px 143px 143px 143px;
+  -webkit-border-radius: 143px 143px 143px 143px;
+  border: 1px solid #000000;
+}
