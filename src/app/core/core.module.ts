@@ -12,18 +12,20 @@ import {FirebaseService} from "@app/core/service/firebase.service";
 import {AngularFireModule} from "angularfire2";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 import {AngularFireAuthModule} from "angularfire2/auth";
-import { FiltersFormComponent } from './component/filters-form/filters-form.component';
-import { AngularFireDatabaseModule} from "angularfire2/database";
+import {FiltersFormComponent} from './component/filters-form/filters-form.component';
+import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AuthService} from "@app/core/service/auth/auth.service";
 import {UserService} from "@app/core/service/auth/user.service";
-import { SidebarComponent } from './component/sidebar/sidebar.component';
+import {SidebarComponent} from './component/sidebar/sidebar.component';
 import {ModalModule} from "ngx-bootstrap";
 import {FeatureModule} from "@app/feature/feature.module";
 import {TranslateModule} from "@ngx-translate/core";
-import { ArticleFooterComponent } from './component/article/component/article-footer/article-footer.component';
-import { CommentsContainerComponent } from './component/article/component/comments-container/comments-container.component';
+import {ArticleFooterComponent} from './component/article/component/article-footer/article-footer.component';
+import {CommentsContainerComponent} from './component/article/component/comments-container/comments-container.component';
 import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
-import { CommentComponent } from './component/article/comment/comment.component';
+import {CommentComponent} from './component/article/comment/comment.component';
+import {NameGenerationService} from "@app/core/service/name-generation.service";
+import {HttpService} from "@app/core/service/http.service";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -53,7 +55,9 @@ export const firebaseConfig = {
     FirebaseService,
     AuthService,
     UserService,
-    CommentRepositoryService
+    CommentRepositoryService,
+    HttpService,
+    NameGenerationService
   ],
   declarations: [
     NavigationComponent,

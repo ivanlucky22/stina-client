@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from "@app/core/service/auth/user.service";
 import * as firebase from "firebase";
 

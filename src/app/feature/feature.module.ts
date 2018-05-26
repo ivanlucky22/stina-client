@@ -11,7 +11,9 @@ import {LanguageComponent} from './component/language/language.component';
   declarations: [
     PageNotFoundComponent,
     UserDetailComponent,
-    LanguageComponent],
+    LanguageComponent,
+  ],
+  providers: [],
   exports: [LanguageComponent]
 })
 export class FeatureModule {
