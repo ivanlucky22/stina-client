@@ -1,17 +1,12 @@
 .comment-user-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 32px;
+  height: 32px;
 }
 
-.comment-item {
-  background-color: aliceblue;
-
+.username-span {
+  font-weight: bold;
 }
 
 .comment-span {
-  width: 100%;
-  border-radius: 143px 143px 143px 143px;
-  -moz-border-radius: 143px 143px 143px 143px;
-  -webkit-border-radius: 143px 143px 143px 143px;
-  border: 1px solid #000000;
+  font-size: small;
 }

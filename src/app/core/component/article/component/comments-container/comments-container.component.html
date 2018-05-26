@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col">
         <ng-container *ngFor="let comment of comments" class="list-group">
-          <app-comment [comment]="comment" [user]="user" class="row list-group-item comment-item"></app-comment>
+          <app-comment [comment]="comment" [user]="user" class="row list-group-item p-0 comment-item"></app-comment>
+          <hr class="divider" style="margin-bottom:2px;margin-top: 2px;"/>
         </ng-container>
       </div>
     </div>
@@ -14,11 +15,11 @@
             <img src="{{user.photoURL}}" class="comment-user-icon">
           </div>
           <div class="col-auto">
-            <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Write your comment here..."
+            <input type="text" class="form-control mb-2 w-100" id="inlineFormInput" placeholder="Write your comment here..."
                    #commentText>
           </div>
           <div class="col-auto">
-            <span class="fa fa-paper-plane" (click)="addComment(commentText)"></span>
+            <span class="btn fa fa-paper-plane" (click)="addComment(commentText)"></span>
           </div>
         </div>
       </div>

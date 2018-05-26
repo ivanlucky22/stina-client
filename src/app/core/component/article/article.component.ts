@@ -34,7 +34,7 @@ export class ArticleComponent implements OnInit {
     this.userLaughed ? this.decreaseEmotion(this.article.laughs) : this.increaseEmotion(this.article.laughs);
   }
 
-  showComments(event: boolean) {
+  showComments() {
     this.commentsVisible = !this.commentsVisible;
   }
 

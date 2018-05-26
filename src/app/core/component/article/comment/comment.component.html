@@ -1,10 +1,22 @@
 <div class="col">
   <div class="row">
-    <div class="col-1">
+    <div class="col-2">
       <img src="{{user.photoURL}}" class="comment-user-icon p-0"/>
     </div>
-    <div class="col-11 comment-span">
-      <span class="comment-span">{{comment.content}}</span>
+    <div class="col-10">
+      <div class="row">
+        <span class="username-span">{{comment.userName}}</span>
+        <span class="comment-span">{{comment.content}}</span>
+      </div>
+      <div class="row">
+        <span>
+          {{comment.timestamp | date}}
+        </span>
+        <span class="btn btn-sm btn-link">
+          Reply
+        </span>
+      </div>
+
     </div>
   </div>
 </div>
