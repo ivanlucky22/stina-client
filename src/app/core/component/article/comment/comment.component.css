@@ -5,6 +5,8 @@
 
 .username-span {
   font-weight: bold;
+  font-size: small;
+  margin-right: 5px;
 }
 
 .comment-span {
