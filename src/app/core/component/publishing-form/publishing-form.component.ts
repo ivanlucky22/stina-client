@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Article} from '@app/core/model/article';
 import {ArticleRepository} from '@app/core/service/article-repository.service';
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-publishing-form',
@@ -9,6 +10,7 @@ import {ArticleRepository} from '@app/core/service/article-repository.service';
 })
 export class PublishingFormComponent implements OnInit {
 
+  @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
 
   constructor(private articleRepository: ArticleRepository) {

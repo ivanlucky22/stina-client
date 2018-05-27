@@ -4,5 +4,7 @@
   "article.filter.news": "News",
   "article.filter.stories": "Stories",
   "article.comments.caption": "Comments",
+  "article.comment.like.caption": "Like",
+  "article.comment.reply.caption": "Reply",
   "add.article.button.caption": "Publish post"
 }

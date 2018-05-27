@@ -1,5 +1,6 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import {BsModalRef, BsModalService} from "ngx-bootstrap";
 })
 export class SidebarComponent implements OnInit {
 
+  @Input() user: firebase.User;
   @ViewChild("publishArticleModal") modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService) {

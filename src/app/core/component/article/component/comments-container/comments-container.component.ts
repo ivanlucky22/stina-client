@@ -29,7 +29,7 @@ export class CommentsContainerComponent implements OnInit {
       const comment = new Comment(this.user.displayName, this.user.uid, value);
       this.article.comments.push(comment);
       this.articleRepository.update(this.article);
-      commentText.innerHTML = '';
+      commentText.value = '';
     }
     return false;
   }

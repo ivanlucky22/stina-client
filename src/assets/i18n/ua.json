@@ -4,5 +4,7 @@
   "article.filter.news": "Новини",
   "article.filter.stories": "Історії",
   "article.comments.caption": "Коментарі",
+  "article.comment.like.caption": "Подобається",
+  "article.comment.reply.caption": "Відповісти",
   "add.article.button.caption": "Опублікувати пост"
 }

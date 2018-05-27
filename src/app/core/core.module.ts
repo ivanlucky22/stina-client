@@ -26,6 +26,7 @@ import {CommentRepositoryService} from "@app/core/service/comment-repository.ser
 import {CommentComponent} from './component/article/comment/comment.component';
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
+import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 
 export const firebaseConfig = {
   apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
@@ -69,7 +70,9 @@ export const firebaseConfig = {
     SidebarComponent,
     ArticleFooterComponent,
     CommentsContainerComponent,
-    CommentComponent],
+    CommentComponent,
+    TimeAgoPipe
+  ],
   exports: [MainPageComponent]
 
 })

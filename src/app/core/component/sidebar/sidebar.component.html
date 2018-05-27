@@ -8,6 +8,6 @@
 
 <ng-template #publishArticleModal>
   <div class="modal-body text-center">
-    <app-publishing-form (onPublish)="closeModal()"></app-publishing-form>
+    <app-publishing-form [user]="user" (onPublish)="closeModal()"></app-publishing-form>
   </div>
 </ng-template>

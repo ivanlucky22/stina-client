@@ -10,10 +10,13 @@
       </div>
       <div class="row" style="font-size: 12px">
         <span class="p-1">
-        {{comment.timestamp | date}}
+        {{comment.timestamp | timeAgo}}
         </span>
         <span class="btn btn-sm btn-link" style="font-size: 12px">
-          Reply
+          {{'article.comment.like.caption' | translate}}
+        </span>
+        <span class="btn btn-sm btn-link" style="font-size: 12px">
+          {{'article.comment.reply.caption' | translate}}
         </span>
       </div>
 

@@ -60,10 +60,6 @@ export class ArticleComponent implements OnInit {
     this.articleRepository.update(this.article);
   }
 
-  get dateFormat(): string {
-    return moment(this.article.timestamp).isSame(moment(), 'day') ? 'shortTime' : 'short';
-  }
-
   private usedEmotion(emotion) {
     return this.user ? _.includes(emotion, this.user.uid) : 0;
   }

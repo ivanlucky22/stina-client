@@ -4,5 +4,7 @@
   "article.filter.news": "Новости",
   "article.filter.stories": "Истории",
   "article.comments.caption": "Комментарии",
+  "article.comment.like.caption": "Нравиться",
+  "article.comment.reply.caption": "Ответить",
   "add.article.button.caption": "Опубликовать пост"
 }
