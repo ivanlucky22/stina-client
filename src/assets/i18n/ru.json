@@ -6,5 +6,7 @@
   "article.comments.caption": "Комментарии",
   "article.comment.like.caption": "Нравиться",
   "article.comment.reply.caption": "Ответить",
-  "add.article.button.caption": "Опубликовать пост"
+  "add.article.button.caption": "Опубликовать пост",
+  "comment.form.input.placaholder.caption": "Напишите свой коммендарий здесь..."
+
 }

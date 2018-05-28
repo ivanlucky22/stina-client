@@ -6,5 +6,7 @@
   "article.comments.caption": "Коментарі",
   "article.comment.like.caption": "Подобається",
   "article.comment.reply.caption": "Відповісти",
-  "add.article.button.caption": "Опублікувати пост"
+  "add.article.button.caption": "Опублікувати пост",
+  "comment.form.input.placaholder.caption": "Напишіть свій коментарій тут..."
+
 }

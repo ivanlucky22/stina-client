@@ -6,5 +6,6 @@
   "article.comments.caption": "Comments",
   "article.comment.like.caption": "Like",
   "article.comment.reply.caption": "Reply",
-  "add.article.button.caption": "Publish post"
+  "add.article.button.caption": "Publish post",
+  "comment.form.input.placaholder.caption": "Write your comment here..."
 }
