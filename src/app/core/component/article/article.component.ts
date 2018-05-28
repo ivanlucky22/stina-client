@@ -4,6 +4,7 @@ import {ArticleRepository} from "@app/core/service/article-repository.service";
 import * as _ from "lodash";
 import * as firebase from "firebase";
 import * as moment from "moment";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-article',
@@ -16,7 +17,8 @@ export class ArticleComponent implements OnInit {
   @Input() user: firebase.User;
   commentsVisible = false;
 
-  constructor(private articleRepository: ArticleRepository) {
+  constructor(private articleRepository: ArticleRepository,
+              public translate: TranslateService) {
   }
 
   ngOnInit() {
