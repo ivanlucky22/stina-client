@@ -10,9 +10,13 @@ export class NavigationComponent implements OnInit {
 
   @Input() user: firebase.User;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  redirectToProfilePage() {
+
+  }
 }

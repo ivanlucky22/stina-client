@@ -1,8 +1,12 @@
-.user-icon-light{
-  color: #fff;
-  font-size: 40px;
-  margin: 0 0 0 0;
+.user-icon {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px;
 }
-.user-icon-light:hover{
-  color: gray;
+
+.user-icon:hover {
+  cursor: pointer;
+  -webkit-box-shadow: -4px 79px 73px -63px rgba(0,0,0,0.42);
+  -moz-box-shadow: -4px 79px 73px -63px rgba(0,0,0,0.42);
+  box-shadow: -4px 79px 73px -63px rgba(0,0,0,0.42);
 }
