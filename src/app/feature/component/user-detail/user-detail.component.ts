@@ -1,9 +1,8 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {UserService} from "@app/core/service/auth/user.service";
 import * as firebase from "firebase";
-
-// import {switchMap} from "rxjs/operator";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-detail',
@@ -12,24 +11,33 @@ import * as firebase from "firebase";
 })
 export class UserDetailComponent implements OnInit {
 
-  public user: firebase.User;
+  @Input() user: firebase.User;
+  // private userSubscription: any;
+  newEmail: any;
+  userForm: FormGroup;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private userService: UserService,
-              private ref: ChangeDetectorRef) {
+  constructor() {
+
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id === '0') {
-      const subscription = this.userService.getUserObservable().subscribe(user => {
-        this.user = user;
-        this.ref.detectChanges();
-        subscription.unsubscribe();
-      });
-    }
-
+    this.userForm = new FormGroup({
+      'email': new FormControl('xxx', [
+        Validators.required,
+        Validators.minLength(4),
+      ])
+    });
   }
+
+  get email() {
+    return this.userForm.get('email');
+  }
+
+
+  // ngOnDestroy(): void {
+  //   if (this.userSubscription) {
+  //     this.userSubscription.unsubscribe();
+  //   }
+  // }
 
 }

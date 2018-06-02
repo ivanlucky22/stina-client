@@ -13,10 +13,6 @@ export class ArticleRepository {
     this.firebaseService.save(this.toPureJavaScript(article));
   }
 
-  findAll(): Observable<any[]> {
-    return this.firebaseService.getArticles();
-  }
-
   onArticleChanged(aFunction: any) {
     return this.firebaseService.onArticleChanged(aFunction);
   }

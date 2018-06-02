@@ -3,11 +3,12 @@ import {AuthService} from "@app/core/service/auth/auth.service";
 import * as firebase from "firebase";
 import {Subject} from "rxjs/Subject";
 import {NameGenerationService} from "@app/core/service/name-generation.service";
+import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Injectable()
 export class UserService {
 
-  private userObservable: Subject<firebase.User> = new Subject();
+  private userObservable: Subject<firebase.User> = new ReplaySubject();
 
   constructor(private authService: AuthService,
               private nameGenerationService: NameGenerationService) {

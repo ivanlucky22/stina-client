@@ -7,13 +7,13 @@ import {CoreModule} from '@app/core/core.module';
 import {RouterModule, Routes} from "@angular/router";
 import {PageNotFoundComponent} from "@app/feature/component/page-not-found/page-not-found.component";
 import {MainPageComponent} from "@app/core/component/main-page/main-page.component";
-import {UserDetailComponent} from "@app/feature/component/user-detail/user-detail.component";
 import {HttpClient} from "@angular/common/http";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {UserDetailsPageComponent} from "@app/feature/component/user-details-page/user-details-page.component";
 
 const appRoutes: Routes = [
-  {path: 'users/:id', component: UserDetailComponent},
+  {path: 'users/:id', component: UserDetailsPageComponent},
   {path: '', component: MainPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
