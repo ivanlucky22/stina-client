@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from "@app/core/service/auth/auth.service";
 import * as firebase from "firebase";
-import {Subject} from "rxjs/Subject";
+import {Subject, ReplaySubject} from "rxjs";
 import {NameGenerationService} from "@app/core/service/name-generation.service";
-import {ReplaySubject} from "rxjs/ReplaySubject";
 
 @Injectable()
 export class UserService {

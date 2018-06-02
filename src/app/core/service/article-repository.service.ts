@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Article} from '@app/core/model/article';
 import {FirebaseService} from "@app/core/service/firebase.service";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs";
 
 @Injectable()
 export class ArticleRepository {
