@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import * as moment from "moment";
+import {UserService} from "@app/core/service/auth/user.service";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +10,12 @@ import * as moment from "moment";
 })
 export class AppComponent {
 
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService,
+              private userService: UserService) {
+    this.userService.signInAnonymously();
+    const subscription = this.userService.getUserObservable().subscribe((user) => {
+      subscription.unsubscribe();
+    });
     translate.setDefaultLang('ru');
     translate.use('ru');
     this.addUkrainianMomentLocale();

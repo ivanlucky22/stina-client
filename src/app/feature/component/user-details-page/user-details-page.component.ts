@@ -28,7 +28,7 @@ export class UserDetailsPageComponent implements OnInit, AfterViewInit {
     if (id === '0') {
       this.userService.getUserObservable().subscribe(user => {
         this.user = user;
-        // this.ref.detectChanges();
+        this.ref.detectChanges();
       });
     }
   }

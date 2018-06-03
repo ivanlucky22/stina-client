@@ -28,24 +28,12 @@ import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
 import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
-  authDomain: "stina-2b904.firebaseapp.com",
-  databaseURL: "https://stina-2b904.firebaseio.com",
-  projectId: "stina-2b904",
-  storageBucket: "stina-2b904.appspot.com",
-  messagingSenderId: "454249451134"
-};
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     MatIconModule,
-    AngularFireModule.initializeApp(firebaseConfig, 'Stina'),
-    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    AngularFireAuthModule,
-    AngularFireDatabaseModule,
     MatProgressBarModule,
     FeatureModule,
     ModalModule.forRoot(),
