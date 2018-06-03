@@ -6,6 +6,7 @@ import {LanguageComponent} from './component/language/language.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserDetailsPageComponent} from './component/user-details-page/user-details-page.component';
 import {MatFormFieldModule} from "@angular/material";
+import { VerificationPageComponent } from './component/verification-page/verification-page.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {MatFormFieldModule} from "@angular/material";
     UserDetailComponent,
     LanguageComponent,
     UserDetailsPageComponent,
+    VerificationPageComponent,
   ],
   providers: [],
   exports: [LanguageComponent]

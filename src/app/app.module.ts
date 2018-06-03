@@ -15,10 +15,12 @@ import {AngularFireAuthModule} from "angularfire2/auth";
 import {AngularFirestoreModule} from "angularfire2/firestore";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireModule} from "angularfire2";
+import {VerificationPageComponent} from "@app/feature/component/verification-page/verification-page.component";
 
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
   {path: '', component: MainPageComponent},
+  {path: 'verification', component: VerificationPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
