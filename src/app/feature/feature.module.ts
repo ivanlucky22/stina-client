@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {UserDetailsPageComponent} from './component/user-details-page/user-details-page.component';
 import {MatFormFieldModule} from "@angular/material";
 import { VerificationPageComponent } from './component/verification-page/verification-page.component';
+import { SignUpFormComponent } from './component/sign-up-form/sign-up-form.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { VerificationPageComponent } from './component/verification-page/verific
     LanguageComponent,
     UserDetailsPageComponent,
     VerificationPageComponent,
+    SignUpFormComponent,
   ],
   providers: [],
   exports: [LanguageComponent]

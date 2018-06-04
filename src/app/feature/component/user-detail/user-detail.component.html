@@ -1,11 +1,9 @@
 <div class="background-container"></div>
-<div class="container user-profile-container col p-3">
-  <div class="form-group row">
-    <div class="col-sm-10">
-      <img class="btn btn link user-icon" src="{{user?.photoURL}}"/>
-    </div>
-  </div>
-  <form [formGroup]="userForm" #formDir="ngForm">
+<ng-container *ngIf="user?.isAnonymous">
+  <app-sign-up-form [user]="user"></app-sign-up-form>
+</ng-container>
+<ng-container *ngIf="user?.emailVerified">
+  <form>
     <div class="form-group row">
       <label for="displayName" class="col-sm-3 col-form-label">Username</label>
       <div class="col-sm-9">
@@ -13,31 +11,15 @@
                value="{{user?.displayName}}">
       </div>
     </div>
+
     <div class="form-group row">
-      <label class="col-sm-3 col-form-label" for="email">Email</label>
+      <label for="email" class="col-sm-3 col-form-label">Username</label>
       <div class="col-sm-9">
-        <input id="email"
-               class="form-control"
-               formControlName="email"
-               required>
-        <div *ngIf="email.invalid && (email.dirty || email.touched)">
-          <mat-error *ngIf="email.errors?.required">
-            Email is required.
-          </mat-error>
-          <mat-error *ngIf="email.errors?.valid">
-            Email is invalid
-          </mat-error>
-          <mat-error *ngIf="email.errors?.minlength">
-            Email must be at least 4 characters long.
-          </mat-error>
-        </div>
+        <input type="text" class="form-control" id="email"
+               value="{{user?.email}}" disabled>
       </div>
     </div>
-    <div class="form-group row">
-      <div class="col">
-        <button type="submit" class="btn btn-success col" (click)="validateAndAuthorize()">Sign in</button>
-      </div>
-    </div>
+
+
   </form>
-</div>
-<!--</div>-->
+</ng-container>

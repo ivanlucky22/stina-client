@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AngularFireAuth} from "angularfire2/auth";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-verification-page',
@@ -8,7 +9,8 @@ import {AngularFireAuth} from "angularfire2/auth";
 })
 export class VerificationPageComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -17,6 +19,7 @@ export class VerificationPageComponent implements OnInit {
   }
 
   private listenAuthorization() {
+    const self = this;
     // Confirm the link is a sign-in with email link.
     // if (true) {
     if (this.afAuth.auth.isSignInWithEmailLink(window.location.href)) {
@@ -44,6 +47,7 @@ export class VerificationPageComponent implements OnInit {
           // result.additionalUserInfo.profile == null
           // You can check if the user is new or existing:
           // result.additionalUserInfo.isNewUser
+          self.router.navigate(['user', '0']);
         })
         .catch(function (error) {
           console.log('Error signInWithEmailLink ' + error);
