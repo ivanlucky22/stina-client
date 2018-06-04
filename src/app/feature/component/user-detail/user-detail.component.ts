@@ -43,17 +43,18 @@ export class UserDetailComponent implements OnInit {
     const actionCodeSettings = {
       // URL you want to redirect back to. The domain (www.example.com) for this
       // URL must be whitelisted in the Firebase Console.
-      url: 'http://localhost:4200/finishSignUp?cartId=' + this.user.uid,
+      url: 'https://stina-2b904.firebaseapp.com/verification',
       // This must be true.
       handleCodeInApp: true,
-      iOS: {
-        bundleId: 'com.example.ios'
-      },
-      android: {
-        packageName: 'com.example.android',
-        installApp: true,
-        minimumVersion: '12'
-      }
+      androidInstallApp: false
+      // iOS: {
+      //   bundleId: 'https://stina-2b904.firebaseapp.com'
+      // },
+      // android: {
+      //   packageName: 'https://stina-2b904.firebaseapp.com',
+      //   installApp: true,
+      //   minimumVersion: '12'
+      // }
     };
 
     this.afAuth.auth.sendSignInLinkToEmail(this.email.value, actionCodeSettings)
