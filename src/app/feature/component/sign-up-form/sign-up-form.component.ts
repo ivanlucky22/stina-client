@@ -1,7 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AngularFireAuth} from "angularfire2/auth";
+import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
 import * as firebase from "firebase";
+import {AuthorizationState} from "@app/feature/enum/authorization-state.enum";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -12,12 +13,17 @@ export class SignUpFormComponent implements OnInit {
 
   userForm: FormGroup;
   @Input() user: firebase.User;
+  state: AuthorizationState;
+  stateEnum = AuthorizationState;
 
-  constructor(private afAuth: AngularFireAuth) {
+  constructor(private afAuth: AngularFireAuth,
+              private ref: ChangeDetectorRef) {
 
   }
 
   ngOnInit() {
+    this.state = AuthorizationState.UNAUTHORIZED;
+
     this.userForm = new FormGroup({
       'email': new FormControl('', [
         Validators.required,
@@ -55,15 +61,22 @@ export class SignUpFormComponent implements OnInit {
       //   minimumVersion: '12'
       // }
     };
-
+    this.state = AuthorizationState.SENT_EMAIL_VERIFICATION;
     this.afAuth.auth.sendSignInLinkToEmail(this.email.value, actionCodeSettings)
-      .then(function () {
+      .then(() => {
+        this.state = AuthorizationState.SENT_EMAIL_VERIFICATION_SUCCEED;
+        this.ref.detectChanges();
+        console.log('SENT_EMAIL_VERIFICATION_SUCCEED');
+
         // The link was successfully sent. Inform the user.
         // Save the email locally so you don't need to ask the user for it again
         // if they open the link on the same device.
         window.localStorage.setItem('emailForSignIn', self.email.value);
       })
-      .catch(function (error) {
+      .catch((error) => {
+        console.log(error);
+        this.state = AuthorizationState.SENT_EMAIL_VERIFICATION_FAILED;
+
         // Some error occurred, you can inspect the code: error.code
       });
   }

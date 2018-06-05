@@ -10,6 +10,7 @@ import * as firebase from "firebase";
 export class UserDetailComponent implements OnInit {
 
   @Input() user: firebase.User;
+  newPassword: string = '**********';
 
   ngOnInit(): void {
   }

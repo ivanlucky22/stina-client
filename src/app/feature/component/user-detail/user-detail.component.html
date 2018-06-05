@@ -1,8 +1,8 @@
 <div class="background-container"></div>
-<ng-container *ngIf="user?.isAnonymous">
+<div [hidden]="!user?.isAnonymous">
   <app-sign-up-form [user]="user"></app-sign-up-form>
-</ng-container>
-<ng-container *ngIf="user?.emailVerified">
+</div>
+<div [hidden]="!user?.emailVerified">
   <form>
     <div class="form-group row">
       <label for="displayName" class="col-sm-3 col-form-label">Username</label>
@@ -13,13 +13,21 @@
     </div>
 
     <div class="form-group row">
-      <label for="email" class="col-sm-3 col-form-label">Username</label>
+      <label for="email" class="col-sm-3 col-form-label">Email</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="email"
                value="{{user?.email}}" disabled>
       </div>
     </div>
 
+    <div class="form-group row">
+      <label for="password" class="col-sm-3 col-form-label">Password</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" id="password"
+               value="{{newPassword}}" disabled>
+      </div>
+    </div>
+
 
   </form>
-</ng-container>
+</div>

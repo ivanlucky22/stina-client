@@ -7,5 +7,6 @@
   "article.comment.like.caption": "Like",
   "article.comment.reply.caption": "Reply",
   "add.article.button.caption": "Publish post",
-  "comment.form.input.placaholder.caption": "Write your comment here..."
+  "comment.form.input.placaholder.caption": "Write your comment here...",
+  "sign.up.form.verification.link.send": "The verification link was send on email you specified. To proceed with registration please clink on the received link."
 }
