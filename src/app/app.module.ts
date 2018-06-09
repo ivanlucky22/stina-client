@@ -1,7 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-
 import {AppComponent} from './app.component';
 import {CoreModule} from '@app/core/core.module';
 import {RouterModule, Routes} from "@angular/router";
@@ -16,6 +14,7 @@ import {AngularFirestoreModule} from "angularfire2/firestore";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireModule} from "angularfire2";
 import {VerificationPageComponent} from "@app/feature/component/verification-page/verification-page.component";
+import {environment} from "@env/environment";
 
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
@@ -28,15 +27,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyDjFEIHQ0I8zzwHpuLl4Bp6rGlxaWbc8Bk",
-  authDomain: "stina-2b904.firebaseapp.com",
-  databaseURL: "https://stina-2b904.firebaseio.com",
-  projectId: "stina-2b904",
-  storageBucket: "stina-2b904.appspot.com",
-  messagingSenderId: "454249451134"
-};
-
 @NgModule({
   declarations: [
     AppComponent
@@ -44,7 +34,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     CoreModule,
-    AngularFireModule.initializeApp(firebaseConfig, 'Stina'),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'Stina'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
     AngularFireDatabaseModule,

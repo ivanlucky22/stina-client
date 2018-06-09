@@ -20,7 +20,13 @@ export class SignUpFormComponent implements OnInit {
               private ref: ChangeDetectorRef) {
 
   }
+  printUser(event) {
+    console.log(event);
+  }
 
+  printError(event) {
+    console.error(event);
+  }
   ngOnInit() {
     this.state = AuthorizationState.UNAUTHORIZED;
 
