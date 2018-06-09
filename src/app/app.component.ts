@@ -1,21 +1,20 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import * as moment from "moment";
 import {UserService} from "@app/core/service/auth/user.service";
+import * as firebase from "firebase";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  user: firebase.User;
 
   constructor(private translate: TranslateService,
               private userService: UserService) {
-    this.userService.signInAnonymously();
-    const subscription = this.userService.getUserObservable().subscribe((user) => {
-      subscription.unsubscribe();
-    });
     translate.setDefaultLang('ru');
     translate.use('ru');
     this.addUkrainianMomentLocale();
@@ -43,5 +42,14 @@ export class AppComponent {
         yy: "%d років"
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.userService.signInAnonymously();
+    const subscription = this.userService.getUserObservable().subscribe((user) => {
+      this.user = user;
+      subscription.unsubscribe();
+    });
+
   }
 }

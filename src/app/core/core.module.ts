@@ -61,7 +61,9 @@ import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
     CommentComponent,
     TimeAgoPipe
   ],
-  exports: [MainPageComponent]
+  exports: [
+    MainPageComponent,
+    NavigationComponent]
 
 })
 export class CoreModule {

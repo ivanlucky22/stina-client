@@ -1,33 +1,35 @@
 <div class="background-container"></div>
-<div [hidden]="!user?.isAnonymous">
-  <app-sign-up-form [user]="user"></app-sign-up-form>
-</div>
-<div [hidden]="!user?.emailVerified">
-  <form>
-    <div class="form-group row">
-      <label for="displayName" class="col-sm-3 col-form-label">Username</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="displayName" placeholder="Type desired user name here"
-               value="{{user?.displayName}}">
-      </div>
-    </div>
+<ngx-auth-firebaseui-user></ngx-auth-firebaseui-user>
 
-    <div class="form-group row">
-      <label for="email" class="col-sm-3 col-form-label">Email</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="email"
-               value="{{user?.email}}" disabled>
-      </div>
-    </div>
+<!--<div [hidden]="!user?.isAnonymous">-->
+  <!--<app-sign-up-form [user]="user"></app-sign-up-form>-->
+<!--</div>-->
+<!--<div [hidden]="!user?.emailVerified">-->
+  <!--<form>-->
+    <!--<div class="form-group row">-->
+      <!--<label for="displayName" class="col-sm-3 col-form-label">Username</label>-->
+      <!--<div class="col-sm-9">-->
+        <!--<input type="text" class="form-control" id="displayName" placeholder="Type desired user name here"-->
+               <!--value="{{user?.displayName}}">-->
+      <!--</div>-->
+    <!--</div>-->
 
-    <div class="form-group row">
-      <label for="password" class="col-sm-3 col-form-label">Password</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="password"
-               value="{{newPassword}}" disabled>
-      </div>
-    </div>
+    <!--<div class="form-group row">-->
+      <!--<label for="email" class="col-sm-3 col-form-label">Email</label>-->
+      <!--<div class="col-sm-9">-->
+        <!--<input type="text" class="form-control" id="email"-->
+               <!--value="{{user?.email}}" disabled>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group row">-->
+      <!--<label for="password" class="col-sm-3 col-form-label">Password</label>-->
+      <!--<div class="col-sm-9">-->
+        <!--<input type="text" class="form-control" id="password"-->
+               <!--value="{{newPassword}}" disabled>-->
+      <!--</div>-->
+    <!--</div>-->
 
 
-  </form>
-</div>
+  <!--</form>-->
+<!--</div>-->
