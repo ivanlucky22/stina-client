@@ -11,13 +11,17 @@ export class UserService {
 
   constructor(private authService: AuthService,
               private nameGenerationService: NameGenerationService) {
-    const self = this;
-    this.authService.onAuthStateChanged(function (user: firebase.User) {
+    this.onAuthStateChanged();
+  }
+
+  private onAuthStateChanged() {
+    this.authService.onAuthStateChanged((user: firebase.User) => {
       if (user) {
         if (!user.displayName) {
-          self.setUserDetails(user);
+          this.setUserDetails(user);
         }
-        self.userObservable.next(user);
+        this.userObservable.next(user);
+        console.log('user initialized');
       } else {
         console.log('user signed out');
       }
@@ -37,7 +41,11 @@ export class UserService {
     this.authService.signInAnonymously();
   }
 
-  getUserObservable(): Subject<firebase.User> {
-    return this.userObservable;
+  // getUserObservable(): Subject<firebase.User> {
+  //   return this.userObservable;
+  // }
+
+  authState() {
+    return this.authService.afAuth.authState;
   }
 }

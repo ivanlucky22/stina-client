@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {UserService} from "@app/core/service/auth/user.service";
 import * as firebase from "firebase";
 
@@ -12,14 +12,15 @@ export class MainPageComponent implements OnInit {
   loaded = false;
   user: firebase.User;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService,
+              private ref: ChangeDetectorRef) {
   }
 
   ngOnInit() {
-    this.userService.signInAnonymously();
-    const subscription = this.userService.getUserObservable().subscribe((user) => {
+    const subscription = this.userService.authState().subscribe((user) => {
       this.user = user;
-      subscription.unsubscribe();
+      this.ref.detectChanges();
+      // subscription.unsubscribe();
     });
 
   }

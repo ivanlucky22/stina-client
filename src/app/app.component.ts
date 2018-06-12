@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
 import * as moment from "moment";
 import {UserService} from "@app/core/service/auth/user.service";
-import * as firebase from "firebase";
 
 @Component({
   selector: 'app-root',
@@ -11,18 +10,18 @@ import * as firebase from "firebase";
 })
 export class AppComponent implements OnInit {
 
-  user: firebase.User;
+  DEFAULT_LANG = 'ru';
 
   constructor(private translate: TranslateService,
               private userService: UserService) {
-    translate.setDefaultLang('ru');
-    translate.use('ru');
+    translate.setDefaultLang(this.DEFAULT_LANG);
+    translate.use(this.DEFAULT_LANG);
     this.addUkrainianMomentLocale();
   }
 
   private addUkrainianMomentLocale() {
     moment.defineLocale('ua', {
-      parentLocale: 'ru',
+      parentLocale: this.DEFAULT_LANG,
     });
     moment.updateLocale('ua', {
       relativeTime: {
@@ -45,11 +44,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userService.signInAnonymously();
-    const subscription = this.userService.getUserObservable().subscribe((user) => {
-      this.user = user;
-      subscription.unsubscribe();
+    this.userService.authState().subscribe(user => {
+      if (!user) {
+        console.log('User signed out');
+        console.log('Signing in anonymously');
+        this.userService.signInAnonymously();
+      } else {
+        console.log('User exists');
+      }
     });
-
   }
+
 }

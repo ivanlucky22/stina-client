@@ -20,16 +20,21 @@ export class UserDetailsPageComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-
+    const subscription = this.userService.authState().subscribe((user) => {
+      this.user = user;
+      console.log('navifation got user ' + user)
+      this.ref.detectChanges();
+      // subscription.unsubscribe();
+    });
   }
 
   ngAfterViewInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id === '0') {
-      this.userService.getUserObservable().subscribe(user => {
-        this.user = user;
-        this.ref.detectChanges();
-      });
+      // this.userService.getCurrentUser().subscribe(user => {
+      //   this.user = user;
+      //   this.ref.detectChanges();
+      // });
     }
   }
 

@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import * as firebase from "firebase";
 import {Router} from "@angular/router";
+import {UserService} from "@app/core/service/auth/user.service";
 
 @Component({
   selector: 'app-navigation',
@@ -9,12 +10,21 @@ import {Router} from "@angular/router";
 })
 export class NavigationComponent implements OnInit {
 
-  @Input() user: firebase.User;
+  user: firebase.User;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private userService: UserService,
+              private ref: ChangeDetectorRef) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    const subscription = this.userService.authState().subscribe((user) => {
+      this.user = user;
+      console.log('navifation got user ' + user)
+      this.ref.detectChanges();
+      // subscription.unsubscribe();
+    });
+
   }
 
   redirectToProfilePage() {

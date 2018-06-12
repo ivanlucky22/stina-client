@@ -10,10 +10,16 @@ import * as firebase from "firebase";
 export class UserDetailComponent implements OnInit {
 
   @Input() user: firebase.User;
-  newPassword: string = '**********';
 
   ngOnInit(): void {
   }
 
+  printUser(event) {
+    console.log('success' + event);
+    window.location.reload();
+  }
 
+  printError() {
+    console.log('failed to do smth')
+  }
 }
