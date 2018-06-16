@@ -1,31 +1,20 @@
 <div class="container">
-  Authorization
-  <form [formGroup]="userForm" #formDir="ngForm">
-    <div class="form-group row">
-      <input id="email"
-             class="form-control input-sm"
-             formControlName="email"
-             required>
-      <div *ngIf="email.invalid && (email.dirty || email.touched)">
-        <mat-error *ngIf="email.errors?.required">
-          Email is required.
-        </mat-error>
-        <mat-error *ngIf="email.errors?.valid">
-          Email is invalid
-        </mat-error>
-        <mat-error *ngIf="email.errors?.minlength">
-          Email must be at least 4 characters long.
-        </mat-error>
-      </div>
+  <div class="form-group row">
+    <button type="submit"
+            class="form-control btn btn-success"
+            [routerLink]="['users/0']">{{'sign.in.caption' | translate}}
+      <i class="fa fa-envelope" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="form-group row">
+    <div style="width: 100%; height: 14px; border-bottom: 1px solid #666; text-align: center">
+  <span style="background-color: #FFFFFF; padding: 0 10px;color: #666;">
+    {{'or.sign.in.via' | translate}}
+  </span>
     </div>
-
-    <div class="form-group row">
-      <input type="password" class="form-control input-sm" id="password" formControlName="password" placeholder="Type your password">
-    </div>
-
-    <div class="form-group row">
-        <button type="submit" class="form-control btn btn-success" (click)="validateAndAuthorize()">Sign in</button>
-    </div>
-  </form>
-  <ngx-auth-firebaseui-providers [theme]="themes.MINI_FAB"></ngx-auth-firebaseui-providers>
+  </div>
+  <div class="form-group row">
+    <ngx-auth-firebaseui-providers class="w-100"
+                                   [theme]="themes.MINI_FAB"></ngx-auth-firebaseui-providers>
+  </div>
 </div>

@@ -15,11 +15,13 @@ import {environment} from "@env/environment";
 import {SignInFormComponent} from './component/sign-in-form/sign-in-form.component';
 import { ConfidentialityPolicyPageComponent } from './component/confidentiality-policy-page/confidentiality-policy-page.component';
 import { UserAgreementPageComponent } from './component/user-agreement-page/user-agreement-page.component';
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     TranslateModule,
