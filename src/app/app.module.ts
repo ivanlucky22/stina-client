@@ -19,6 +19,7 @@ import {environment} from "@env/environment";
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
   {path: '', component: MainPageComponent},
+  {path: 'home', component: MainPageComponent},
   {path: 'verification', component: VerificationPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];

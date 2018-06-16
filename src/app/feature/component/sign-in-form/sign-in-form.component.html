@@ -1,0 +1,31 @@
+<div class="container">
+  Authorization
+  <form [formGroup]="userForm" #formDir="ngForm">
+    <div class="form-group row">
+      <input id="email"
+             class="form-control input-sm"
+             formControlName="email"
+             required>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <mat-error *ngIf="email.errors?.required">
+          Email is required.
+        </mat-error>
+        <mat-error *ngIf="email.errors?.valid">
+          Email is invalid
+        </mat-error>
+        <mat-error *ngIf="email.errors?.minlength">
+          Email must be at least 4 characters long.
+        </mat-error>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <input type="password" class="form-control input-sm" id="password" formControlName="password" placeholder="Type your password">
+    </div>
+
+    <div class="form-group row">
+        <button type="submit" class="form-control btn btn-success" (click)="validateAndAuthorize()">Sign in</button>
+    </div>
+  </form>
+  <ngx-auth-firebaseui-providers [theme]="themes.MINI_FAB"></ngx-auth-firebaseui-providers>
+</div>

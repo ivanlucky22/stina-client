@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
 import * as firebase from "firebase";
 import {AuthorizationState} from "@app/feature/enum/authorization-state.enum";
+import {Theme} from "ngx-auth-firebaseui";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -15,6 +16,7 @@ export class SignUpFormComponent implements OnInit {
   @Input() user: firebase.User;
   state: AuthorizationState;
   stateEnum = AuthorizationState;
+  themes = Theme;
 
   constructor(private afAuth: AngularFireAuth,
               private ref: ChangeDetectorRef) {

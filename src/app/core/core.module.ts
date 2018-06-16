@@ -27,6 +27,7 @@ import {CommentComponent} from './component/article/comment/comment.component';
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
 import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
     MatIconModule,
     MatProgressBarModule,
     FeatureModule,
+    RouterModule,
     ModalModule.forRoot(),
     TranslateModule
   ],

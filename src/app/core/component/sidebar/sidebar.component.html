@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="row" *ngIf="user?.isAnonymous">
+    <app-sign-in-form class="w-100" [user]="user"></app-sign-in-form>
+  </div>
   <div class="row">
     <button class="btn btn-lg btn-success w-100" (click)="openModal(publishArticleModal)">
       {{'add.article.button.caption'|translate}}

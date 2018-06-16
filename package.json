@@ -8,6 +8,7 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
+    "deploy": "firebase deploy --only hosting",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -36,7 +37,7 @@
     "lodash": "^4.17.4",
     "material-design-icons": "^3.0.1",
     "moment": "^2.22.1",
-    "ngx-auth-firebaseui": "^1.0.0",
+    "ngx-auth-firebaseui": "^1.1.0",
     "ngx-bootstrap": "^3.0.0",
     "rxjs": "^6.2.0",
     "zone.js": "^0.8.26"

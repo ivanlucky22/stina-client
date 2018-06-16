@@ -48,4 +48,9 @@ export class UserService {
   authState() {
     return this.authService.afAuth.authState;
   }
+
+  signInWithEmailAndPassword(email: any, password: any) {
+    return this.authService.signInWithEmailAndPassword(email, password);
+
+  }
 }
