@@ -13,6 +13,8 @@ import {NgxAuthFirebaseUIModule} from "ngx-auth-firebaseui";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {environment} from "@env/environment";
 import {SignInFormComponent} from './component/sign-in-form/sign-in-form.component';
+import { ConfidentialityPolicyPageComponent } from './component/confidentiality-policy-page/confidentiality-policy-page.component';
+import { UserAgreementPageComponent } from './component/user-agreement-page/user-agreement-page.component';
 
 @NgModule({
   imports: [
@@ -33,6 +35,8 @@ import {SignInFormComponent} from './component/sign-in-form/sign-in-form.compone
     VerificationPageComponent,
     SignUpFormComponent,
     SignInFormComponent,
+    ConfidentialityPolicyPageComponent,
+    UserAgreementPageComponent,
   ],
   providers: [],
   exports: [

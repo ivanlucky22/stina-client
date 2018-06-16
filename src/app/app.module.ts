@@ -15,11 +15,15 @@ import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AngularFireModule} from "angularfire2";
 import {VerificationPageComponent} from "@app/feature/component/verification-page/verification-page.component";
 import {environment} from "@env/environment";
+import {ConfidentialityPolicyPageComponent} from "@app/feature/component/confidentiality-policy-page/confidentiality-policy-page.component";
+import {UserAgreementPageComponent} from "@app/feature/component/user-agreement-page/user-agreement-page.component";
 
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
   {path: '', component: MainPageComponent},
   {path: 'home', component: MainPageComponent},
+  {path: 'policy/confidentiality', component: ConfidentialityPolicyPageComponent},
+  {path: 'policy/agreement', component: UserAgreementPageComponent},
   {path: 'verification', component: VerificationPageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
