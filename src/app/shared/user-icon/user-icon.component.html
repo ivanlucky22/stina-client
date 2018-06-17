@@ -1,0 +1,4 @@
+<img *ngIf="photoURL" class="btn user-icon p-0" src="{{photoURL}}" (click)="redirectToProfilePage()"/>
+<a *ngIf="!photoURL" class="btn btn-link {{classes}}" [routerLink]="['users/'+userId]">
+  <span class="fa fa-user-secret"></span>
+</a>

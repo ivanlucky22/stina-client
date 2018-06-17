@@ -1,7 +1,7 @@
 <form>
   <div class="form-row">
     <div class="form-group col-md-2">
-      <img src="{{user?.photoURL}}" class="userIcon"/>
+      <app-user-icon photoURL="{{user?.photoURL}}" [userId]="0" [classes]="'user-icon-css-lg p-0'"></app-user-icon>
     </div>
     <div class="form-group col-md-10">
       <input #newMessageTitle type="text" class="form-control" id="messageTitleInput" placeholder="Заголовок">

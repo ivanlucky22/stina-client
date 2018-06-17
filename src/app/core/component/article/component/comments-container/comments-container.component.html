@@ -12,10 +12,11 @@
       <div class="align-items-center col">
         <div class="row">
           <div class="col-auto">
-            <img src="{{user.photoURL}}" class="comment-user-icon">
+            <app-user-icon photoURL="{{user?.photoURL}}" [userId]="0" [classes]="'user-icon-css-md p-1'"></app-user-icon>
           </div>
           <div class="col">
-            <input type="text" class="form-control mb-2 w-100 comment-input" id="inlineFormInput" placeholder="{{'comment.form.input.placaholder.caption' | translate}}"
+            <input type="text" class="form-control mb-2 w-100 comment-input" id="inlineFormInput"
+                   placeholder="{{'comment.form.input.placaholder.caption' | translate}}"
                    #commentText>
           </div>
           <div class="col-auto">

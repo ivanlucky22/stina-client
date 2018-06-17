@@ -23,17 +23,19 @@ import {TranslateModule} from "@ngx-translate/core";
 import {ArticleFooterComponent} from './component/article/component/article-footer/article-footer.component';
 import {CommentsContainerComponent} from './component/article/component/comments-container/comments-container.component';
 import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
-import {CommentComponent} from './component/article/comment/comment.component';
+import {CommentComponent} from './component/article/component/comment/comment.component';
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
 import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 import {RouterModule} from "@angular/router";
+import {SharedModule} from "@app/shared/shared.module";
 
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    SharedModule,
     MatIconModule,
     MatProgressBarModule,
     FeatureModule,

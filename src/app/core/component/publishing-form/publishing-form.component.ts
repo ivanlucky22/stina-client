@@ -21,7 +21,7 @@ export class PublishingFormComponent implements OnInit {
 
   publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLTextAreaElement) {
     if (newMessageTitle.value && newMessageBody.value) {
-      this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.value, 'anonymous'));
+      this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.value, this.user));
       this.onPublish.emit();
     }
     return false;

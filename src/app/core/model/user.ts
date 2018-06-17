@@ -1,13 +1,8 @@
-import * as firebase from "firebase";
+import {AuthorUser} from "@app/core/model/authorUser";
 
-export class User {
-  displayName: string | null;
+export class User extends AuthorUser{
   email: string | null;
   phoneNumber: string | null;
-  photoURL: string | null;
   providerId: string;
   uid: string;
-  constructor(user: firebase.User){
-
-  }
 }

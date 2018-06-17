@@ -31,7 +31,7 @@ export class VerificationPageComponent implements OnInit {
       let email = window.localStorage.getItem('emailForSignIn');
       console.log('isSignInWithEmailLink ' + email);
       if (!email) {
-        // User opened the link on a different device. To prevent session fixation
+        // AuthorUser opened the link on a different device. To prevent session fixation
         // attacks, ask the user to provide the associated email again. For example:
         email = window.prompt('Please provide your email for confirmation');
       }

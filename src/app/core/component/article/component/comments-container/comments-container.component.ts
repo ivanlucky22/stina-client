@@ -26,7 +26,7 @@ export class CommentsContainerComponent implements OnInit {
   addComment(commentText: HTMLInputElement) {
     const value = commentText.value;
     if (value) {
-      const comment = new Comment(this.user.displayName, this.user.uid, value);
+      const comment = new Comment(this.user, value);
       this.article.comments.push(comment);
       this.articleRepository.update(this.article);
       commentText.value = '';

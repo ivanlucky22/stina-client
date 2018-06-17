@@ -3,8 +3,8 @@
   <div class="row">
     <div class="col list-group-item" style="margin-bottom: .5px;">
       <div class="row">
-        <img *ngIf="article.author?.photoURL"class="user-icon" src="{{article.author?.photoURL}}">
-        <span *ngIf="!article.author?.photoURL" class="fa fa-user-secret btn user-icon-css p-1"></span>
+        <app-user-icon [photoURL]="article?.author?.photoURL" [userId]="article?.author?.uid"
+                       [classes]="'user-icon-css-md p-1'"></app-user-icon>
         <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
       </div>
       <h5 class="card-title">{{article.title}}</h5>
@@ -12,7 +12,7 @@
       <app-article-footer (showCommentsEvent)="showComments()"></app-article-footer>
     </div>
     <div class="col-1  p-0 m-0">
-      <div class="affix p-0 m-0"  style="position:fixed">
+      <div class="affix p-0 m-0" style="position:fixed">
         <div class="article-emotion-btn-container">
           <span class="fa fa-thumbs-o-up article-emotion-btn"
                 [ngClass]="{'article-emotion-btn-clicked':userLiked}"

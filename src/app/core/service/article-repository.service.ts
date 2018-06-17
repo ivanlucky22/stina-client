@@ -29,10 +29,7 @@ export class ArticleRepository {
   }
 
   private toPureJavaScript(article: Article) {
-    const comments = article.comments.map(comment => Object.assign({}, comment));
-    const articleJsObject = Object.assign({}, article);
-    articleJsObject.comments = comments;
-    return articleJsObject;
+    return JSON.parse(JSON.stringify(article));
   }
 
 }
