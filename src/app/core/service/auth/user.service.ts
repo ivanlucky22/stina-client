@@ -32,7 +32,7 @@ export class UserService {
     this.nameGenerationService.getNewUserName().subscribe(username => {
       user.updateProfile({
         displayName: username,
-        photoURL: '/assets/img/anonymous.png'
+        photoURL: undefined
       });
     });
   }
@@ -41,16 +41,8 @@ export class UserService {
     this.authService.signInAnonymously();
   }
 
-  // getUserObservable(): Subject<firebase.User> {
-  //   return this.userObservable;
-  // }
-
   authState() {
     return this.authService.afAuth.authState;
   }
 
-  signInWithEmailAndPassword(email: any, password: any) {
-    return this.authService.signInWithEmailAndPassword(email, password);
-
-  }
 }

@@ -14,11 +14,16 @@
   cursor: pointer;
 }
 
-.article-emotion-btn-container{
+.article-emotion-btn-container {
   padding: 3px;
 }
 
-.user-icon{
+.user-icon {
   width: 25px;
   height: 25px;
+}
+
+.user-icon-css {
+  font-size: 1.7rem;
+  color: #989898;
 }
