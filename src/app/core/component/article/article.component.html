@@ -9,7 +9,8 @@
       </div>
       <h5 class="card-title">{{article.title}}</h5>
       <p class="card-text">{{article.body}}</p>
-      <app-article-footer (showCommentsEvent)="showComments()"></app-article-footer>
+      <app-article-footer [article]="article"
+                          (showCommentsEvent)="showComments()"></app-article-footer>
     </div>
     <div class="col-1  p-0 m-0">
       <div class="affix p-0 m-0" style="position:fixed">
