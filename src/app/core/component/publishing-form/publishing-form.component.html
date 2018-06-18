@@ -7,13 +7,24 @@
       <input #newMessageTitle type="text" class="form-control" id="messageTitleInput" placeholder="Заголовок">
     </div>
   </div>
-  <div class="form-group">
-    <textarea #newMessageBody class="form-control" id="messageBodyInput" placeholder="Что вас беспокоет?"></textarea>
 
+  <div class="input-group mb-3">
+    <span class="form-control text-justify" contenteditable="true" style="border-right:none"></span>
+    <div class="input-group-append">
+      <span class="input-group-text fa fa-smile-o" style="background-color:white;border-left: #FFFFFF none 0px"></span>
+    </div>
   </div>
+
   <div class="form-group">
     <button class="btn btn-lg btn-success w-100"
             (click)="publishMessage(newMessageTitle, newMessageBody)"> {{'add.article.button.caption'|translate}}
     </button>
   </div>
+  <emoji-mart title="Pick your emoji…"
+              emoji=""
+              set="messenger"
+              [style]="{ position: 'absolute' }"
+              [showPreview]="false"
+              [include]="'recent,people'"
+  ></emoji-mart>
 </form>

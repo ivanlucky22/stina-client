@@ -35,6 +35,13 @@
           ></span>
           {{article.laughs.length}}
         </div>
+        <div class="article-emotion-btn-container">
+          <span class="fa fa fa-smile-o article-emotion-btn"
+                [ngClass]="{'article-emotion-btn-clicked':userLaughed}"
+                (click)="laugh()"
+          ></span>
+          {{article.laughs.length}}
+        </div>
       </div>
     </div>
   </div>

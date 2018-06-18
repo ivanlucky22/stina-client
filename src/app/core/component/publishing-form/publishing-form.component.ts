@@ -12,6 +12,7 @@ export class PublishingFormComponent implements OnInit {
 
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
+  newMessageBody: HTMLTextAreaElement;
 
   constructor(private articleRepository: ArticleRepository) {
   }
@@ -25,5 +26,9 @@ export class PublishingFormComponent implements OnInit {
       this.onPublish.emit();
     }
     return false;
+  }
+
+  addEmoji(event) {
+    this.newMessageBody.value += event;
   }
 }
