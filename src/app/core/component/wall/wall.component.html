@@ -1,4 +1,12 @@
 <div>
+  <div class="row">
+    <div class="col">
+      <input type="text" class="form-control mb-2 w-100 comment-input" id="inlineFormInput"
+             placeholder="Расскажи свою историю..."
+             (focus)="openModal(publishArticleModal)"
+      >
+    </div>
+  </div>
   <div *ngIf="!articles?.length">
     <app-article [user]="user" [article]="preLoadedArticle"></app-article>
   </div>
@@ -11,3 +19,8 @@
     </ng-container>
   </ul>
 </div>
+<ng-template #publishArticleModal>
+  <div class="modal-body text-center">
+    <app-publishing-form [user]="user" (onPublish)="closeModal()"></app-publishing-form>
+  </div>
+</ng-template>

@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {Article} from '@app/core/model/article';
 import {ArticleRepository} from "@app/core/service/article-repository.service";
 import * as firebase from "firebase";
+import {BsModalRef, BsModalService} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-wall',
@@ -14,8 +15,10 @@ export class WallComponent implements OnInit {
   @Output() articlesLoaded: EventEmitter<any> = new EventEmitter();
   preLoadedArticle: Article;
   @Input() user: firebase.User;
+  @ViewChild("publishArticleModal") modalRef: BsModalRef;
 
-  constructor(private articleRepository: ArticleRepository) {
+  constructor(private articleRepository: ArticleRepository,
+              private modalService: BsModalService) {
   }
 
   ngOnInit() {
@@ -36,4 +39,11 @@ export class WallComponent implements OnInit {
       'У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать', null);
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeModal() {
+    this.modalRef.hide();
+  }
 }
