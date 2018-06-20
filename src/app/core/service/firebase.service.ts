@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Article} from "@app/core/model/article";
 import {AngularFirestore} from "angularfire2/firestore";
 import {Observable} from "rxjs";
-import {default as firebase, firestore} from "firebase";
+import * as firebase from "firebase";
 
 @Injectable()
 export class FirebaseService {
