@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import * as firebase from "firebase";
 import {Router} from "@angular/router";
 import {UserService} from "@app/core/service/auth/user.service";
@@ -27,7 +27,4 @@ export class NavigationComponent implements OnInit {
 
   }
 
-  redirectToProfilePage() {
-    this.router.navigateByUrl('users/0');
-  }
 }

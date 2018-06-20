@@ -10,6 +10,7 @@ import * as firebase from "firebase";
 export class UserDetailComponent implements OnInit {
 
   @Input() user: firebase.User;
+  @Input() targetUser: firebase.User;
 
   constructor(private ref: ChangeDetectorRef) {
 

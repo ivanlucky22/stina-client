@@ -1,4 +1,4 @@
-import {AfterViewInit, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "@app/core/service/auth/user.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import * as firebase from "firebase";
@@ -9,13 +9,13 @@ import * as _ from "lodash";
   templateUrl: './user-details-page.component.html',
   styleUrls: ['./user-details-page.component.css']
 })
-export class UserDetailsPageComponent implements OnInit, AfterViewInit, OnDestroy {
+export class UserDetailsPageComponent implements OnInit, OnDestroy {
 
   public user: firebase.User;
-  subscriptions = [];
+  public targetUser: firebase.User;
+  private subscriptions = [];
 
   constructor(private route: ActivatedRoute,
-              private router: Router,
               private userService: UserService,
               private ref: ChangeDetectorRef) {
   }
@@ -23,21 +23,16 @@ export class UserDetailsPageComponent implements OnInit, AfterViewInit, OnDestro
   ngOnInit() {
     this.subscriptions.push(this.userService.authState().subscribe((user) => {
         this.user = user;
-        console.log('navifation got user ' + user)
+        const id = this.route.snapshot.paramMap.get('id');
+
+        if (id && id !== user.uid) {
+          this.subscriptions.push(this.userService.getUser(id).subscribe(targetUser => {
+            this.targetUser = targetUser;
+          }));
+        }
         this.ref.detectChanges();
-        // subscription.unsubscribe();
       })
     );
-  }
-
-  ngAfterViewInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id === '0') {
-      // this.userService.getCurrentUser().subscribe(user => {
-      //   this.user = user;
-      //   this.ref.detectChanges();
-      // });
-    }
   }
 
   ngOnDestroy(): void {

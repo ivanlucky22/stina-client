@@ -2,11 +2,25 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm">
-      <ngx-auth-firebaseui-user *ngIf="!user?.isAnonymous"></ngx-auth-firebaseui-user>
-      <ngx-auth-firebaseui *ngIf="user?.isAnonymous"
-                           (onSuccess)="printUser($event)"
-                           (onError)="printError()"></ngx-auth-firebaseui>
-
+      <ng-container *ngIf="!targetUser">
+        <ngx-auth-firebaseui-user *ngIf="!user?.isAnonymous"></ngx-auth-firebaseui-user>
+        <ngx-auth-firebaseui *ngIf="user?.isAnonymous"
+                             (onSuccess)="printUser($event)"
+                             (onError)="printError()"></ngx-auth-firebaseui>
+      </ng-container>
+      <ng-container *ngIf="targetUser">
+        <div class="row">
+          <app-user-icon [userId]="targetUser.uid" [photoURL]="targetUser.photoURL" ></app-user-icon>
+        </div>
+        <div class="row">
+          <div class="col-auto">
+            <span>User Name</span>
+          </div>
+          <div class="col-auto">
+            <span>{{targetUser.displayName}}</span>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 

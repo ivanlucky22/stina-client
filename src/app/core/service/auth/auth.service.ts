@@ -16,8 +16,4 @@ export class AuthService {
   onAuthStateChanged(afunction) {
     return this.afAuth.auth.onAuthStateChanged(afunction);
   }
-
-  signInWithEmailAndPassword(email: any, password: any) {
-    return this.afAuth.auth.signInWithEmailAndPassword(email, password);
-  }
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Article} from "@app/core/model/article";
 import {AngularFirestore} from "angularfire2/firestore";
 import {Observable} from "rxjs";
+import {default as firebase, firestore} from "firebase";
 
 @Injectable()
 export class FirebaseService {
@@ -26,15 +27,15 @@ export class FirebaseService {
     });
   }
 
-  getArticles() {
-    return this.articles;
-  }
-
   getArticleRef(id: string) {
     return this.articlesCollection.doc(id);
   }
 
   onArticleChanged(aFunction) {
     return this.db.firestore.collection(this.ARTICLES_COLLECTION).orderBy('timestamp', 'desc').limit(10).onSnapshot(aFunction);
+  }
+
+  getUserRefById(id: string): Observable<firebase.User> {
+    return this.db.doc<firebase.User>('users/' + id).valueChanges();
   }
 }

@@ -16,6 +16,7 @@ import {SignInFormComponent} from './component/sign-in-form/sign-in-form.compone
 import { ConfidentialityPolicyPageComponent } from './component/confidentiality-policy-page/confidentiality-policy-page.component';
 import { UserAgreementPageComponent } from './component/user-agreement-page/user-agreement-page.component';
 import {RouterModule} from "@angular/router";
+import {SharedModule} from "@app/shared/shared.module";
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import {RouterModule} from "@angular/router";
     TranslateModule,
     BrowserAnimationsModule,
     MatIconModule,
+    SharedModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
   ],
   declarations: [
