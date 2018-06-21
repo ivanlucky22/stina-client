@@ -30,6 +30,7 @@ import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
 @NgModule({
   imports: [
@@ -42,7 +43,8 @@ import { PickerModule } from '@ctrl/ngx-emoji-mart';
     RouterModule,
     ModalModule.forRoot(),
     TranslateModule,
-    PickerModule
+    PickerModule,
+    EmojiModule
   ],
   providers: [
     ArticleRepository,

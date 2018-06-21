@@ -12,7 +12,7 @@ export class PublishingFormComponent implements OnInit {
 
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
-  newMessageBody: HTMLTextAreaElement;
+  showEmojiPanel: boolean;
 
   constructor(private articleRepository: ArticleRepository) {
   }
@@ -20,15 +20,22 @@ export class PublishingFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLTextAreaElement) {
-    if (newMessageTitle.value && newMessageBody.value) {
-      this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.value, this.user));
+  publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLSpanElement) {
+    if (newMessageBody.innerText) {
+      if (!newMessageTitle.value) {
+        newMessageTitle.value = newMessageBody.innerText.slice(0, 50) + '...';
+      }
+      this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.innerText, this.user));
       this.onPublish.emit();
     }
     return false;
   }
 
-  addEmoji(event) {
-    this.newMessageBody.value += event;
+  addEmoji(event, newMessageBody: HTMLSpanElement) {
+    newMessageBody.innerText += event.emoji.native;
+  }
+
+  emojiClicked(event: any, newMessageBody: HTMLSpanElement) {
+    this.addEmoji(event, newMessageBody);
   }
 }

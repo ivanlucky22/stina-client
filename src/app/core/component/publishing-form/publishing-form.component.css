@@ -3,7 +3,15 @@
   color: skyblue;
 }
 
-.user-icon {
-  width: 45px;
-  height: 45px;
+.post-content-input-icons{
+  color: black;
+  opacity: .5;
+}
+.post-content-input-icons:hover{
+  opacity: 1;
+}
+
+.post-content-input:focus {
+  box-shadow: none;
+  border-color: #ced4da;
 }

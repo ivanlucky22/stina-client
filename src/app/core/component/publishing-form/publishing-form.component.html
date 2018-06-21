@@ -9,10 +9,21 @@
   </div>
 
   <div class="input-group mb-3">
-    <span class="form-control text-justify" contenteditable="true" style="border-right:none"></span>
+    <span class="form-control text-justify post-content-input"
+          contenteditable="true"
+          style="border-right:none"
+          #newMessageBody
+          (focus)="showEmojiPanel=false">
+    </span>
     <div class="input-group-append">
-      <span class="input-group-text fa fa-smile-o" style="background-color:white;border-left: #FFFFFF none 0px"></span>
+      <div class="btn input-group-text" style="background-color:white;border-left: #FFFFFF none 0">
+      <span class="fa fa-smile-o post-content-input-icons"
+            (click)="showEmojiPanel=true"></span>
+      </div>
+      <span class="fa fa-smile-o post-content-input-icons"
+            (click)="showEmojiPanel=true"></span>
     </div>
+  </div>
   </div>
 
   <div class="form-group">
@@ -20,11 +31,13 @@
             (click)="publishMessage(newMessageTitle, newMessageBody)"> {{'add.article.button.caption'|translate}}
     </button>
   </div>
-  <emoji-mart title="Pick your emoji…"
+  <emoji-mart [hidden]="!showEmojiPanel"
+              title="Pick your emoji…"
               emoji=""
               set="messenger"
               [style]="{ position: 'absolute' }"
               [showPreview]="false"
               [include]="'recent,people'"
+              (emojiClick)="emojiClicked($event, newMessageBody)"
   ></emoji-mart>
 </form>
