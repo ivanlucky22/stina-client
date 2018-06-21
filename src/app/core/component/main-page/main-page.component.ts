@@ -27,5 +27,6 @@ export class MainPageComponent implements OnInit {
 
   onArticlesLoaded() {
     this.loaded = true;
+    this.ref.detectChanges();
   }
 }
