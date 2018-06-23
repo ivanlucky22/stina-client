@@ -16,14 +16,21 @@
           (focus)="showEmojiPanel=false">
     </span>
     <div class="input-group-append">
-      <div class="btn input-group-text" style="background-color:white;border-left: #FFFFFF none 0">
-      <span class="fa fa-smile-o post-content-input-icons"
-            (click)="showEmojiPanel=true"></span>
+      <div class="btn input-group-text p-1"
+           style="background-color:white;border-left: #FFFFFF none 0;align-items:flex-end">
+        <span class="fa fa-smile-o post-content-input-icons"
+              (click)="showEmojiPanel=true">
+        </span>
       </div>
-      <span class="fa fa-smile-o post-content-input-icons"
-            (click)="showEmojiPanel=true"></span>
+      <label id="upload_button"
+             class="btn input-group-text p-1"
+             style="background-color:white;border-left: #FFFFFF none 0;align-items:flex-end">
+        <input type="file" (change)="uploadFiles($event)">
+        <span class="fa fa-file-image-o post-content-input-icons"></span>
+      </label>
     </div>
-  </div>
+    <mat-progress-bar *ngIf="fileUploading" mode="indeterminate"></mat-progress-bar>
+    <img *ngIf="downloadURL" src="{{downloadURL}}" class="w-100 h-100">
   </div>
 
   <div class="form-group">

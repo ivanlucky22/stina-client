@@ -17,6 +17,7 @@ import {VerificationPageComponent} from "@app/feature/component/verification-pag
 import {environment} from "@env/environment";
 import {ConfidentialityPolicyPageComponent} from "@app/feature/component/confidentiality-policy-page/confidentiality-policy-page.component";
 import {UserAgreementPageComponent} from "@app/feature/component/user-agreement-page/user-agreement-page.component";
+import {AngularFireStorageModule} from "angularfire2/storage";
 
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     RouterModule.forRoot(
       appRoutes,
       // {enableTracing: true} // <-- debugging purposes only

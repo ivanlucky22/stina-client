@@ -9,11 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule, MatProgressBarModule} from "@angular/material";
 import {FirebaseService} from "@app/core/service/firebase.service";
-import {AngularFireModule} from "angularfire2";
-import {AngularFirestoreModule} from "angularfire2/firestore";
-import {AngularFireAuthModule} from "angularfire2/auth";
 import {FiltersFormComponent} from './component/filters-form/filters-form.component';
-import {AngularFireDatabaseModule} from "angularfire2/database";
 import {AuthService} from "@app/core/service/auth/auth.service";
 import {UserService} from "@app/core/service/auth/user.service";
 import {SidebarComponent} from './component/sidebar/sidebar.component';
@@ -29,7 +25,7 @@ import {HttpService} from "@app/core/service/http.service";
 import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 
 @NgModule({
@@ -44,7 +40,8 @@ import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
     ModalModule.forRoot(),
     TranslateModule,
     PickerModule,
-    EmojiModule
+    EmojiModule,
+    // FileUploadModule
   ],
   providers: [
     ArticleRepository,

@@ -23,19 +23,21 @@ export class UserDetailsPageComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(this.userService.authState().subscribe((user) => {
         this.user = user;
-        const id = this.route.snapshot.paramMap.get('id');
+        if (user) {
+          const id = this.route.snapshot.paramMap.get('id');
 
-        if (id && id !== user.uid) {
-          this.subscriptions.push(this.userService.getUser(id).subscribe(targetUser => {
-            this.targetUser = targetUser;
-          }));
+          if (id && id !== user.uid) {
+            this.subscriptions.push(this.userService.getUser(id).subscribe(targetUser => {
+              this.targetUser = targetUser;
+            }));
+          }
         }
         this.ref.detectChanges();
       })
     );
   }
 
-  ngOnDestroy(): void {
+  ngOnDestroy() {
     _.forEach(this.subscriptions, subscription => subscription.unsubscribe());
   }
 

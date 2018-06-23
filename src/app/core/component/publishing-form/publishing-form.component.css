@@ -6,6 +6,7 @@
 .post-content-input-icons{
   color: black;
   opacity: .5;
+  margin-bottom: 5px;
 }
 .post-content-input-icons:hover{
   opacity: 1;
@@ -14,4 +15,8 @@
 .post-content-input:focus {
   box-shadow: none;
   border-color: #ced4da;
+}
+
+#upload_button input[type=file] {
+  display:none;
 }
