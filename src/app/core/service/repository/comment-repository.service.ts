@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Comment} from "@app/core/model/comment";
+import {Comment} from "../../model/comment";
 
 @Injectable()
 export class CommentRepositoryService {

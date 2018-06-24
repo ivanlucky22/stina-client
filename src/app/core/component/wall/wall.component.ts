@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {Article} from '@app/core/model/article';
-import {ArticleRepository} from "@app/core/service/article-repository.service";
+import {ArticleRepository} from "@app/core/service/repository/article-repository.service";
 import * as firebase from "firebase";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Story} from "@app/core/model/story";

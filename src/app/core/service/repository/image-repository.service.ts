@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireStorage} from "angularfire2/storage";
 import * as firebase from "firebase";
 import {Subject} from "rxjs/internal/Subject";
+import { v4 as uuid } from 'uuid';
 
 @Injectable()
 export class ImageRepositoryService {
@@ -11,8 +12,8 @@ export class ImageRepositoryService {
   constructor(private storage: AngularFireStorage) {
   }
 
-  public saveImage(file: File, user) {
-    const filePath = "articles/" + user.uid;
+  public saveImage(file: File) {
+    const filePath = "articles/" + uuid();
 
     const fileRef = this.storage.ref(filePath);
     const task = fileRef.put(file);

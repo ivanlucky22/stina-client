@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
+import {CommentRepositoryService} from "@app/core/service/repository/comment-repository.service";
 import * as firebase from "firebase";
 import {Comment} from "@app/core/model/comment";
 import {Article} from "@app/core/model/article";
-import {ArticleRepository} from "@app/core/service/article-repository.service";
+import {ArticleRepository} from "@app/core/service/repository/article-repository.service";
 
 @Component({
   selector: 'app-comments-container',

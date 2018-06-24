@@ -4,7 +4,7 @@ import {NavigationComponent} from './component/navigation/navigation.component';
 import {PublishingFormComponent} from './component/publishing-form/publishing-form.component';
 import {WallComponent} from './component/wall/wall.component';
 import {MainPageComponent} from './component/main-page/main-page.component';
-import {ArticleRepository} from '@app/core/service/article-repository.service';
+import {ArticleRepository} from '@app/core/service/repository/article-repository.service';
 import {HttpClientModule} from "@angular/common/http";
 import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule, MatProgressBarModule} from "@angular/material";
@@ -18,7 +18,7 @@ import {FeatureModule} from "@app/feature/feature.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {ArticleFooterComponent} from './component/article/component/article-footer/article-footer.component';
 import {CommentsContainerComponent} from './component/article/component/comments-container/comments-container.component';
-import {CommentRepositoryService} from "@app/core/service/comment-repository.service";
+import {CommentRepositoryService} from "@app/core/service/repository/comment-repository.service";
 import {CommentComponent} from './component/article/component/comment/comment.component';
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
@@ -28,7 +28,7 @@ import {SharedModule} from "@app/shared/shared.module";
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import {ArticleService} from "@app/core/service/article.service";
-import {ImageRepositoryService} from "@app/core/service/image-repository.service";
+import {ImageRepositoryService} from "@app/core/service/repository/image-repository.service";
 
 @NgModule({
   imports: [
@@ -42,8 +42,7 @@ import {ImageRepositoryService} from "@app/core/service/image-repository.service
     ModalModule.forRoot(),
     TranslateModule,
     PickerModule,
-    EmojiModule,
-    // FileUploadModule
+    EmojiModule
   ],
   providers: [
     ArticleRepository,
@@ -71,8 +70,8 @@ import {ImageRepositoryService} from "@app/core/service/image-repository.service
   ],
   exports: [
     MainPageComponent,
-    NavigationComponent]
-
+    NavigationComponent
+  ]
 })
 export class CoreModule {
 }
