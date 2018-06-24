@@ -1,8 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Article} from '@app/core/model/article';
-import {ArticleRepository} from '@app/core/service/article-repository.service';
 import * as firebase from "firebase";
 import {AngularFireStorage} from "angularfire2/storage";
+import {ArticleService} from "@app/core/service/article.service";
+import {ArticleBody} from "@app/core/model/article-body";
+import {Story} from "@app/core/model/story";
 
 @Component({
   selector: 'app-publishing-form',
@@ -16,10 +18,10 @@ export class PublishingFormComponent implements OnInit {
   showEmojiPanel: boolean;
 
   fileUploading: boolean;
-  downloadURL: any;
+  downloadedPreviewImages: File[] = [];
+  downloadedImages: File[] = [];
 
-  constructor(private articleRepository: ArticleRepository,
-              private storage: AngularFireStorage) {
+  constructor(private articleService: ArticleService) {
   }
 
   ngOnInit() {
@@ -30,7 +32,11 @@ export class PublishingFormComponent implements OnInit {
       if (!newMessageTitle.value) {
         newMessageTitle.value = newMessageBody.innerText.slice(0, 50) + '...';
       }
-      this.articleRepository.save(new Article(newMessageTitle.value, newMessageBody.innerText, this.user));
+
+      // this.saveImage(this.downloadedImages[0]);
+      const story = new Story(newMessageBody.innerText);
+      story.image = this.downloadedImages[0];
+      this.articleService.save(newMessageTitle.value, story, this.user);
       this.onPublish.emit();
     }
     return false;
@@ -45,52 +51,14 @@ export class PublishingFormComponent implements OnInit {
   }
 
   uploadFiles(event: any) {
-    const file = event.target.files[0];
-    const filePath = "articles/" + this.user.uid;
-    const fileRef = this.storage.ref(filePath);
-    const task = fileRef.put(file);
+    const file: File = event.target.files[0];
 
-    task.task.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot: any) => {
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        switch (snapshot.state) {
-          case firebase.storage.TaskState.PAUSED: // or 'paused'
-            console.log('Upload is paused');
-            break;
-          case firebase.storage.TaskState.RUNNING: // or 'running'
-            console.log('Upload is running');
-            this.fileUploading = true;
-            break;
-        }
-      },
-      (error: any) => {
-        console.log('error1 ' + error);
-        switch (error.code) {
-          case 'storage/unauthorized':
-            console.log('User doesn\'t have permission to access the object');
+    const reader = new FileReader();
+    reader.onload = (loaded: any) => {
+      this.downloadedPreviewImages.push(loaded.target.result);
+      this.downloadedImages.push(file);
+    };
 
-            // User doesn't have permission to access the object
-            break;
-
-          case 'storage/canceled':
-            // User canceled the upload
-            break;
-
-          case 'storage/unknown':
-            console.log('Unknown error occurred, inspect error.serverResponse ' + error.serverResponse);
-
-            // Unknown error occurred, inspect error.serverResponse
-            break;
-        }
-      },
-      () => {
-        // Upload completed successfully, now we can get the download URL
-        task.task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          this.downloadURL = downloadURL;
-          this.fileUploading = false;
-          console.log('File available at', downloadURL);
-        });
-      }
-    );
+    reader.readAsDataURL(file);
   }
 }

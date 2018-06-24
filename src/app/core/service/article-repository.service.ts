@@ -13,8 +13,8 @@ export class ArticleRepository {
     this.firebaseService.save(this.toPureJavaScript(article));
   }
 
-  onArticleChanged(aFunction: any) {
-    return this.firebaseService.onArticleChanged(aFunction);
+  onArticlesChanged(aFunction: any) {
+    return this.firebaseService.onArticlesChanged(aFunction);
   }
 
   update(article: Article) {

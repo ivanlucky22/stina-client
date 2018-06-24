@@ -3,6 +3,7 @@ import {Article} from '@app/core/model/article';
 import {ArticleRepository} from "@app/core/service/article-repository.service";
 import * as firebase from "firebase";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
+import {Story} from "@app/core/model/story";
 
 @Component({
   selector: 'app-wall',
@@ -25,7 +26,7 @@ export class WallComponent implements OnInit {
   ngOnInit() {
     const self = this;
 
-    self.articleRepository.onArticleChanged(function (snapshot) {
+    self.articleRepository.onArticlesChanged(function (snapshot) {
       self.articlesLoaded.emit();
       snapshot.docChanges().forEach(function (change) {
         if (change.type === "added") {
@@ -37,7 +38,7 @@ export class WallComponent implements OnInit {
     });
 
     this.preLoadedArticle = new Article('Пиши на всю страну анонимно!',
-      'У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать', null);
+      new Story('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать'), null);
   }
 
   openModal(template: TemplateRef<any>) {

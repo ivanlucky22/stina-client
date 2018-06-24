@@ -31,7 +31,7 @@ export class FirebaseService {
     return this.articlesCollection.doc(id);
   }
 
-  onArticleChanged(aFunction) {
+  onArticlesChanged(aFunction) {
     return this.db.firestore.collection(this.ARTICLES_COLLECTION).orderBy('timestamp', 'desc').limit(10).onSnapshot(aFunction);
   }
 

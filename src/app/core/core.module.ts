@@ -27,6 +27,8 @@ import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
 import {PickerModule} from '@ctrl/ngx-emoji-mart';
 import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
+import {ArticleService} from "@app/core/service/article.service";
+import {ImageRepositoryService} from "@app/core/service/image-repository.service";
 
 @NgModule({
   imports: [
@@ -45,6 +47,8 @@ import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
   ],
   providers: [
     ArticleRepository,
+    ArticleService,
+    ImageRepositoryService,
     FirebaseService,
     AuthService,
     UserService,

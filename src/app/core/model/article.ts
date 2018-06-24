@@ -2,12 +2,13 @@ import * as moment from 'moment';
 import {Comment} from "@app/core/model/comment";
 import {AuthorUser} from "@app/core/model/authorUser";
 import * as firebase from "firebase";
+import {ArticleBody} from "@app/core/model/article-body";
 
 export class Article {
 
   public id: string;
   public title: string;
-  public body: string;
+  public body: ArticleBody;
   public timestamp: number;
   public likes: Array<string> = [];
   public dislikes: Array<string> = [];
@@ -15,7 +16,7 @@ export class Article {
   public comments: Array<Comment> = [];
   public author: AuthorUser;
 
-  constructor(title: string, body: string, user: firebase.User) {
+  constructor(title: string, body: ArticleBody, user: firebase.User) {
     this.title = title;
     this.body = body;
     this.timestamp = moment().unix() * 1000;
