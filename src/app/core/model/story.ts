@@ -1,10 +1,10 @@
 import {ArticleBody} from "@app/core/model/article-body";
+import {StoryItem} from "@app/core/model/story-item";
 
 export class Story implements ArticleBody {
-  text: string;
-  image: any;
+  items: StoryItem[];
 
-  constructor(text: string) {
-    this.text = text;
+  constructor(storyItems: StoryItem[]) {
+    this.items = storyItems;
   }
 }

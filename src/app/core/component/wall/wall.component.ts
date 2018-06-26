@@ -4,6 +4,7 @@ import {ArticleRepository} from "@app/core/service/repository/article-repository
 import * as firebase from "firebase";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Story} from "@app/core/model/story";
+import {TextStoryItem} from "@app/core/model/text-story-item";
 
 @Component({
   selector: 'app-wall',
@@ -38,7 +39,7 @@ export class WallComponent implements OnInit {
     });
 
     this.preLoadedArticle = new Article('Пиши на всю страну анонимно!',
-      new Story('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать'), null);
+      new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null);
   }
 
   openModal(template: TemplateRef<any>) {

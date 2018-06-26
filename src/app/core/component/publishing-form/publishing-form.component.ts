@@ -1,10 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Article} from '@app/core/model/article';
 import * as firebase from "firebase";
-import {AngularFireStorage} from "angularfire2/storage";
+import * as _ from "lodash";
 import {ArticleService} from "@app/core/service/article.service";
-import {ArticleBody} from "@app/core/model/article-body";
 import {Story} from "@app/core/model/story";
+import {StoryItem, StoryItemType} from "@app/core/model/story-item";
+import {TextStoryItem} from "@app/core/model/text-story-item";
+import {ImageStoryItem} from "@app/core/model/image-story-item";
 
 @Component({
   selector: 'app-publishing-form',
@@ -15,50 +16,39 @@ export class PublishingFormComponent implements OnInit {
 
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
-  showEmojiPanel: boolean;
+  storyItems: StoryItem[] = [];
 
   fileUploading: boolean;
-  downloadedPreviewImages: File[] = [];
-  downloadedImages: File[] = [];
 
   constructor(private articleService: ArticleService) {
+    this.storyItems.push(new TextStoryItem());
   }
 
   ngOnInit() {
   }
 
-  publishMessage(newMessageTitle: HTMLInputElement, newMessageBody: HTMLSpanElement) {
-    if (newMessageBody.innerText) {
+  publishMessage(newMessageTitle: HTMLInputElement) {
+    const textContent = this.getTextContent();
+    if (textContent) {
       if (!newMessageTitle.value) {
-        newMessageTitle.value = newMessageBody.innerText.slice(0, 50) + '...';
+        newMessageTitle.value = textContent.slice(0, 47) + '...';
       }
 
-      // this.saveImage(this.downloadedImages[0]);
-      const story = new Story(newMessageBody.innerText);
-      story.image = this.downloadedImages[0];
+      const story = new Story(this.storyItems);
       this.articleService.save(newMessageTitle.value, story, this.user);
       this.onPublish.emit();
     }
     return false;
   }
 
-  addEmoji(event, newMessageBody: HTMLSpanElement) {
-    newMessageBody.innerText += event.emoji.native;
+
+  private getTextContent() {
+    const firstTextItem: StoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT));
+    return firstTextItem.data;
   }
 
-  emojiClicked(event: any, newMessageBody: HTMLSpanElement) {
-    this.addEmoji(event, newMessageBody);
-  }
-
-  uploadFiles(event: any) {
-    const file: File = event.target.files[0];
-
-    const reader = new FileReader();
-    reader.onload = (loaded: any) => {
-      this.downloadedPreviewImages.push(loaded.target.result);
-      this.downloadedImages.push(file);
-    };
-
-    reader.readAsDataURL(file);
+  addImageStoryItem(file: File) {
+    this.storyItems.push(new ImageStoryItem(file));
+    this.storyItems.push(new TextStoryItem());
   }
 }

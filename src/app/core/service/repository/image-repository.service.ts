@@ -1,13 +1,16 @@
 import {Injectable} from '@angular/core';
 import {AngularFireStorage} from "angularfire2/storage";
 import * as firebase from "firebase";
-import {Subject} from "rxjs/internal/Subject";
-import { v4 as uuid } from 'uuid';
+import {v4 as uuid} from 'uuid';
+import {ImageStoryItem} from "@app/core/model/image-story-item";
+import {Observable} from "rxjs/internal/Observable";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class ImageRepositoryService {
   private fileUploading: boolean;
-  downloadLinkObservable: Subject<string> = new Subject();
+
+  // downloadLinkObservable: Subject<string> = new Subject();
 
   constructor(private storage: AngularFireStorage) {
   }
@@ -18,7 +21,8 @@ export class ImageRepositoryService {
     const fileRef = this.storage.ref(filePath);
     const task = fileRef.put(file);
 
-    task.task.on(firebase.storage.TaskEvent.STATE_CHANGED,
+
+    return task.task.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot: any) => {
         // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
         switch (snapshot.state) {
@@ -53,13 +57,15 @@ export class ImageRepositoryService {
       },
       () => {
         // Upload completed successfully, now we can get the download URL
-        task.task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          this.downloadLinkObservable.next(downloadURL);
-          // downloadedPreviewImages.push(downloadURL);
-          // this.fileUploading = false;
-          // console.log('File available at', downloadURL);
-        });
-      }
+        return task.task.snapshot.ref.getDownloadURL();
+      });
+  }
+
+  saveImages(imageStoryItems: ImageStoryItem[]) {
+    return Observable.create(imageStoryItems).pipe(
+      map((imageStoryItem: ImageStoryItem) => {
+        return this.saveImage(imageStoryItem.image);
+      })
     );
   }
 }

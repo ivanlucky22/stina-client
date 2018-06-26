@@ -8,44 +8,14 @@
     </div>
   </div>
 
-  <div class="input-group mb-3">
-    <span class="form-control text-justify post-content-input"
-          contenteditable="true"
-          style="border-right:none"
-          #newMessageBody
-          (focus)="showEmojiPanel=false">
-    </span>
-    <div class="input-group-append">
-      <div class="btn input-group-text p-1"
-           style="background-color:white;border-left: #FFFFFF none 0;align-items:flex-end">
-        <span class="fa fa-smile-o post-content-input-icons"
-              (click)="showEmojiPanel=true">
-        </span>
-      </div>
-      <label id="upload_button"
-             class="btn input-group-text p-1"
-             style="background-color:white;border-left: #FFFFFF none 0;align-items:flex-end">
-        <input type="file" (change)="uploadFiles($event)">
-        <span class="fa fa-file-image-o post-content-input-icons"></span>
-      </label>
-    </div>
-    <mat-progress-bar *ngIf="fileUploading" mode="indeterminate"></mat-progress-bar>
+  <div *ngFor="let storyItem of storyItems">
+    <app-story-item (onFileUploaded)="addImageStoryItem($event)" [storyItem]="storyItem"></app-story-item>
   </div>
-  <div class="form-row">
-    <app-pictures-upload-container [pictures]="downloadedPreviewImages"></app-pictures-upload-container>
-  </div>
+
   <div class="form-group">
     <button class="btn btn-lg btn-success w-100"
-            (click)="publishMessage(newMessageTitle, newMessageBody)"> {{'add.article.button.caption'|translate}}
+            (click)="publishMessage(newMessageTitle)"> {{'add.article.button.caption'|translate}}
     </button>
   </div>
-  <emoji-mart [hidden]="!showEmojiPanel"
-              title="Pick your emoji…"
-              emoji=""
-              set="messenger"
-              [style]="{ position: 'absolute' }"
-              [showPreview]="false"
-              [include]="'recent,people'"
-              (emojiClick)="emojiClicked($event, newMessageBody)"
-  ></emoji-mart>
+
 </form>

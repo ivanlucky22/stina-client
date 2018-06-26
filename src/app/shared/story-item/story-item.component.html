@@ -1,0 +1,10 @@
+<div [ngSwitch]="storyItem.type">
+
+  <ng-container *ngSwitchCase="storyItemType.TEXT">
+    <app-text-story-item (onFileUploaded)="fileUploaded($event)" [storyItem]="storyItem"></app-text-story-item>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="storyItemType.IMAGE">
+    <app-image-story-item [storyItem]="storyItem"></app-image-story-item>
+  </ng-container>
+</div>

@@ -25,8 +25,6 @@ import {HttpService} from "@app/core/service/http.service";
 import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
-import {PickerModule} from '@ctrl/ngx-emoji-mart';
-import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
 import {ArticleService} from "@app/core/service/article.service";
 import {ImageRepositoryService} from "@app/core/service/repository/image-repository.service";
 
@@ -40,9 +38,7 @@ import {ImageRepositoryService} from "@app/core/service/repository/image-reposit
     FeatureModule,
     RouterModule,
     ModalModule.forRoot(),
-    TranslateModule,
-    PickerModule,
-    EmojiModule
+    TranslateModule
   ],
   providers: [
     ArticleRepository,
