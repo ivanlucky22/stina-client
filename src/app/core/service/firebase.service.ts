@@ -1,23 +1,21 @@
 import {Injectable} from '@angular/core';
 import {Article} from "@app/core/model/article";
-import {AngularFirestore} from "angularfire2/firestore";
+import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "angularfire2/firestore";
 import {Observable} from "rxjs";
 import * as firebase from "firebase";
 
 @Injectable()
 export class FirebaseService {
 
-  private articles: Observable<Article[]>;
-  private ARTICLES_COLLECTION = 'arcticles'; // TODO fix collection name
+  private ARTICLES_COLLECTION = 'articles';
   private articlesCollection;
 
-  constructor(private db: AngularFirestore) {
-    this.articlesCollection = db.collection<Article>(this.ARTICLES_COLLECTION);
-    this.articles = db.collection<Article>(this.ARTICLES_COLLECTION, ref => ref.orderBy('timestamp', 'desc').limit(20)).valueChanges();
+  constructor(private afs: AngularFirestore) {
+    this.articlesCollection = afs.collection<Article>(this.ARTICLES_COLLECTION);
   }
 
   save(article: Article) {
-    const id = this.db.createId();
+    const id = this.afs.createId();
     article.id = id;
     this.articlesCollection.doc(id).set(article)
       .then((result) => {
@@ -31,11 +29,14 @@ export class FirebaseService {
     return this.articlesCollection.doc(id);
   }
 
-  onArticlesChanged(aFunction) {
-    return this.db.firestore.collection(this.ARTICLES_COLLECTION).orderBy('timestamp', 'desc').limit(10).onSnapshot(aFunction);
+  onArticlesChanged(): Observable<DocumentChangeAction<Article>[]> {
+    const resultCollection = this.afs.collection<Article>(this.ARTICLES_COLLECTION,
+      ref => ref.orderBy('timestamp', 'desc')
+        .limit(20));
+    return resultCollection.stateChanges();
   }
 
   getUserRefById(id: string): Observable<firebase.User> {
-    return this.db.doc<firebase.User>('users/' + id).valueChanges();
+    return this.afs.doc<firebase.User>('users/' + id).valueChanges();
   }
 }

@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
 import * as _ from "lodash";
-import {ArticleService} from "@app/core/service/article.service";
-import {Story} from "@app/core/model/story";
-import {StoryItem, StoryItemType} from "@app/core/model/story-item";
-import {TextStoryItem} from "@app/core/model/text-story-item";
-import {ImageStoryItem} from "@app/core/model/image-story-item";
+import {ArticleService} from "../../../../core/service/article.service";
+import {Story} from "../../../../core/model/story";
+import {StoryItem, StoryItemType} from "../../../../core/model/story-item";
+import {TextStoryItem} from "../../../../core/model/text-story-item";
+import {ImageStoryItem} from "../../../../core/model/image-story-item";
 
 @Component({
   selector: 'app-publishing-form',
@@ -43,8 +43,8 @@ export class PublishingFormComponent implements OnInit {
 
 
   private getTextContent() {
-    const firstTextItem: StoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT));
-    return firstTextItem.data;
+    const firstTextItem: TextStoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT)) as TextStoryItem;
+    return firstTextItem.editorText;
   }
 
   addImageStoryItem(file: File) {

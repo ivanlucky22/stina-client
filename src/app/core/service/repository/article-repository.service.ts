@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Article} from '../../model/article';
 import {FirebaseService} from "../firebase.service";
 import {Observable} from "rxjs";
+import {AngularFirestoreCollection, DocumentChangeAction} from "angularfire2/firestore";
 
 @Injectable()
 export class ArticleRepository {
@@ -13,8 +14,8 @@ export class ArticleRepository {
     this.firebaseService.save(this.toPureJavaScript(article));
   }
 
-  onArticlesChanged(aFunction: any) {
-    return this.firebaseService.onArticlesChanged(aFunction);
+  onArticlesChanged(): Observable<DocumentChangeAction<Article>[]> {
+    return this.firebaseService.onArticlesChanged();
   }
 
   update(article: Article) {

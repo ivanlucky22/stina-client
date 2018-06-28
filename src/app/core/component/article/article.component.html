@@ -8,8 +8,9 @@
         <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
       </div>
       <h5 class="card-title">{{article.title}}</h5>
-      <p class="card-text">{{article.body.text}}</p>
-      <img src="{{article.body.image}}" class="w-100">
+      <ng-container *ngFor="let item of article.body.items">
+        <app-story-item [storyItem]="item"></app-story-item>
+      </ng-container>
       <app-article-footer [article]="article"
                           (showCommentsEvent)="showComments()"></app-article-footer>
     </div>

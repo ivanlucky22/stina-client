@@ -1,9 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
+import {AngularFireAuth} from "angularfire2/auth";
 import * as firebase from "firebase";
-import {AuthorizationState} from "@app/feature/enum/authorization-state.enum";
-import {Theme} from "ngx-auth-firebaseui";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -14,14 +12,12 @@ export class SignUpFormComponent implements OnInit {
 
   userForm: FormGroup;
   @Input() user: firebase.User;
-  state: AuthorizationState;
-  stateEnum = AuthorizationState;
-  themes = Theme;
 
   constructor(private afAuth: AngularFireAuth,
               private ref: ChangeDetectorRef) {
 
   }
+
   printUser(event) {
     console.log(event);
   }
@@ -29,9 +25,8 @@ export class SignUpFormComponent implements OnInit {
   printError(event) {
     console.error(event);
   }
-  ngOnInit() {
-    this.state = AuthorizationState.UNAUTHORIZED;
 
+  ngOnInit() {
     this.userForm = new FormGroup({
       'email': new FormControl('', [
         Validators.required,
@@ -47,10 +42,10 @@ export class SignUpFormComponent implements OnInit {
 
   validateAndAuthorize() {
     if (this.userForm.valid) {
-      this.authorize();
+      // this.authorize();
     }
   }
-
+/*
   private authorize() {
     const self = this;
     const actionCodeSettings = {
@@ -88,5 +83,5 @@ export class SignUpFormComponent implements OnInit {
         // Some error occurred, you can inspect the code: error.code
       });
   }
-
+*/
 }

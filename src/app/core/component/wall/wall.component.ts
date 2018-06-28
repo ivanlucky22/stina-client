@@ -1,4 +1,14 @@
-import {ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewChild
+} from '@angular/core';
 import {Article} from '@app/core/model/article';
 import {ArticleRepository} from "@app/core/service/repository/article-repository.service";
 import * as firebase from "firebase";
@@ -11,13 +21,14 @@ import {TextStoryItem} from "@app/core/model/text-story-item";
   templateUrl: './wall.component.html',
   styleUrls: ['./wall.component.css']
 })
-export class WallComponent implements OnInit {
+export class WallComponent implements OnInit, OnDestroy {
 
   articles: Article[] = [];
   @Output() articlesLoaded: EventEmitter<any> = new EventEmitter();
   preLoadedArticle: Article;
   @Input() user: firebase.User;
   @ViewChild("publishArticleModal") modalRef: BsModalRef;
+  subscriptions = [];
 
   constructor(private articleRepository: ArticleRepository,
               private modalService: BsModalService,
@@ -27,16 +38,18 @@ export class WallComponent implements OnInit {
   ngOnInit() {
     const self = this;
 
-    self.articleRepository.onArticlesChanged(function (snapshot) {
+    const onChangeSubscription = self.articleRepository.onArticlesChanged().subscribe(documentChanges => {
       self.articlesLoaded.emit();
-      snapshot.docChanges().forEach(function (change) {
+      documentChanges.forEach(function (change) {
         if (change.type === "added") {
-          console.log("New article: ", change.doc.data());
-          self.articles.unshift(change.doc.data());
+          const newArticle = change.payload.doc.data();
+          console.log("New article: ", newArticle);
+          self.articles.unshift(newArticle);
           self.ref.detectChanges();
         }
       });
     });
+    this.subscriptions.push(onChangeSubscription);
 
     this.preLoadedArticle = new Article('Пиши на всю страну анонимно!',
       new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null);
@@ -48,5 +61,9 @@ export class WallComponent implements OnInit {
 
   closeModal() {
     this.modalRef.hide();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }
