@@ -1,9 +1,10 @@
-.post-content-input-icons{
+.post-content-input-icons {
   color: black;
   opacity: .5;
   margin-bottom: 5px;
 }
-.post-content-input-icons:hover{
+
+.post-content-input-icons:hover {
   opacity: 1;
 }
 
@@ -13,5 +14,11 @@
 }
 
 #upload_button input[type=file] {
-  display:none;
+  display: none;
+}
+
+.text-buttons-panel {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 }

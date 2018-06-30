@@ -9,6 +9,7 @@ import {StoryItemComponent} from './story-item/story-item.component';
 import {TextStoryItemComponent} from './text-story-item/text-story-item.component';
 import {ImageStoryItemComponent} from './image-story-item/image-story-item.component';
 import {FormsModule} from "@angular/forms";
+import {FateModule} from "fate-editor";
 
 @NgModule({
   imports: [
@@ -16,9 +17,16 @@ import {FormsModule} from "@angular/forms";
     MatProgressBarModule,
     RouterModule,
     EmojiModule,
-    PickerModule
+    PickerModule,
+    FormsModule,
+    FateModule
   ],
-  declarations: [UserIconComponent, StoryItemComponent, TextStoryItemComponent, ImageStoryItemComponent],
+  declarations: [
+    UserIconComponent,
+    StoryItemComponent,
+    TextStoryItemComponent,
+    ImageStoryItemComponent
+  ],
   exports: [
     UserIconComponent,
     StoryItemComponent

@@ -17,12 +17,13 @@ export class TextStoryItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  addEmoji(event, newMessageBody: HTMLSpanElement) {
-    newMessageBody.innerText += event.emoji.native;
+  addEmoji(event) {
+    // this.storyItem.data+=event.emoji.native
+    // newMessageBody.innerText += event.emoji.native;
   }
 
-  emojiClicked(event: any, newMessageBody: HTMLSpanElement) {
-    this.addEmoji(event, newMessageBody);
+  emojiClicked(event: any) {
+    this.addEmoji(event);
   }
 
   uploadFiles(event) {
@@ -32,4 +33,7 @@ export class TextStoryItemComponent implements OnInit {
     }
   }
 
+  pasteUrl(data: any) {
+    console.log(data)
+  }
 }

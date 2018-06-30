@@ -49,7 +49,7 @@ export class PublishingFormComponent implements OnInit {
 
   addImageStoryItem(file: File) {
     this.storyItems.push(new ImageStoryItem(file));
-    this.storyItems.push(new TextStoryItem());
+    this.storyItems.push(this.getEditTextStoryItem());
   }
 
   private getEditTextStoryItem() {

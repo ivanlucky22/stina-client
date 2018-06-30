@@ -7,7 +7,9 @@
                        [classes]="'user-icon-css-md p-2'"></app-user-icon>
         <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
       </div>
-      <h5 class="card-title">{{article.title}}</h5>
+      <h5 class="card-title">
+        <span [innerHTML]="article.title"></span>
+      </h5>
       <ng-container *ngFor="let item of article.body.items">
         <app-story-item [storyItem]="item"></app-story-item>
       </ng-container>

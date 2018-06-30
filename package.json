@@ -32,6 +32,7 @@
     "angularfire2": "5.0.0-rc.11",
     "bootstrap": "^4.1.0",
     "core-js": "^2.4.1",
+    "fate-editor": "^1.7.1",
     "firebase": "^5.0.4",
     "font-awesome": "^4.7.0",
     "jquery": "^3.3.1",
@@ -41,6 +42,7 @@
     "ngx-auth-firebaseui": "^1.1.1",
     "ngx-bootstrap": "^3.0.0",
     "ngx-drag-and-drop-lists": "^1.1.9",
+    "ngx-quill-editor": "^2.2.2",
     "rxjs": "^6.2.0",
     "zone.js": "^0.8.26"
   },
