@@ -1,12 +1,12 @@
-<div *ngIf="storyItem.data">
+<div *ngIf="!storyItem.editMode">
   <span>{{storyItem.data}}</span>
 </div>
-<div *ngIf="!storyItem.data" class="input-group mb-3">
+<div *ngIf="storyItem.editMode" class="input-group mb-3">
   <span class="form-control text-justify post-content-input"
         contenteditable="true"
         style="border-right:none"
         #newMessageBody
-        (input)="storyItem.editorText=$event.target.textContent"
+        (input)="storyItem.data=$event.target.textContent"
         (focus)="showEmojiPanel=false">
   </span>
   <div class="input-group-append">

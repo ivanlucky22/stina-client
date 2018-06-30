@@ -2,7 +2,7 @@ import {StoryItem, StoryItemType} from "@app/core/model/story-item";
 
 export class TextStoryItem implements StoryItem {
   data: any;
-  editorText: any;
+  editMode: boolean;
   type: StoryItemType;
 
   constructor(data: string = "") {

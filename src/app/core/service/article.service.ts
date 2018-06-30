@@ -14,24 +14,17 @@ export class ArticleService {
               private imageRepository: ImageRepositoryService) {
   }
 
-  //
-  // save(article: Article) {
-  //   this.articleRepository.save(article);
-  // }
-
   save(title: string, story: Story, user: firebase.User) {
-    // this.imageRepository.downloadLinkObservable.asObservable().pipe(first()).subscribe(dowloadLink => {
-    //   story.items = dowloadLink;
-    //   this.articleRepository.save(new Article(title, story, user));
-    // });
 
     const imageStoryItems: ImageStoryItem[] = story.items.filter(item => item.type === StoryItemType.IMAGE).map(s => s as ImageStoryItem);
     if (imageStoryItems.length) {
-      this.imageRepository.saveImages(imageStoryItems).subscribe(result => {
-        console.log(result);
+      const saveImages = this.imageRepository.saveImages(imageStoryItems);
+      saveImages.subscribe(() => {
+        console.log('Next');
+        this.articleRepository.save(new Article(title, story, user));
       });
     } else {
-        this.articleRepository.save(new Article(title, story, user));
+      this.articleRepository.save(new Article(title, story, user));
     }
   }
 }

@@ -21,7 +21,7 @@ export class PublishingFormComponent implements OnInit {
   fileUploading: boolean;
 
   constructor(private articleService: ArticleService) {
-    this.storyItems.push(new TextStoryItem());
+    this.storyItems.push(this.getEditTextStoryItem());
   }
 
   ngOnInit() {
@@ -41,14 +41,20 @@ export class PublishingFormComponent implements OnInit {
     return false;
   }
 
-
   private getTextContent() {
     const firstTextItem: TextStoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT)) as TextStoryItem;
-    return firstTextItem.editorText;
+    return firstTextItem.data;
   }
+
 
   addImageStoryItem(file: File) {
     this.storyItems.push(new ImageStoryItem(file));
     this.storyItems.push(new TextStoryItem());
+  }
+
+  private getEditTextStoryItem() {
+    const textStoryItem = new TextStoryItem();
+    textStoryItem.editMode = true;
+    return textStoryItem;
   }
 }

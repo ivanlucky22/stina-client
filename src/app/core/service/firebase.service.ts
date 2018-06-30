@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Article} from "@app/core/model/article";
-import {AngularFirestore, AngularFirestoreCollection, DocumentChangeAction} from "angularfire2/firestore";
+import {AngularFirestore, DocumentChangeAction} from "angularfire2/firestore";
 import {Observable} from "rxjs";
 import * as firebase from "firebase";
 
@@ -31,7 +31,7 @@ export class FirebaseService {
 
   onArticlesChanged(): Observable<DocumentChangeAction<Article>[]> {
     const resultCollection = this.afs.collection<Article>(this.ARTICLES_COLLECTION,
-      ref => ref.orderBy('timestamp', 'desc')
+      ref => ref.orderBy('timestamp', 'asc')
         .limit(20));
     return resultCollection.stateChanges();
   }

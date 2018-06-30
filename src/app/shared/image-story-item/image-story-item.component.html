@@ -1,1 +1,6 @@
-<img src="{{imagePreview}}" class="image-preview"/>
+<ng-container *ngIf="!storyItem.data">
+  <img src="{{imagePreview}}" class="image-preview"/>
+</ng-container>
+<ng-container *ngIf="storyItem.data">
+  <img src="{{storyItem.data}}" class="image-preview"/>
+</ng-container>

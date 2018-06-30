@@ -16,11 +16,13 @@ export class ImageStoryItemComponent implements OnInit {
 
   ngOnInit() {
 
-    const reader = new FileReader();
-    reader.onload = (loaded: any) => {
-      this.imagePreview = loaded.target.result;
-    };
-    reader.readAsDataURL(this.storyItem.image);
+    if (this.storyItem.previewImage) {
+      const reader = new FileReader();
+      reader.onload = (loaded: any) => {
+        this.imagePreview = loaded.target.result;
+      };
+      reader.readAsDataURL(this.storyItem.previewImage);
+    }
   }
 
 }
