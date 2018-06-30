@@ -27,6 +27,8 @@ import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
 import {ArticleService} from "@app/core/service/article.service";
 import {ImageRepositoryService} from "@app/core/service/repository/image-repository.service";
+import {LabelRepositoryService} from "@app/core/service/repository/label-repository.service";
+import {LabelService} from "@app/core/service/label.service";
 
 @NgModule({
   imports: [
@@ -49,7 +51,9 @@ import {ImageRepositoryService} from "@app/core/service/repository/image-reposit
     UserService,
     CommentRepositoryService,
     HttpService,
-    NameGenerationService
+    NameGenerationService,
+    LabelRepositoryService,
+    LabelService
   ],
   declarations: [
     NavigationComponent,

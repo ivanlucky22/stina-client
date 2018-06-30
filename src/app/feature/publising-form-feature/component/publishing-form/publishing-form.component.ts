@@ -6,6 +6,7 @@ import {Story} from "../../../../core/model/story";
 import {StoryItem, StoryItemType} from "../../../../core/model/story-item";
 import {TextStoryItem} from "../../../../core/model/text-story-item";
 import {ImageStoryItem} from "../../../../core/model/image-story-item";
+import {LabelService} from "@app/core/service/label.service";
 
 @Component({
   selector: 'app-publishing-form',
@@ -17,14 +18,18 @@ export class PublishingFormComponent implements OnInit {
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
   storyItems: StoryItem[] = [];
-
+  labels: any[];
   fileUploading: boolean;
 
-  constructor(private articleService: ArticleService) {
+  constructor(private articleService: ArticleService,
+              private labelService: LabelService) {
     this.storyItems.push(this.getEditTextStoryItem());
   }
 
   ngOnInit() {
+    // this.labelService.getLabels().subscribe(labels => {
+    //   this.labels = labels;
+    // });
   }
 
   publishMessage(newMessageTitle: HTMLInputElement) {

@@ -17,6 +17,7 @@ import {ConfidentialityPolicyPageComponent} from "@app/feature/shared-feature/co
 import {UserAgreementPageComponent} from "@app/feature/shared-feature/component/user-agreement-page/user-agreement-page.component";
 import {PageNotFoundComponent} from "@app/feature/shared-feature/component/page-not-found/page-not-found.component";
 import {LanguageComponent} from "@app/feature/shared-feature/component/language/language.component";
+import {SelectModule} from "ng2-select";
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {LanguageComponent} from "@app/feature/shared-feature/component/language/
     BrowserAnimationsModule,
     MatIconModule,
     SharedModule,
+    SelectModule,
     NgxAuthFirebaseUIModule.forRoot(environment.firebaseConfig),
   ],
   declarations: [

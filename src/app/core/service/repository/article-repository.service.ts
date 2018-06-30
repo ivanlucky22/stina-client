@@ -7,15 +7,15 @@ import {AngularFirestoreCollection, DocumentChangeAction} from "angularfire2/fir
 @Injectable()
 export class ArticleRepository {
 
+  private ARTICLES_COLLECTION = 'articles';
+  articlesCollection;
+
   constructor(private firebaseService: FirebaseService) {
+    this.articlesCollection = firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION);
   }
 
   save(article: Article) {
-    this.firebaseService.save(this.toPureJavaScript(article));
-  }
-
-  onArticlesChanged(): Observable<DocumentChangeAction<Article>[]> {
-    return this.firebaseService.onArticlesChanged();
+    this.firebaseService.save(this.toPureJavaScript(article), this.articlesCollection);
   }
 
   update(article: Article) {
@@ -27,6 +27,13 @@ export class ArticleRepository {
         // The document probably doesn't exist.
         console.error("Error updating document: ", error);
       });
+  }
+
+  public onArticlesChanged(): Observable<DocumentChangeAction<Article>[]> {
+    const resultCollection = this.firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION,
+      ref => ref.orderBy('timestamp', 'asc')
+        .limit(20));
+    return resultCollection.stateChanges();
   }
 
   private toPureJavaScript(article: Article) {
