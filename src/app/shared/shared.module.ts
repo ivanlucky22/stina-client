@@ -10,6 +10,7 @@ import {TextStoryItemComponent} from './text-story-item/text-story-item.componen
 import {ImageStoryItemComponent} from './image-story-item/image-story-item.component';
 import {FormsModule} from "@angular/forms";
 import {FateModule} from "fate-editor";
+import {TranslateModule} from "@ngx-translate/core";
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import {FateModule} from "fate-editor";
     EmojiModule,
     PickerModule,
     FormsModule,
-    FateModule
+    FateModule,
+    TranslateModule
   ],
   declarations: [
     UserIconComponent,

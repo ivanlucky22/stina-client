@@ -5,6 +5,7 @@
 
   <fate-material class="form-control text-justify post-content-input"
                  [(ngModel)]="storyItem.data"
+                 [placeholder]="'hello'"
                  (focus)="showEmojiPanel=false"></fate-material>
   <div class="input-group-append text-buttons-panel">
     <div class="btn input-group-text p-1"
@@ -17,7 +18,7 @@
            class="btn input-group-text p-1"
            style="background-color:white;border: #FFFFFF none 0;align-items:flex-end">
       <input type="file" (change)="uploadFiles($event)">
-      <span class="fa fa-file-image-o post-content-input-icons"></span>
+      <span class="fa fa-picture-o post-content-input-icons"></span>
     </label>
   </div>
 </div>

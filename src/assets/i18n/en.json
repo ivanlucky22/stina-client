@@ -7,6 +7,7 @@
   "article.comment.like.caption": "Like",
   "article.comment.reply.caption": "Reply",
   "add.article.button.caption": "Publish post",
+  "add.article.body.placeholder": "Tell us your story...",
   "comment.form.input.placaholder.caption": "Write your comment here...",
   "sign.in.caption": "Sign in via",
   "or.sign.in.via": "Or sign in via"
