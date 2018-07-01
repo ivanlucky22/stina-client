@@ -7,15 +7,15 @@
                        [classes]="'user-icon-css-md p-2'"></app-user-icon>
         <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
       </div>
-      <h5 class="card-title">
-        <span [innerHTML]="article.title"></span>
-      </h5>
+      <div class="row">
+        <h5 class="col">
+          <span class="dont-break-out">{{article.title}}</span>
+        </h5>
+      </div>
       <ng-container *ngFor="let item of article.body.items">
         <app-story-item [storyItem]="item"></app-story-item>
       </ng-container>
-      <ng-container *ngFor="let label of article.labels">
-        <span>{{label.text}}</span>
-      </ng-container>
+      <app-tags-container [labels]="article.labels"></app-tags-container>
       <app-article-footer [article]="article"
                           (showCommentsEvent)="showComments()"></app-article-footer>
     </div>

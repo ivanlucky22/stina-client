@@ -11,6 +11,7 @@ import {ImageStoryItemComponent} from './image-story-item/image-story-item.compo
 import {FormsModule} from "@angular/forms";
 import {FateModule} from "fate-editor";
 import {TranslateModule} from "@ngx-translate/core";
+import { TagsContainerComponent } from './tags-container/tags-container.component';
 
 @NgModule({
   imports: [
@@ -28,10 +29,12 @@ import {TranslateModule} from "@ngx-translate/core";
     StoryItemComponent,
     TextStoryItemComponent,
     ImageStoryItemComponent,
+    TagsContainerComponent,
   ],
   exports: [
     UserIconComponent,
-    StoryItemComponent
+    StoryItemComponent,
+    TagsContainerComponent
   ]
 })
 export class SharedModule {
