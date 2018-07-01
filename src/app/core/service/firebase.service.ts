@@ -1,34 +1,28 @@
 import {Injectable} from '@angular/core';
-import {Article} from "@app/core/model/article";
 import {AngularFirestore} from "angularfire2/firestore";
-import {Observable} from "rxjs";
-import * as firebase from "firebase";
+import {FireBaseModel} from "@app/core/model/fire-base-model";
 
 @Injectable()
-export class FirebaseService {
+export class FirebaseService<T extends FireBaseModel> {
 
   constructor(private _afs: AngularFirestore) {
     this._afs = _afs;
   }
 
-  save(article: Article, collection) {
+  save(model: T, collection): T {
     const id = this._afs.createId();
-    article.id = id;
-    collection.doc(id).set(article)
+    model.id = id;
+    collection.doc(id).set(model)
       .then((result) => {
         console.log('Saved successfully ', result);
       }).catch((err) => {
       console.log('Saving failed ', err);
     });
+    return model;
   }
 
   getArticleRef(id: string) {
     return this.articlesCollection.doc(id);
-  }
-
-
-  getUserRefById(id: string): Observable<firebase.User> {
-    return this._afs.doc<firebase.User>('users/' + id).valueChanges();
   }
 
   get afs(): AngularFirestore {

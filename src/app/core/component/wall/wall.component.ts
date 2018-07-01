@@ -51,8 +51,7 @@ export class WallComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(onChangeSubscription);
 
-    this.preLoadedArticle = new Article('Пиши на всю страну анонимно!',
-      new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null);
+    this.preLoadedArticle = new Article('Пиши на всю страну анонимно!', new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null, []);
   }
 
   openModal(template: TemplateRef<any>) {

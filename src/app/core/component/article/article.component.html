@@ -13,6 +13,9 @@
       <ng-container *ngFor="let item of article.body.items">
         <app-story-item [storyItem]="item"></app-story-item>
       </ng-container>
+      <ng-container *ngFor="let label of article.labels">
+        <span>{{label.text}}</span>
+      </ng-container>
       <app-article-footer [article]="article"
                           (showCommentsEvent)="showComments()"></app-article-footer>
     </div>

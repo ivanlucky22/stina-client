@@ -1,12 +1,19 @@
 import {Injectable} from '@angular/core';
+import {LabelRepositoryService} from "@app/core/service/repository/label-repository.service";
+import {Label} from "@app/core/model/label";
+import {Observable} from "rxjs/index";
 
 @Injectable()
 export class LabelService {
 
-  constructor() {
+  constructor(private labelRepository: LabelRepositoryService) {
   }
 
-  getLabels() {
-    return null
+  save(label: Label): Label {
+    return this.labelRepository.save(label);
+  }
+
+  getLabels(): Observable<Label[]> {
+    return this.labelRepository.findAllLabels();
   }
 }

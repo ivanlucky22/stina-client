@@ -7,6 +7,7 @@ import {StoryItem, StoryItemType} from "../../../../core/model/story-item";
 import {TextStoryItem} from "../../../../core/model/text-story-item";
 import {ImageStoryItem} from "../../../../core/model/image-story-item";
 import {LabelService} from "@app/core/service/label.service";
+import {Label} from "@app/core/model/label";
 
 @Component({
   selector: 'app-publishing-form',
@@ -18,8 +19,9 @@ export class PublishingFormComponent implements OnInit {
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
   storyItems: StoryItem[] = [];
-  labels: any[];
+  labels: Label[] = [];
   fileUploading: boolean;
+  selectedLabels: Label[];
 
   constructor(private articleService: ArticleService,
               private labelService: LabelService) {
@@ -27,9 +29,9 @@ export class PublishingFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.labelService.getLabels().subscribe(labels => {
-    //   this.labels = labels;
-    // });
+    this.labelService.getLabels().subscribe((labels: Label[]) => {
+      this.labels = labels;
+    });
   }
 
   publishMessage(newMessageTitle: HTMLInputElement) {
@@ -40,7 +42,7 @@ export class PublishingFormComponent implements OnInit {
       }
 
       const story = new Story(this.storyItems);
-      this.articleService.save(newMessageTitle.value, story, this.user);
+      this.articleService.save(newMessageTitle.value, story, this.user, this.selectedLabels);
       this.onPublish.emit();
     }
     return false;
@@ -50,7 +52,6 @@ export class PublishingFormComponent implements OnInit {
     const firstTextItem: TextStoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT)) as TextStoryItem;
     return firstTextItem.data;
   }
-
 
   addImageStoryItem(file: File) {
     this.storyItems.push(new ImageStoryItem(file));
@@ -62,4 +63,9 @@ export class PublishingFormComponent implements OnInit {
     textStoryItem.editMode = true;
     return textStoryItem;
   }
+
+  addTag = (name) => {
+    return this.labelService.save(new Label(name));
+  }
+
 }

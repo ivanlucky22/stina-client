@@ -5,6 +5,7 @@ import {Subject, ReplaySubject} from "rxjs";
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {FirebaseService} from "@app/core/service/firebase.service";
 import {Observable} from "rxjs/index";
+import {FireBaseModel} from "@app/core/model/fire-base-model";
 
 @Injectable()
 export class UserService {
@@ -12,7 +13,7 @@ export class UserService {
   private userObservable: Subject<firebase.User> = new ReplaySubject();
 
   constructor(private authService: AuthService,
-              private firebaseService: FirebaseService,
+              private firebaseService: FirebaseService<FireBaseModel>,
               private nameGenerationService: NameGenerationService) {
     this.onAuthStateChanged();
   }
@@ -40,6 +41,10 @@ export class UserService {
     });
   }
 
+  getUserRefById(id: string): Observable<firebase.User> {
+    return this.firebaseService.afs.doc<firebase.User>('users/' + id).valueChanges();
+  }
+
   signInAnonymously() {
     this.authService.signInAnonymously();
   }
@@ -49,6 +54,6 @@ export class UserService {
   }
 
   getUser(id: string): Observable<firebase.User> {
-    return this.firebaseService.getUserRefById(id);
+    return this.getUserRefById(id);
   }
 }

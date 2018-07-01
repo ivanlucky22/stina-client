@@ -5,6 +5,6 @@ export interface StoryItem {
 
 export enum StoryItemType {
   TEXT,
-  IMAGE
-
+  IMAGE,
+  LABELS
 }

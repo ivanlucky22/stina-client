@@ -10,7 +10,7 @@ export class ArticleRepository {
   private ARTICLES_COLLECTION = 'articles';
   articlesCollection;
 
-  constructor(private firebaseService: FirebaseService) {
+  constructor(private firebaseService: FirebaseService<Article>) {
     this.articlesCollection = firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION);
   }
 

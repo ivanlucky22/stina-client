@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NavigationComponent} from './component/navigation/navigation.component';
-import {PublishingFormComponent} from '../feature/publising-form-feature/component/publishing-form/publishing-form.component';
 import {WallComponent} from './component/wall/wall.component';
 import {MainPageComponent} from './component/main-page/main-page.component';
 import {ArticleRepository} from '@app/core/service/repository/article-repository.service';
@@ -29,6 +28,7 @@ import {ArticleService} from "@app/core/service/article.service";
 import {ImageRepositoryService} from "@app/core/service/repository/image-repository.service";
 import {LabelRepositoryService} from "@app/core/service/repository/label-repository.service";
 import {LabelService} from "@app/core/service/label.service";
+import {PublisingFormFeatureModule} from "@app/feature/publising-form-feature/publising-form-feature.module";
 
 @NgModule({
   imports: [
@@ -40,7 +40,8 @@ import {LabelService} from "@app/core/service/label.service";
     FeatureModule,
     RouterModule,
     ModalModule.forRoot(),
-    TranslateModule
+    TranslateModule,
+    PublisingFormFeatureModule
   ],
   providers: [
     ArticleRepository,
@@ -57,7 +58,6 @@ import {LabelService} from "@app/core/service/label.service";
   ],
   declarations: [
     NavigationComponent,
-    PublishingFormComponent,
     WallComponent,
     MainPageComponent,
     ArticleComponent,

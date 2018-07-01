@@ -27,7 +27,7 @@ import {TranslateModule} from "@ngx-translate/core";
     UserIconComponent,
     StoryItemComponent,
     TextStoryItemComponent,
-    ImageStoryItemComponent
+    ImageStoryItemComponent,
   ],
   exports: [
     UserIconComponent,
