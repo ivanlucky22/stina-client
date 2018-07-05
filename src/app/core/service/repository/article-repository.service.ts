@@ -2,7 +2,8 @@ import {Injectable} from '@angular/core';
 import {Article} from '../../model/article';
 import {FirebaseService} from "../firebase.service";
 import {Observable} from "rxjs";
-import {AngularFirestoreCollection, DocumentChangeAction} from "angularfire2/firestore";
+import {DocumentChangeAction} from "angularfire2/firestore";
+import {Label} from "@app/core/model/label";
 
 @Injectable()
 export class ArticleRepository {
@@ -33,11 +34,22 @@ export class ArticleRepository {
     const resultCollection = this.firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION,
       ref => ref.orderBy('timestamp', 'asc')
         .limit(20));
-    return resultCollection.stateChanges();
+    return resultCollection.stateChanges().pipe();
   }
 
   private toPureJavaScript(article: Article) {
-    return JSON.parse(JSON.stringify(article));
+    const parsedArticle = JSON.parse(JSON.stringify(article));
+    const labelsMap = {};
+    parsedArticle.labels.forEach((label: Label) => {
+      labelsMap[label.text] = true;
+    });
+    parsedArticle.labels = labelsMap;
+    return parsedArticle;
   }
 
+  findArticlesByLabel(tag: string): Observable<Article[]> {
+    return this.firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION,
+      ref => ref.where('labels.' + tag, '==', true)
+    ).valueChanges();
+  }
 }

@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
   {path: '', component: MainPageComponent},
   {path: 'home', component: MainPageComponent},
+  {path: ':filterId', component: MainPageComponent},
   {path: 'policy/confidentiality', component: ConfidentialityPolicyPageComponent},
   {path: 'policy/agreement', component: UserAgreementPageComponent},
   {path: 'verification', component: VerificationPageComponent},

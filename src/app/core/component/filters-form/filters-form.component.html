@@ -1,15 +1,16 @@
 <div class="container-fluid">
   <div class="row">
     <ng-container *ngFor="let filter of filterList">
-      <span class="btn filter-label"
+      <span class="btn btn-link filter-label"
             (click)="onFilterSelected(filter)"
             [ngClass]="filter===selectedFiler?'filter-label-selected':''"
-      >{{ filter | translate}}</span>
+            [routerLink]="['/', filter.link]"
+      >{{ filter.label | translate}}</span>
     </ng-container>
   </div>
 </div>
 <div class="container-fluid selected-filter-label-container">
   <div class="row">
-    <h4> {{selectedFiler | translate}}</h4>
+    <h4> {{selectedFiler.label | translate}}</h4>
   </div>
 </div>

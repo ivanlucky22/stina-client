@@ -15,6 +15,10 @@ import * as firebase from "firebase";
 import {BsModalRef, BsModalService} from "ngx-bootstrap";
 import {Story} from "@app/core/model/story";
 import {TextStoryItem} from "@app/core/model/text-story-item";
+import {ActivatedRoute, Router} from "@angular/router";
+import {filter} from "rxjs/operators";
+import * as _ from "lodash";
+import {ArticleService} from "@app/core/service/article.service";
 
 @Component({
   selector: 'app-wall',
@@ -28,10 +32,13 @@ export class WallComponent implements OnInit, OnDestroy {
   preLoadedArticle: Article;
   @Input() user: firebase.User;
   @ViewChild("publishArticleModal") modalRef: BsModalRef;
-  subscriptions = [];
+  articlesFeedsSubscriptions = [];
 
   constructor(private articleRepository: ArticleRepository,
+              private articleService: ArticleService,
               private modalService: BsModalService,
+              private router: Router,
+              private route: ActivatedRoute,
               private ref: ChangeDetectorRef) {
   }
 
@@ -49,9 +56,24 @@ export class WallComponent implements OnInit, OnDestroy {
         }
       });
     });
-    this.subscriptions.push(onChangeSubscription);
+    this.articlesFeedsSubscriptions.push(onChangeSubscription);
 
     this.preLoadedArticle = new Article('Пиши на всю страну анонимно!', new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null, []);
+
+    this.articlesFeedsSubscriptions.push(this.route.params.pipe(
+      filter(param => {
+        return param.filterId;
+      })
+    ).subscribe(params => {
+      console.log("params " + JSON.stringify(params));
+      this.unSubscribeFromArticlesFeeds();
+      this.articleService.findArticlesByLabels(this.getTags(params)).subscribe((articles: Article[]) => {
+          this.articles = articles;
+          self.articlesLoaded.emit();
+        }
+      );
+      // In a real app: dispatch action to load the details here.
+    }));
   }
 
   openModal(template: TemplateRef<any>) {
@@ -63,6 +85,15 @@ export class WallComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriptions.forEach(s => s.unsubscribe());
+    this.unSubscribeFromArticlesFeeds();
+    console.log(" destroying WallComponent");
+  }
+
+  private unSubscribeFromArticlesFeeds() {
+    this.articlesFeedsSubscriptions.forEach(s => s.unsubscribe());
+  }
+
+  private getTags(params: any) {
+    return _.map(Object.keys(params), key => params[key]);
   }
 }

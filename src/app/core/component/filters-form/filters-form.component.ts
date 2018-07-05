@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TranslateService} from "@ngx-translate/core";
+import {Filter} from "@app/core/model/filter";
 
 @Component({
   selector: 'app-filters-form',
@@ -8,21 +9,21 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class FiltersFormComponent implements OnInit {
 
-  filterList: Array<string> = [];
-  selectedFiler: string;
+  filterList: Array<Filter> = [];
+  selectedFiler: Filter;
 
   constructor(private translate: TranslateService) {
   }
 
   ngOnInit() {
-    this.filterList.push('article.filter.new');
-    this.filterList.push('article.filter.interesting');
-    this.filterList.push('article.filter.news');
-    this.filterList.push('article.filter.stories');
+    this.filterList.push(new Filter('article.filter.new', 'new'));
+    this.filterList.push(new Filter('article.filter.interesting', 'interesting'));
+    this.filterList.push(new Filter('article.filter.news', 'news'));
+    this.filterList.push(new Filter('article.filter.stories', 'stories'));
     this.selectedFiler = this.filterList[0];
   }
 
-  onFilterSelected(filter: any) {
+  onFilterSelected(filter: Filter) {
     this.selectedFiler = filter;
   }
 }

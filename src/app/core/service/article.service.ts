@@ -7,6 +7,8 @@ import {StoryItemType} from "@app/core/model/story-item";
 import {ImageStoryItem} from "@app/core/model/image-story-item";
 import {Article} from "@app/core/model/article";
 import {Label} from "@app/core/model/label";
+import * as _ from "lodash";
+import {filter, map, tap} from "rxjs/operators";
 
 @Injectable()
 export class ArticleService {
@@ -27,5 +29,20 @@ export class ArticleService {
     } else {
       this.articleRepository.save(new Article(title, story, user, selectedLabels));
     }
+  }
+
+  findArticlesByLabels(selectedLabels: any[]) {
+    const firstLabel = _.head(selectedLabels);
+    return this.articleRepository.findArticlesByLabel(firstLabel)
+      .pipe(
+        map((articles: Article[]) => {
+          return articles.filter((article) => {
+            const articleLabels = Object.keys(article.labels);
+            return _.difference(articleLabels, selectedLabels).length === 0;
+          });
+        })
+      )
+      ;
+
   }
 }

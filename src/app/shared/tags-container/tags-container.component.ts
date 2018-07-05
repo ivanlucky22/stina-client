@@ -8,7 +8,7 @@ import {Label} from "@app/core/model/label";
 })
 export class TagsContainerComponent implements OnInit {
 
-  @Input() labels: Label[];
+  @Input() labelsMap: any;
 
   constructor() {
   }
@@ -16,4 +16,7 @@ export class TagsContainerComponent implements OnInit {
   ngOnInit() {
   }
 
+  get labels() {
+    return Object.keys(this.labelsMap);
+  }
 }

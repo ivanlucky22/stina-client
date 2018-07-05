@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
 import * as _ from "lodash";
 import {ArticleService} from "../../../../core/service/article.service";
@@ -14,7 +14,7 @@ import {Label} from "@app/core/model/label";
   templateUrl: './publishing-form.component.html',
   styleUrls: ['./publishing-form.component.css']
 })
-export class PublishingFormComponent implements OnInit {
+export class PublishingFormComponent implements OnInit, OnDestroy {
 
   @Input() user: firebase.User;
   @Output() onPublish: EventEmitter<any> = new EventEmitter();
@@ -66,6 +66,10 @@ export class PublishingFormComponent implements OnInit {
 
   addTag = (name) => {
     return this.labelService.save(new Label(name));
+  }
+
+  ngOnDestroy(): void {
+    console.log('PublishingFormComponent destroyed');
   }
 
 }
