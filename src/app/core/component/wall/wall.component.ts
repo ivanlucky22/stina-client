@@ -60,7 +60,7 @@ export class WallComponent implements OnInit, OnDestroy {
 
     this.preLoadedArticle = new Article('Пиши на всю страну анонимно!', new Story([new TextStoryItem('У тебя есть уникальный шанс написать на весь мир то что ты давно не решался сказать')]), null, []);
 
-    this.articlesFeedsSubscriptions.push(this.route.params.pipe(
+    const sub = this.route.params.pipe(
       filter(param => {
         return param.filterId;
       })
@@ -73,7 +73,7 @@ export class WallComponent implements OnInit, OnDestroy {
         }
       );
       // In a real app: dispatch action to load the details here.
-    }));
+    });
   }
 
   openModal(template: TemplateRef<any>) {
