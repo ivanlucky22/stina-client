@@ -29,6 +29,7 @@ import {ImageRepositoryService} from "@app/core/service/repository/image-reposit
 import {LabelRepositoryService} from "@app/core/service/repository/label-repository.service";
 import {LabelService} from "@app/core/service/label.service";
 import {PublisingFormFeatureModule} from "@app/feature/publising-form-feature/publising-form-feature.module";
+import {FilterService} from "@app/core/service/filter.service";
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import {PublisingFormFeatureModule} from "@app/feature/publising-form-feature/pu
     HttpService,
     NameGenerationService,
     LabelRepositoryService,
-    LabelService
+    LabelService,
+    FilterService
   ],
   declarations: [
     NavigationComponent,
