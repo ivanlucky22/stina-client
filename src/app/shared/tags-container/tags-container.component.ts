@@ -1,22 +1,19 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Label} from "@app/core/model/label";
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-tags-container',
   templateUrl: './tags-container.component.html',
-  styleUrls: ['./tags-container.component.css']
+  styleUrls: ['./tags-container.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TagsContainerComponent implements OnInit {
+export class TagsContainerComponent {
 
   @Input() labelsMap: any;
 
   constructor() {
   }
 
-  ngOnInit() {
-  }
-
   get labels() {
-    return Object.keys(this.labelsMap);
+    return this.labelsMap ? Object.keys(this.labelsMap) : [];
   }
 }

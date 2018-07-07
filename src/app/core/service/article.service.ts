@@ -8,7 +8,7 @@ import {ImageStoryItem} from "@app/core/model/image-story-item";
 import {Article} from "@app/core/model/article";
 import {Label} from "@app/core/model/label";
 import * as _ from "lodash";
-import {filter, map, tap} from "rxjs/operators";
+import {map} from "rxjs/operators";
 
 @Injectable()
 export class ArticleService {

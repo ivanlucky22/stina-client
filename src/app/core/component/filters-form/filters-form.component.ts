@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
 import {Filter} from "@app/core/model/filter";
 
 @Component({
@@ -12,7 +11,7 @@ export class FiltersFormComponent implements OnInit {
   filterList: Array<Filter> = [];
   selectedFiler: Filter;
 
-  constructor(private translate: TranslateService) {
+  constructor() {
   }
 
   ngOnInit() {
