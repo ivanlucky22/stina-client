@@ -78,7 +78,7 @@ export class WallComponent implements OnInit, OnDestroy {
       switchMap(params => {
         return this.filterService.getArticlesByFilters(this.getTags(params));
       })).subscribe(articles => {
-      // this.unSubscribeFromArticlesFeeds();
+      this.unSubscribeFromArticlesFeeds();
       this.articles = articles;
       this.articlesLoaded.emit();
 

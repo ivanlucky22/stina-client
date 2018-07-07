@@ -4,6 +4,7 @@ import {FirebaseService} from "../firebase.service";
 import {Observable} from "rxjs";
 import {DocumentChangeAction} from "angularfire2/firestore";
 import {Label} from "@app/core/model/label";
+import * as _ from "lodash";
 
 @Injectable()
 export class ArticleRepository {
@@ -40,7 +41,7 @@ export class ArticleRepository {
   private toPureJavaScript(article: Article) {
     const parsedArticle = JSON.parse(JSON.stringify(article));
     const labelsMap = {};
-    parsedArticle.labels.forEach((label: Label) => {
+    _.forEach(parsedArticle.labels, (label: Label) => {
       labelsMap[label.text] = true;
     });
     parsedArticle.labels = labelsMap;

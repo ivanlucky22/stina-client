@@ -10,6 +10,7 @@ export class TextStoryItemComponent implements OnInit {
   showEmojiPanel: boolean;
   @Input() storyItem: TextStoryItem;
   @Output() onFileUploaded: EventEmitter<File> = new EventEmitter<File>();
+  editorFocused: boolean;
 
   constructor() {
   }
@@ -18,8 +19,7 @@ export class TextStoryItemComponent implements OnInit {
   }
 
   addEmoji(event) {
-    // this.storyItem.data+=event.emoji.native
-    // newMessageBody.innerText += event.emoji.native;
+    this.storyItem.data += event.emoji.native;
   }
 
   emojiClicked(event: any) {
@@ -33,7 +33,12 @@ export class TextStoryItemComponent implements OnInit {
     }
   }
 
-  pasteUrl(data: any) {
-    console.log(data)
+  onEditorFocus() {
+    this.showEmojiPanel = false;
+    this.editorFocused = true;
+  }
+
+  onEditorBlur() {
+    this.editorFocused = false;
   }
 }
