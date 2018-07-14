@@ -3,7 +3,9 @@
   <div class="row">
     <div class="col list-group-item" style="margin-bottom: .5px;">
       <div class="row">
-        <app-user-icon [photoURL]="article?.author?.photoURL" [userId]="article?.author?.uid"
+        <app-user-icon [photoURL]="article?.author?.photoURL"
+                       [userId]="article?.author?.uid"
+                       [userEmailVerified]="user?.emailVerified"
                        [classes]="'user-icon-css-md p-2'"></app-user-icon>
         <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
       </div>
@@ -24,8 +26,7 @@
         <div class="article-emotion-btn-container">
           <span class="fa fa-thumbs-o-up article-emotion-btn"
                 [ngClass]="{'article-emotion-btn-clicked':userLiked}"
-                (click)="like()"
-          ></span>
+                (click)="like()"></span>
           {{article.likes.length}}
         </div>
         <div class="article-emotion-btn-container">
@@ -43,7 +44,14 @@
           {{article.laughs.length}}
         </div>
         <div class="article-emotion-btn-container">
-          <span class="fa fa fa-smile-o article-emotion-btn"
+          <span class="fa fa-frown-o article-emotion-btn"
+                [ngClass]="{'article-emotion-btn-clicked':userLaughed}"
+                (click)="laugh()"
+          ></span>
+          {{article.laughs.length}}
+        </div>
+        <div class="article-emotion-btn-container">
+          <span class="fa fa-meh-o article-emotion-btn"
                 [ngClass]="{'article-emotion-btn-clicked':userLaughed}"
                 (click)="laugh()"
           ></span>

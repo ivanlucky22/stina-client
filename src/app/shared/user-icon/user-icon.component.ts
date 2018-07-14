@@ -10,6 +10,7 @@ export class UserIconComponent implements OnInit {
   @Input() photoURL: string;
   @Input() userId: number;
   @Input() classes: string;
+  @Input() userEmailVerified: boolean;
 
   constructor() { }
 

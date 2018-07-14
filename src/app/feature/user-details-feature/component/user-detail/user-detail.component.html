@@ -10,7 +10,9 @@
       </ng-container>
       <ng-container *ngIf="targetUser">
         <div class="row">
-          <app-user-icon [userId]="targetUser.uid" [photoURL]="targetUser.photoURL" ></app-user-icon>
+          <app-user-icon [userId]="targetUser.uid"
+                         [photoURL]="targetUser.photoURL"
+                         [userEmailVerified]="user?.emailVerified"></app-user-icon>
         </div>
         <div class="row">
           <div class="col-auto">

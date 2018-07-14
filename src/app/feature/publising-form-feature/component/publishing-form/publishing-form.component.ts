@@ -36,7 +36,7 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
 
   publishMessage(newMessageTitle: HTMLInputElement) {
     const textContent = this.getTextContent();
-    if (textContent) {
+    if (textContent || this.imagesAttached()) {
       if (!newMessageTitle.value) {
         newMessageTitle.value = textContent.slice(0, 47) + '...';
       }
@@ -51,6 +51,10 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
   private getTextContent() {
     const firstTextItem: TextStoryItem = _.head(this.storyItems.filter(i => i.type === StoryItemType.TEXT)) as TextStoryItem;
     return firstTextItem.data;
+  }
+
+  private imagesAttached() {
+    return this.storyItems.some(i => i.type === StoryItemType.IMAGE);
   }
 
   addImageStoryItem(file: File) {

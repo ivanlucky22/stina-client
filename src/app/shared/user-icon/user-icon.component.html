@@ -2,3 +2,4 @@
 <a *ngIf="!photoURL" class="btn btn-link {{classes}}" [routerLink]="['users/'+userId]">
   <span class="fa fa-user-secret"></span>
 </a>
+<span [hidden]="!userEmailVerified" class="fa fa-check" aria-hidden="true"></span>

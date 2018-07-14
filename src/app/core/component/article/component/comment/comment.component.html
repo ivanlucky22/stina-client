@@ -1,7 +1,9 @@
 <div class="col">
   <div class="row">
     <div class="col-auto">
-      <app-user-icon [photoURL]="comment?.author?.photoURL" [userId]="comment?.author?.uid"
+      <app-user-icon [photoURL]="comment?.author?.photoURL"
+                     [userId]="comment?.author?.uid"
+                     [userEmailVerified]="user?.emailVerified"
                      [classes]="'user-icon-css-sm p-1'"></app-user-icon>
     </div>
     <div class="col">
