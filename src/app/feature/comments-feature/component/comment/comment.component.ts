@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import * as firebase from "firebase";
-import {Comment} from "../../../../model/comment";
-import {TranslateService} from "@ngx-translate/core";
+import {Comment} from "../../../../core/model/comment";
 
 @Component({
   selector: 'app-comment',
@@ -13,7 +12,7 @@ export class CommentComponent implements OnInit {
   @Input() user: firebase.User;
   @Input() comment: Comment;
 
-  constructor(public translate: TranslateService) {
+  constructor() {
   }
 
   ngOnInit() {

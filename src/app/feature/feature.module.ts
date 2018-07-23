@@ -40,7 +40,7 @@ import {LanguageComponent} from "@app/feature/shared-feature/component/language/
     SignUpFormComponent,
     SignInFormComponent,
     ConfidentialityPolicyPageComponent,
-    UserAgreementPageComponent,
+    UserAgreementPageComponent
   ],
   providers: [],
   exports: [

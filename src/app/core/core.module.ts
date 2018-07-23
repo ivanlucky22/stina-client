@@ -16,12 +16,9 @@ import {ModalModule} from "ngx-bootstrap";
 import {FeatureModule} from "@app/feature/feature.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {ArticleFooterComponent} from './component/article/component/article-footer/article-footer.component';
-import {CommentsContainerComponent} from './component/article/component/comments-container/comments-container.component';
 import {CommentRepositoryService} from "@app/core/service/repository/comment-repository.service";
-import {CommentComponent} from './component/article/component/comment/comment.component';
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
-import {TimeAgoPipe} from "@app/core/pipe/time-ago.pipe";
 import {RouterModule} from "@angular/router";
 import {SharedModule} from "@app/shared/shared.module";
 import {ArticleService} from "@app/core/service/article.service";
@@ -30,6 +27,7 @@ import {LabelRepositoryService} from "@app/core/service/repository/label-reposit
 import {LabelService} from "@app/core/service/label.service";
 import {PublisingFormFeatureModule} from "@app/feature/publising-form-feature/publising-form-feature.module";
 import {FilterService} from "@app/core/service/filter.service";
+import {CommentsFeatureModule} from "@app/feature/comments-feature/comments-feature.module";
 
 @NgModule({
   imports: [
@@ -42,7 +40,8 @@ import {FilterService} from "@app/core/service/filter.service";
     RouterModule,
     ModalModule.forRoot(),
     TranslateModule,
-    PublisingFormFeatureModule
+    PublisingFormFeatureModule,
+    CommentsFeatureModule
   ],
   providers: [
     ArticleRepository,
@@ -65,10 +64,7 @@ import {FilterService} from "@app/core/service/filter.service";
     ArticleComponent,
     FiltersFormComponent,
     SidebarComponent,
-    ArticleFooterComponent,
-    CommentsContainerComponent,
-    CommentComponent,
-    TimeAgoPipe
+    ArticleFooterComponent
   ],
   exports: [
     MainPageComponent,

@@ -12,12 +12,15 @@
       <div class="align-items-center col">
         <div class="row">
           <div class="col-auto">
-            <app-user-icon photoURL="{{user?.photoURL}}" [userId]="0" [classes]="'user-icon-css-md p-1'"></app-user-icon>
+            <app-user-icon photoURL="{{user?.photoURL}}" [userId]="0"
+                           [classes]="'user-icon-css-md p-1'"></app-user-icon>
           </div>
           <div class="col">
-            <input type="text" class="form-control mb-2 w-100 comment-input" id="inlineFormInput"
-                   placeholder="{{'comment.form.input.placaholder.caption' | translate}}"
-                   #commentText>
+            <mat-form-field class="w-100">
+              <input matInput type="text" class="mb-2 w-100" id="inlineFormInput"
+                     placeholder="{{'comment.form.input.placaholder.caption' | translate}}"
+                     #commentText>
+            </mat-form-field>
           </div>
           <div class="col-auto">
             <span class="btn fa fa-paper-plane" (click)="addComment(commentText)"></span>

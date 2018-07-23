@@ -12,6 +12,7 @@ import {FormsModule} from "@angular/forms";
 import {FateModule} from "fate-editor";
 import {TranslateModule} from "@ngx-translate/core";
 import { TagsContainerComponent } from './tags-container/tags-container.component';
+import {TimeAgoPipe} from "@app/shared/pipe/time-ago.pipe";
 
 @NgModule({
   imports: [
@@ -30,11 +31,13 @@ import { TagsContainerComponent } from './tags-container/tags-container.componen
     TextStoryItemComponent,
     ImageStoryItemComponent,
     TagsContainerComponent,
+    TimeAgoPipe
   ],
   exports: [
     UserIconComponent,
     StoryItemComponent,
-    TagsContainerComponent
+    TagsContainerComponent,
+    TimeAgoPipe
   ]
 })
 export class SharedModule {
