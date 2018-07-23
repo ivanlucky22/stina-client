@@ -8,6 +8,7 @@ import {TextStoryItem} from "../../../../core/model/text-story-item";
 import {ImageStoryItem} from "../../../../core/model/image-story-item";
 import {LabelService} from "@app/core/service/label.service";
 import {Label} from "@app/core/model/label";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-publishing-form',
@@ -22,6 +23,7 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
   labels: Label[] = [];
   fileUploading: boolean;
   selectedLabels: Label[];
+  form: FormGroup;
 
   constructor(private articleService: ArticleService,
               private labelService: LabelService) {
@@ -31,6 +33,11 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.labelService.getLabels().subscribe((labels: Label[]) => {
       this.labels = labels;
+    });
+    this.form = new FormGroup({
+      'messageTitleInput': new FormControl('', [
+        Validators.required
+      ])
     });
   }
 
