@@ -21,7 +21,7 @@ export class ArticleRepository {
   }
 
   update(article: Article) {
-    const articleRef = this.firebaseService.getArticleRef(article.id);
+    const articleRef = this.getArticleRef(article.id);
     articleRef.update(this.toPureJavaScript(article)).then(function () {
       console.log("Document successfully updated!");
     })
@@ -52,5 +52,9 @@ export class ArticleRepository {
     return this.firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION,
       ref => ref.where('labels.' + tag, '==', true)
     ).valueChanges();
+  }
+
+  private getArticleRef(id: string) {
+    return this.articlesCollection.doc(id);
   }
 }

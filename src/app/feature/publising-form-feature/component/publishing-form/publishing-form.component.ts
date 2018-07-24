@@ -24,6 +24,9 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
   fileUploading: boolean;
   selectedLabels: Label[];
   form: FormGroup;
+  messageTitleInput = new FormControl('', [
+    Validators.required
+  ]);
 
   constructor(private articleService: ArticleService,
               private labelService: LabelService) {
@@ -34,22 +37,17 @@ export class PublishingFormComponent implements OnInit, OnDestroy {
     this.labelService.getLabels().subscribe((labels: Label[]) => {
       this.labels = labels;
     });
+
     this.form = new FormGroup({
-      'messageTitleInput': new FormControl('', [
-        Validators.required
-      ])
+      'messageTitleInput': this.messageTitleInput
     });
   }
 
-  publishMessage(newMessageTitle: HTMLInputElement) {
+  publishMessage() {
     const textContent = this.getTextContent();
     if (textContent || this.imagesAttached()) {
-      if (!newMessageTitle.value) {
-        newMessageTitle.value = textContent.slice(0, 47) + '...';
-      }
-
       const story = new Story(this.storyItems);
-      this.articleService.save(newMessageTitle.value, story, this.user, this.selectedLabels);
+      this.articleService.save(this.messageTitleInput.value, story, this.user, this.selectedLabels);
       this.onPublish.emit();
     }
     return false;

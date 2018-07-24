@@ -1,0 +1,9 @@
+.article-emotion-btn {
+  margin-bottom: 2px;
+}
+
+.article-emotion-btn:hover {
+  font-size: 25px;
+  color: skyblue;
+  cursor: pointer;
+}

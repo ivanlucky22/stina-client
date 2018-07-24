@@ -5,13 +5,15 @@ import {CommentsContainerComponent} from "@app/feature/comments-feature/componen
 import {SharedModule} from "@app/shared/shared.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatInputModule} from "@angular/material";
+import {EmotionsPanelFeatureModule} from "@app/feature/emotions-panel-feature/emotions-panel-feature.module";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     TranslateModule,
-    MatInputModule
+    MatInputModule,
+    EmotionsPanelFeatureModule
   ],
   declarations: [
     CommentComponent,

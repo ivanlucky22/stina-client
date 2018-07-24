@@ -10,6 +10,8 @@ export class Comment {
   likes: Array<string> = [];
   dislikes: Array<string> = [];
   laughs: Array<string> = [];
+  sadEmotions: Array<string> = [];
+  noEmotions: Array<string> = [];
 
   constructor(user: firebase.User, content: string) {
     this.author = new AuthorUser(user);

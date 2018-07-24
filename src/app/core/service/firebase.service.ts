@@ -21,15 +21,7 @@ export class FirebaseService<T extends FireBaseModel> {
     return model;
   }
 
-  getArticleRef(id: string) {
-    return this.articlesCollection.doc(id);
-  }
-
   get afs(): AngularFirestore {
     return this._afs;
-  }
-
-  get articlesCollection() {
-    return this.articlesCollection;
   }
 }

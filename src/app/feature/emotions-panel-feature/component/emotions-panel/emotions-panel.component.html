@@ -1,0 +1,27 @@
+<div class="row">
+  <app-emotion-button-container [classes]="'fa fa-thumbs-o-up'"
+                                [emotions]="comment.likes"
+                                [emotionSelected]="usedEmotion(comment.likes)"
+                                (emotionClicked)="emotionClicked(comment.likes)"
+  ></app-emotion-button-container>
+  <app-emotion-button-container [classes]="'fa fa-thumbs-o-down'"
+                                [emotions]="comment.dislikes"
+                                [emotionSelected]="usedEmotion(comment.dislikes)"
+                                (emotionClicked)="emotionClicked(comment.dislikes)"
+  ></app-emotion-button-container>
+  <app-emotion-button-container [classes]="'fa fa-smile-o'"
+                                [emotions]="comment.laughs"
+                                [emotionSelected]="usedEmotion(comment.laughs)"
+                                (emotionClicked)="emotionClicked(comment.laughs)"
+  ></app-emotion-button-container>
+  <app-emotion-button-container [classes]="'fa fa-frown-o'"
+                                [emotions]="comment.sadEmotions"
+                                [emotionSelected]="usedEmotion(comment.sadEmotions)"
+                                (emotionClicked)="emotionClicked(comment.sadEmotions)"
+  ></app-emotion-button-container>
+  <app-emotion-button-container [classes]="'fa fa-meh-o'"
+                                [emotions]="comment.noEmotions"
+                                [emotionSelected]="usedEmotion(comment.noEmotions)"
+                                (emotionClicked)="emotionClicked(comment.noEmotions)"
+  ></app-emotion-button-container>
+</div>
