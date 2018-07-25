@@ -8,19 +8,14 @@
     </div>
     <div class="col">
       <div class="row">
-        <span class="username-span">{{comment.author.displayName}}</span>
+        <a class="username-span" [routerLink]="['users/'+comment?.author?.uid]">{{comment.author.displayName}}</a>
         <span class="comment-span">{{comment.content}}</span>
       </div>
-      <div class="row" style="font-size: 12px">
+      <div class="row justify-content-between mt-2" style="font-size: 12px;">
         <div class="col-auto">
-                  <span class="p-1">
-        {{comment.timestamp | timeAgo: translate.currentLang}}
-        </span>
-        </div>
-        <div class="col-auto">
-                  <span class="btn btn-sm btn-link" style="font-size: 12px">
-          {{'article.comment.reply.caption' | translate}}
-        </span>
+          <span class="p-1">{{comment.timestamp | timeAgo: translate.currentLang}}</span>
+          <span class="btn btn-sm btn-link"
+                style="font-size: 12px">{{'article.comment.reply.caption' | translate}}</span>
         </div>
         <div class="col-auto">
           <app-emotions-panel [comment]="comment" [user]="user"></app-emotions-panel>

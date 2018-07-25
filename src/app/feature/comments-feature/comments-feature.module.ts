@@ -6,11 +6,13 @@ import {SharedModule} from "@app/shared/shared.module";
 import {TranslateModule} from "@ngx-translate/core";
 import {MatInputModule} from "@angular/material";
 import {EmotionsPanelFeatureModule} from "@app/feature/emotions-panel-feature/emotions-panel-feature.module";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
+    RouterModule,
     TranslateModule,
     MatInputModule,
     EmotionsPanelFeatureModule
