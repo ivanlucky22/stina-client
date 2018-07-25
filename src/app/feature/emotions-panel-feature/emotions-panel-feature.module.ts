@@ -8,7 +8,8 @@ import { EmotionButtonContainerComponent } from './component/emotion-button-cont
     CommonModule
   ],
   declarations: [EmotionsPanelComponent, EmotionButtonContainerComponent],
-  exports: [EmotionsPanelComponent]
+  exports: [EmotionsPanelComponent,
+    EmotionButtonContainerComponent]
 })
 export class EmotionsPanelFeatureModule {
 }

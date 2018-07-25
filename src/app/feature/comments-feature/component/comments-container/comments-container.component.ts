@@ -33,4 +33,9 @@ export class CommentsContainerComponent implements OnInit {
     }
     return false;
   }
+
+  updateArticle() {
+    this.articleRepository.update(this.article);
+  }
+
 }

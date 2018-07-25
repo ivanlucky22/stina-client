@@ -5,7 +5,6 @@ import {WallComponent} from './component/wall/wall.component';
 import {MainPageComponent} from './component/main-page/main-page.component';
 import {ArticleRepository} from '@app/core/service/repository/article-repository.service';
 import {HttpClientModule} from "@angular/common/http";
-import {ArticleComponent} from './component/article/article.component';
 import {MatIconModule, MatProgressBarModule} from "@angular/material";
 import {FirebaseService} from "@app/core/service/firebase.service";
 import {FiltersFormComponent} from './component/filters-form/filters-form.component';
@@ -15,7 +14,6 @@ import {SidebarComponent} from './component/sidebar/sidebar.component';
 import {ModalModule} from "ngx-bootstrap";
 import {FeatureModule} from "@app/feature/feature.module";
 import {TranslateModule} from "@ngx-translate/core";
-import {ArticleFooterComponent} from './component/article/component/article-footer/article-footer.component';
 import {CommentRepositoryService} from "@app/core/service/repository/comment-repository.service";
 import {NameGenerationService} from "@app/core/service/name-generation.service";
 import {HttpService} from "@app/core/service/http.service";
@@ -27,7 +25,7 @@ import {LabelRepositoryService} from "@app/core/service/repository/label-reposit
 import {LabelService} from "@app/core/service/label.service";
 import {PublisingFormFeatureModule} from "@app/feature/publising-form-feature/publising-form-feature.module";
 import {FilterService} from "@app/core/service/filter.service";
-import {CommentsFeatureModule} from "@app/feature/comments-feature/comments-feature.module";
+import {ArticleFeatureModule} from "@app/feature/article-feature/article-feature.module";
 
 @NgModule({
   imports: [
@@ -41,7 +39,7 @@ import {CommentsFeatureModule} from "@app/feature/comments-feature/comments-feat
     ModalModule.forRoot(),
     TranslateModule,
     PublisingFormFeatureModule,
-    CommentsFeatureModule
+    ArticleFeatureModule
   ],
   providers: [
     ArticleRepository,
@@ -61,10 +59,8 @@ import {CommentsFeatureModule} from "@app/feature/comments-feature/comments-feat
     NavigationComponent,
     WallComponent,
     MainPageComponent,
-    ArticleComponent,
     FiltersFormComponent,
-    SidebarComponent,
-    ArticleFooterComponent
+    SidebarComponent
   ],
   exports: [
     MainPageComponent,

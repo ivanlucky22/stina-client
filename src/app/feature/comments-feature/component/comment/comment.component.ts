@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
 import {Comment} from "../../../../core/model/comment";
 import {TranslateService} from "@ngx-translate/core";
@@ -12,6 +12,7 @@ export class CommentComponent implements OnInit {
 
   @Input() user: firebase.User;
   @Input() comment: Comment;
+  @Output() onCommentUpdated = new EventEmitter();
 
   constructor(private translate: TranslateService) {
   }
@@ -19,4 +20,7 @@ export class CommentComponent implements OnInit {
   ngOnInit() {
   }
 
+  updateComment() {
+    this.onCommentUpdated.emit();
+  }
 }

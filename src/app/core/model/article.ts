@@ -5,8 +5,9 @@ import * as firebase from "firebase";
 import {ArticleBody} from "@app/core/model/article-body";
 import {FireBaseModel} from "@app/core/model/fire-base-model";
 import {Label} from "@app/core/model/label";
+import {Emotionable} from "@app/core/model/interfaces/emotionable";
 
-export class Article implements FireBaseModel{
+export class Article implements FireBaseModel, Emotionable {
 
   public id: string;
   public title: string;
@@ -15,6 +16,8 @@ export class Article implements FireBaseModel{
   public likes: Array<string> = [];
   public dislikes: Array<string> = [];
   public laughs: Array<string> = [];
+  public noEmotions: Array<string> = [];
+  public sadEmotions: Array<string> = [];
   public comments: Array<Comment> = [];
   public author: AuthorUser;
   public labels: Label[];

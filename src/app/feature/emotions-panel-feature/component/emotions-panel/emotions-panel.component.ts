@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
 import * as _ from 'lodash';
-import {Comment} from "@app/core/model/comment";
+import {Emotionable} from "@app/core/model/interfaces/emotionable";
 
 @Component({
   selector: 'app-emotions-panel',
@@ -10,8 +10,10 @@ import {Comment} from "@app/core/model/comment";
 })
 export class EmotionsPanelComponent implements OnInit {
 
-  @Input() comment: Comment;
+  @Input() emotionable: Emotionable;
   @Input() user: firebase.User;
+  @Input() horizontal = false;
+  @Output() updateEmotionable = new EventEmitter();
 
   constructor() {
   }
@@ -21,6 +23,7 @@ export class EmotionsPanelComponent implements OnInit {
 
   emotionClicked(emotions) {
     this.usedEmotion(emotions) ? this.decreaseEmotion(emotions) : this.increaseEmotion(emotions);
+    this.updateEmotionable.emit();
   }
 
   private usedEmotion(emotion) {

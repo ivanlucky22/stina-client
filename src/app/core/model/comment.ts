@@ -1,8 +1,9 @@
 import * as moment from 'moment';
 import {AuthorUser} from "@app/core/model/authorUser";
 import * as firebase from "firebase";
+import {Emotionable} from "@app/core/model/interfaces/emotionable";
 
-export class Comment {
+export class Comment implements Emotionable{
 
   author: AuthorUser;
   content: string;

@@ -1,0 +1,74 @@
+<div class="container-fluid" style="min-width: 300px; margin-top: 1rem">
+
+  <div class="row">
+    <div class="col list-group-item" style="margin-bottom: .5px;">
+      <div class="row">
+        <app-user-icon [photoURL]="article?.author?.photoURL"
+                       [userId]="article?.author?.uid"
+                       [userEmailVerified]="user?.emailVerified"
+                       [classes]="'user-icon-css-md p-2'"></app-user-icon>
+        <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
+      </div>
+      <div class="row">
+        <h5 class="col card-title">
+          <span class="dont-break-out">{{article.title}}</span>
+        </h5>
+      </div>
+      <ng-container *ngFor="let item of article.body.items">
+        <app-story-item [storyItem]="item"></app-story-item>
+      </ng-container>
+      <app-tags-container [labelsMap]="article.labels"></app-tags-container>
+      <app-article-footer [article]="article"
+                          (showCommentsEvent)="showComments()"></app-article-footer>
+    </div>
+    <div class="col-1  p-0 m-0">
+      <div class="affix p-0 m-0">
+        <app-emotions-panel [emotionable]="article"
+                            [user]="user"
+                            (updateEmotionable)="updateArticle()">
+        </app-emotions-panel>
+
+        <!--<div class="article-emotion-btn-container">-->
+        <!--<span class="fa fa-thumbs-o-up article-emotion-btn"-->
+        <!--[ngClass]="{'article-emotion-btn-clicked':userLiked}"-->
+        <!--(click)="like()"></span>-->
+        <!--{{article.likes.length}}-->
+        <!--</div>-->
+        <!--<div class="article-emotion-btn-container">-->
+        <!--<span class="fa fa-thumbs-o-down article-emotion-btn"-->
+        <!--[ngClass]="{'article-emotion-btn-clicked':userDisliked}"-->
+        <!--(click)="dislike()"-->
+        <!--&gt;</span>-->
+        <!--{{article.dislikes.length}}-->
+        <!--</div>-->
+        <!--<div class="article-emotion-btn-container">-->
+        <!--<span class="fa fa fa-smile-o article-emotion-btn"-->
+        <!--[ngClass]="{'article-emotion-btn-clicked':userLaughed}"-->
+        <!--(click)="laugh()"-->
+        <!--&gt;</span>-->
+        <!--{{article.laughs.length}}-->
+        <!--</div>-->
+        <!--<div class="article-emotion-btn-container">-->
+        <!--<span class="fa fa-frown-o article-emotion-btn"-->
+        <!--[ngClass]="{'article-emotion-btn-clicked':userLaughed}"-->
+        <!--(click)="laugh()"-->
+        <!--&gt;</span>-->
+        <!--{{article.laughs.length}}-->
+        <!--</div>-->
+        <!--<div class="article-emotion-btn-container">-->
+        <!--<span class="fa fa-meh-o article-emotion-btn"-->
+        <!--[ngClass]="{'article-emotion-btn-clicked':userLaughed}"-->
+        <!--(click)="laugh()"-->
+        <!--&gt;</span>-->
+        <!--{{article.laughs.length}}-->
+        <!--</div>-->
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="commentsVisible">
+    <app-comments-container [article]="article"
+                            [user]="user"
+                            [comments]="article?.comments"></app-comments-container>
+  </ng-container>
+</div>

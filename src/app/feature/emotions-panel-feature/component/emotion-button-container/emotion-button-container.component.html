@@ -1,6 +1,7 @@
-<div class="col-auto p-1">
-          <span class="{{classes}} article-emotion-btn"
-                [ngClass]="{'article-emotion-btn-clicked':emotionSelected}"
-                (click)="clicked()"></span>
-  {{emotions.length}}
-</div>
+<span class="{{classes}} article-emotion-btn gray-label"
+      [ngClass]="{'article-emotion-btn-clicked':emotionSelected}"
+      (click)="clicked()">
+</span>
+<span class="gray-label">
+    {{emotions?.length}}
+</span>

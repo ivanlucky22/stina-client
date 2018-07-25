@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Article} from "@app/core/model/article";
+import {Article} from "../../../../core/model/article";
 
 @Component({
   selector: 'app-article-footer',
