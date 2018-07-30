@@ -6,6 +6,7 @@ import {SharedModule} from "@app/shared/shared.module";
 import {CommentsFeatureModule} from "@app/feature/comments-feature/comments-feature.module";
 import {ArticleFooterComponent} from "@app/feature/article-feature/component/article-footer/article-footer.component";
 import {TranslateModule} from "@ngx-translate/core";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   imports: [
@@ -13,7 +14,8 @@ import {TranslateModule} from "@ngx-translate/core";
     SharedModule,
     CommentsFeatureModule,
     TranslateModule,
-    EmotionsPanelFeatureModule
+    EmotionsPanelFeatureModule,
+    RouterModule
   ],
   declarations: [
     ArticleComponent,

@@ -18,6 +18,8 @@ import {AngularFireStorageModule} from "angularfire2/storage";
 import {ConfidentialityPolicyPageComponent} from "@app/feature/shared-feature/component/confidentiality-policy-page/confidentiality-policy-page.component";
 import {UserAgreementPageComponent} from "@app/feature/shared-feature/component/user-agreement-page/user-agreement-page.component";
 import {PageNotFoundComponent} from "@app/feature/shared-feature/component/page-not-found/page-not-found.component";
+import {ArticlePageComponent} from "@app/feature/article-page-feature/component/article-page/article-page.component";
+import {ArticlePageFeatureModule} from "@app/feature/article-page-feature/article-page-feature.module";
 
 const appRoutes: Routes = [
   {path: 'users/:id', component: UserDetailsPageComponent},
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'policy/confidentiality', component: ConfidentialityPolicyPageComponent},
   {path: 'policy/agreement', component: UserAgreementPageComponent},
   {path: 'verification', component: VerificationPageComponent},
+  {path: 'article/:id', component: ArticlePageComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
@@ -41,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     CoreModule,
+    ArticlePageFeatureModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'Stina'),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule,

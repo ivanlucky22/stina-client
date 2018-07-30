@@ -45,4 +45,8 @@ export class ArticleService {
       ;
 
   }
+
+  find(id: string) {
+    return this.articleRepository.find(id);
+  }
 }

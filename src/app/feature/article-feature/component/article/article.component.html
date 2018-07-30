@@ -7,11 +7,11 @@
                        [userId]="article?.author?.uid"
                        [userEmailVerified]="user?.emailVerified"
                        [classes]="'user-icon-css-md p-2'"></app-user-icon>
-        <span style="color: #616770; font-size:12px;">{{article.timestamp | timeAgo: translate.currentLang}}</span><br>
+        <a style="color: #616770; font-size:12px;" [routerLink]="['article/'+article.id]" >{{article.timestamp | timeAgo: translate.currentLang}}</a><br>
       </div>
       <div class="row">
         <h5 class="col card-title">
-          <span class="dont-break-out">{{article.title}}</span>
+          <a class="dont-break-out" [routerLink]="['article/'+article.id]">{{article.title}}</a>
         </h5>
       </div>
       <ng-container *ngFor="let item of article.body.items">

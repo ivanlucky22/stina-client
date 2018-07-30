@@ -5,12 +5,15 @@ import {Observable} from "rxjs";
 import {DocumentChangeAction} from "angularfire2/firestore";
 import {Label} from "@app/core/model/label";
 import * as _ from "lodash";
+import {AngularFirestoreCollection} from "angularfire2/firestore/collection/collection";
+import {AngularFirestoreDocument} from "angularfire2/firestore/document/document";
+import {DocumentData} from "angularfire2/firestore/interfaces";
 
 @Injectable()
 export class ArticleRepository {
 
   private ARTICLES_COLLECTION = 'articles';
-  articlesCollection;
+  articlesCollection: AngularFirestoreCollection<Article>;
 
   constructor(private firebaseService: FirebaseService<Article>) {
     this.articlesCollection = firebaseService.afs.collection<Article>(this.ARTICLES_COLLECTION);
@@ -54,7 +57,11 @@ export class ArticleRepository {
     ).valueChanges();
   }
 
-  private getArticleRef(id: string) {
+  private getArticleRef(id: string): AngularFirestoreDocument<Article> {
     return this.articlesCollection.doc(id);
+  }
+
+  find(id: string): Observable<Article> {
+    return this.getArticleRef(id).valueChanges();
   }
 }
