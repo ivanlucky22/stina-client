@@ -7,6 +7,9 @@ import {TranslateModule} from "@ngx-translate/core";
 import {MatInputModule} from "@angular/material";
 import {EmotionsPanelFeatureModule} from "@app/feature/emotions-panel-feature/emotions-panel-feature.module";
 import {RouterModule} from "@angular/router";
+import {EmojiModule} from "@ctrl/ngx-emoji-mart/ngx-emoji";
+import {PickerModule} from "@ctrl/ngx-emoji-mart";
+import {ClickOutsideModule} from "ng-click-outside";
 
 @NgModule({
   imports: [
@@ -15,6 +18,9 @@ import {RouterModule} from "@angular/router";
     RouterModule,
     TranslateModule,
     MatInputModule,
+    EmojiModule,
+    PickerModule,
+    ClickOutsideModule,
     EmotionsPanelFeatureModule
   ],
   declarations: [

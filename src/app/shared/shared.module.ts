@@ -13,6 +13,7 @@ import {FateModule} from "fate-editor";
 import {TranslateModule} from "@ngx-translate/core";
 import { TagsContainerComponent } from './tags-container/tags-container.component';
 import {TimeAgoPipe} from "@app/shared/pipe/time-ago.pipe";
+import {ClickOutsideModule} from "ng-click-outside";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {TimeAgoPipe} from "@app/shared/pipe/time-ago.pipe";
     PickerModule,
     FormsModule,
     FateModule,
-    TranslateModule
+    TranslateModule,
+    ClickOutsideModule
   ],
   declarations: [
     UserIconComponent,

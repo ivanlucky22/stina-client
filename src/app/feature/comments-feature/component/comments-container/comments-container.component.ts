@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CommentRepositoryService} from "../../../../core/service/repository/comment-repository.service";
+import {CommentRepositoryService} from "@app/core/service/repository/comment-repository.service";
 import * as firebase from "firebase";
-import {Comment} from "../../../../core/model/comment";
-import {Article} from "../../../../core/model/article";
-import {ArticleRepository} from "../../../../core/service/repository/article-repository.service";
+import {Comment} from "@app/core/model/comment";
+import {Article} from "@app/core/model/article";
+import {ArticleRepository} from "@app/core/service/repository/article-repository.service";
 
 @Component({
   selector: 'app-comments-container',
@@ -15,6 +15,7 @@ export class CommentsContainerComponent implements OnInit {
   @Input() article: Article;
   @Input() user: firebase.User;
   @Input() comments: Array<Comment>;
+  showEmojiPanel: boolean;
 
   constructor(private commentRepository: CommentRepositoryService,
               private articleRepository: ArticleRepository) {
@@ -38,4 +39,13 @@ export class CommentsContainerComponent implements OnInit {
     this.articleRepository.update(this.article);
   }
 
+  emojiClicked(event, commentText: HTMLInputElement) {
+    commentText.value += event.emoji.native;
+  }
+
+  onClickedOutside(event) {
+    if (this.showEmojiPanel) {
+      this.showEmojiPanel = false;
+    }
+  }
 }

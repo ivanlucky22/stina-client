@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Article} from "../../../../core/model/article";
-import {ArticleRepository} from "../../../../core/service/repository/article-repository.service";
+import {Article} from "@app/core/model/article";
+import {ArticleRepository} from "@app/core/service/repository/article-repository.service";
 import * as firebase from "firebase";
 import {TranslateService} from "@ngx-translate/core";
 

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
-import {Comment} from "../../../../core/model/comment";
+import {Comment} from "@app/core/model/comment";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({

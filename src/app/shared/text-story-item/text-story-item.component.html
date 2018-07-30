@@ -9,7 +9,7 @@
                    [placeholder]="'hello'"
                    (click)="onEditorFocus()"
                    (focusout)="onEditorBlur()"></fate-material>
-    <div class=" input-group-append text-buttons-panel">
+    <div class="input-group-append text-buttons-panel">
       <div class="btn input-group-text p-1"
            style="background-color:white;border: #FFFFFF none 0;align-items:flex-end">
         <span class="fa fa-smile-o post-content-input-icons"
@@ -25,11 +25,14 @@
     </div>
   </div>
   <mat-progress-bar *ngIf="fileUploading" mode="indeterminate"></mat-progress-bar>
-  <emoji-mart [hidden]="!showEmojiPanel"
+  <emoji-mart (clickOutside)="onClickedOutside($event)"
+              (excludeBeforeClick)=true
+              [exclude]="'.post-content-input-icons'"
+              [hidden]="!showEmojiPanel"
               title="Pick your emoji…"
               emoji=""
               set="messenger"
-              [style]="{ position: 'absolute' }"
+              class="emoji-container"
               [showPreview]="false"
               [include]="'recent,people'"
               (emojiClick)="emojiClicked($event)"

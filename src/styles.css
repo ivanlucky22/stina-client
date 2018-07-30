@@ -36,3 +36,8 @@ html, body {
 .gray-label{
   color: #616770;
 }
+
+.emoji-container{
+  position: absolute;
+  z-index:2
+}

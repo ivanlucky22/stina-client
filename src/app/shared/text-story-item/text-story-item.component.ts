@@ -34,11 +34,16 @@ export class TextStoryItemComponent implements OnInit {
   }
 
   onEditorFocus() {
-    this.showEmojiPanel = false;
     this.editorFocused = true;
   }
 
   onEditorBlur() {
     this.editorFocused = false;
+  }
+
+  onClickedOutside(event) {
+    if (this.showEmojiPanel) {
+      this.showEmojiPanel = false;
+    }
   }
 }

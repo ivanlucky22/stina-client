@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import * as firebase from "firebase";
 import * as _ from "lodash";
-import {ArticleService} from "../../../../core/service/article.service";
-import {Story} from "../../../../core/model/story";
-import {StoryItem, StoryItemType} from "../../../../core/model/story-item";
-import {TextStoryItem} from "../../../../core/model/text-story-item";
-import {ImageStoryItem} from "../../../../core/model/image-story-item";
+import {ArticleService} from "@app/core/service/article.service";
+import {Story} from "@app/core/model/story";
+import {StoryItem, StoryItemType} from "@app/core/model/story-item";
+import {TextStoryItem} from "@app/core/model/text-story-item";
+import {ImageStoryItem} from "@app/core/model/image-story-item";
 import {LabelService} from "@app/core/service/label.service";
 import {Label} from "@app/core/model/label";
 import {FormControl, FormGroup, Validators} from "@angular/forms";

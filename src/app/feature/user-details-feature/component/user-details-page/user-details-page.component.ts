@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {UserService} from "../../../../core/service/auth/user.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {UserService} from "@app/core/service/auth/user.service";
+import {ActivatedRoute} from "@angular/router";
 import * as firebase from "firebase";
 import * as _ from "lodash";
 

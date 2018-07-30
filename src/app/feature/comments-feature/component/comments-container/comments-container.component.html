@@ -13,7 +13,7 @@
     </div>
     <div class="row">
       <div class="align-items-center col">
-        <div class="row">
+        <div class="row align-items-center">
           <div class="col-auto">
             <app-user-icon photoURL="{{user?.photoURL}}" [userId]="0"
                            [classes]="'user-icon-css-md p-1'"></app-user-icon>
@@ -25,8 +25,29 @@
                      #commentText>
             </mat-form-field>
           </div>
-          <div class="col-auto">
-            <span class="btn fa fa-paper-plane" (click)="addComment(commentText)"></span>
+          <div class="col-auto p-1">
+            <div class="btn input-group-text p-0"
+                 style="background-color:white;border: #FFFFFF none 0;align-items:flex-end">
+              <span class="fa fa-smile-o post-content-input-icons p-0"
+                    (click)="showEmojiPanel=true">
+              </span>
+            </div>
+            <emoji-mart (clickOutside)="onClickedOutside($event)"
+                        [exclude]="'.post-content-input-icons'"
+                        (excludeBeforeClick)=true
+                        [hidden]="!showEmojiPanel"
+                        title="Pick your emoji…"
+                        emoji=""
+                        set="messenger"
+                        class="emoji-container"
+                        [style]="{ position: 'absolute' }"
+                        [showPreview]="false"
+                        [include]="'recent,people'"
+                        (emojiClick)="emojiClicked($event, commentText)"
+            ></emoji-mart>
+          </div>
+          <div class="col-auto p-1">
+            <span class="btn fa fa-paper-plane p-0" (click)="addComment(commentText)"></span>
           </div>
         </div>
       </div>
