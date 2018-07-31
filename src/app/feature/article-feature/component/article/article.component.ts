@@ -13,7 +13,7 @@ export class ArticleComponent implements OnInit {
 
   @Input() article: Article;
   @Input() user: firebase.User;
-  commentsVisible = false;
+  @Input() commentsVisible = false;
 
   constructor(private articleRepository: ArticleRepository,
               public translate: TranslateService) {

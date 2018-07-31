@@ -1,3 +1,1 @@
-<ng-container *ngIf="article">
-  <app-article [article]="article" [user]="user"></app-article>
-</ng-container>
+<app-article-container *ngIf="article && user" [article]="article" [user]="user"></app-article-container>
