@@ -22,7 +22,7 @@
       </div>
       <div class="row">
         <h3 class="col card-title">
-          <span class="dont-break-out" style="color: #616770;" [routerLink]="['/article/'+article.id]">{{article.title}}</span>
+          <a class="dont-break-out" style="color: #616770;" [routerLink]="['/article/'+article.id]">{{article.title}}</a>
         </h3>
       </div>
       <ng-container *ngFor="let item of article.body.items">
